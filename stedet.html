@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="da">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Stedet · Gl. Skovridergaard · Cecilie &amp; Esben</title>
+    <meta name="description" content="" />
+    <meta name="theme-color" content="#fbf7ef" />
+    <link rel="icon" href="assets/img/monogram.svg" type="image/svg+xml" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Jost:ital,wght@0,300;0,400;0,500;1,300&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+
+  <body data-title-key="meta.title.venue" data-description-key="meta.description.venue">
+    <a class="skip-link" href="#main" data-i18n="nav.home">Forsiden</a>
+
+    <header class="header is-scrolled" data-header data-header-solid>
+      <div class="header__inner">
+        <nav class="header__nav" aria-label="Hovedmenu" data-i18n-attr="aria-label:nav.label">
+          <button
+            class="nav-toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="nav-menu"
+            aria-label="Åbn menu"
+            data-i18n-attr="aria-label:nav.toggle"
+            data-nav-toggle
+          >
+            <span></span>
+          </button>
+          <ul class="nav__list" id="nav-menu" data-nav-menu>
+            <li><a href="index.html#program" data-i18n="nav.program">Program</a></li>
+            <li><a href="stedet.html" aria-current="page" data-i18n="nav.venue">Stedet</a></li>
+            <li><a href="index.html#praktisk" data-i18n="nav.practical">Praktisk</a></li>
+            <li><a href="index.html#gaver" data-i18n="nav.gifts">Gaver</a></li>
+          </ul>
+        </nav>
+
+        <a class="monogram" href="index.html" aria-label="Cecilie &amp; Esben">
+          <span class="mark" aria-hidden="true"></span>
+        </a>
+
+        <div class="header__actions">
+          <a class="btn header__rsvp" href="index.html#svar" data-i18n="nav.rsvp">Svar</a>
+          <div class="lang" role="group" aria-label="Skift sprog" data-i18n-attr="aria-label:lang.label">
+            <button
+              class="lang__btn"
+              type="button"
+              data-lang-btn="da"
+              aria-pressed="true"
+              title="Dansk"
+              data-i18n-attr="title:lang.da"
+            >
+              DA
+            </button>
+            <button
+              class="lang__btn"
+              type="button"
+              data-lang-btn="en"
+              aria-pressed="false"
+              title="Engelsk"
+              data-i18n-attr="title:lang.en"
+            >
+              EN
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="page-hero">
+        <div class="wrap wrap--narrow">
+          <span class="eyebrow" data-i18n="venuepage.eyebrow">Stedet</span>
+          <h1 class="section-title" data-i18n="venuepage.title">Gl. Skovridergaard</h1>
+          <p class="page-hero__lead" data-i18n="venuepage.lead"></p>
+        </div>
+        <div class="page-hero__scene">
+          <img
+            src="assets/img/illustrations/silkeborg-panorama.svg"
+            alt="Akvarel af Silkeborgsøerne med skov, sø og hjuldamperen Hjejlen"
+            data-i18n-attr="alt:hero.scene.alt"
+            width="1600"
+            height="560"
+          />
+        </div>
+      </section>
+
+      <!-- Gallery -->
+      <section class="section section--paper">
+        <div class="wrap">
+          <div class="section-head" data-reveal>
+            <h2 class="section-title" data-i18n="venuepage.gallery.title">Billeder fra stedet</h2>
+          </div>
+
+          <!--
+            Drop photos into assets/img/venue/ and point each --photo at them.
+            Paths inside a custom property resolve against assets/css/style.css,
+            hence ../img/… ; data-full is document-relative and stays assets/…
+          -->
+          <div class="gallery" data-gallery data-reveal>
+            <button
+              class="shot shot--wide"
+              type="button"
+              style="--photo: url('../img/venue/gaarden.jpg')"
+              data-full="assets/img/venue/gaarden.jpg"
+              data-caption="Gl. Skovridergaard"
+            >
+              <span class="shot__caption">Gl. Skovridergaard</span>
+            </button>
+            <button
+              class="shot"
+              type="button"
+              style="--photo: url('../img/venue/parken.jpg')"
+              data-full="assets/img/venue/parken.jpg"
+              data-caption="Parken"
+            >
+              <span class="shot__caption">Parken</span>
+            </button>
+            <button
+              class="shot"
+              type="button"
+              style="--photo: url('../img/venue/orangeriet.jpg')"
+              data-full="assets/img/venue/orangeriet.jpg"
+              data-caption="Orangeriet"
+            >
+              <span class="shot__caption">Orangeriet</span>
+            </button>
+            <button
+              class="shot"
+              type="button"
+              style="--photo: url('../img/venue/salen.jpg')"
+              data-full="assets/img/venue/salen.jpg"
+              data-caption="Festsalen"
+            >
+              <span class="shot__caption">Festsalen</span>
+            </button>
+            <button
+              class="shot"
+              type="button"
+              style="--photo: url('../img/venue/vaerelse.jpg')"
+              data-full="assets/img/venue/vaerelse.jpg"
+              data-caption="Værelserne"
+            >
+              <span class="shot__caption">Værelserne</span>
+            </button>
+            <button
+              class="shot"
+              type="button"
+              style="--photo: url('../img/venue/almindsoe.jpg')"
+              data-full="assets/img/venue/almindsoe.jpg"
+              data-caption="Almindsø"
+            >
+              <span class="shot__caption">Almindsø</span>
+            </button>
+          </div>
+
+          <p class="gallery__note" data-i18n="venuepage.gallery.note"></p>
+        </div>
+      </section>
+
+      <!-- Facts -->
+      <section class="section">
+        <div class="wrap">
+          <div class="section-head" data-reveal>
+            <h2 class="section-title" data-i18n="venuepage.facts.title">Kort fortalt</h2>
+          </div>
+
+          <dl class="facts" data-reveal>
+            <div class="fact">
+              <dt data-i18n="venuepage.fact.1.label"></dt>
+              <dd data-i18n="venuepage.fact.1.value"></dd>
+            </div>
+            <div class="fact">
+              <dt data-i18n="venuepage.fact.2.label"></dt>
+              <dd data-i18n="venuepage.fact.2.value"></dd>
+            </div>
+            <div class="fact">
+              <dt data-i18n="venuepage.fact.3.label"></dt>
+              <dd data-i18n="venuepage.fact.3.value"></dd>
+            </div>
+            <div class="fact">
+              <dt data-i18n="venuepage.fact.4.label"></dt>
+              <dd data-i18n="venuepage.fact.4.value"></dd>
+            </div>
+            <div class="fact">
+              <dt data-i18n="venuepage.fact.5.label"></dt>
+              <dd data-i18n="venuepage.fact.5.value"></dd>
+            </div>
+            <div class="fact">
+              <dt data-i18n="venuepage.fact.6.label"></dt>
+              <dd data-i18n="venuepage.fact.6.value"></dd>
+            </div>
+          </dl>
+
+          <p class="links">
+            <a
+              class="btn btn--ghost"
+              href="https://www.google.com/maps/search/?api=1&query=Gl.+Skovridergaard+Marienlundsvej+36+8600+Silkeborg"
+              target="_blank"
+              rel="noopener"
+              data-i18n="venuepage.map"
+              >Åbn i Google Maps</a
+            >
+            <a
+              class="btn btn--ghost"
+              href="https://glskov.dk/"
+              target="_blank"
+              rel="noopener"
+              data-i18n="venuepage.website"
+              >Hotellets hjemmeside</a
+            >
+          </p>
+        </div>
+      </section>
+
+      <!-- Illustrated break: the rings at Almindsø, a short walk from the estate -->
+      <div class="band" aria-hidden="true">
+        <img
+          src="assets/img/illustrations/ringene.svg"
+          alt=""
+          width="720"
+          height="480"
+          loading="lazy"
+        />
+      </div>
+
+      <!-- Around -->
+      <section class="section section--forest">
+        <div class="wrap wrap--narrow" style="text-align: center" data-reveal>
+          <h2 class="section-title" data-i18n="venuepage.around.title">Hvis I får tid til overs</h2>
+          <p class="section-intro" data-i18n="venuepage.around.body"></p>
+          <p class="links">
+            <a class="btn btn--light" href="index.html" data-i18n="venuepage.back">Tilbage til forsiden</a>
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span class="mark footer__mark" aria-hidden="true"></span>
+      <p class="footer__title" data-i18n="footer.title">Vi glæder os til at se jer</p>
+      <p class="footer__names" data-i18n="footer.names">Cecilie &amp; Esben</p>
+      <p class="footer__date" data-i18n="footer.date"></p>
+    </footer>
+
+    <div class="lightbox" data-lightbox hidden>
+      <button class="lightbox__close" type="button" data-lightbox-close aria-label="Luk">✕</button>
+      <figure class="lightbox__figure">
+        <img data-lightbox-image alt="" />
+        <figcaption data-lightbox-caption></figcaption>
+      </figure>
+    </div>
+
+    <script src="assets/js/translations.js"></script>
+    <script src="assets/js/i18n.js"></script>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>

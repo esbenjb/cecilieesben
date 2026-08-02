@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="da">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Invitation · Cecilie &amp; Esben</title>
+    <meta name="description" content="" />
+    <meta name="theme-color" content="#ffffff" />
+    <link rel="icon" href="assets/img/monogram.svg" type="image/svg+xml" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Jost:ital,wght@0,300;0,400;0,500;1,300&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/print-a4.css" media="print" />
+  </head>
+
+  <body data-title-key="meta.title.invitation" data-description-key="meta.description.invitation">
+    <a class="skip-link" href="#main" data-i18n="nav.home">Forsiden</a>
+
+    <header class="header is-scrolled" data-header data-header-solid>
+      <div class="header__inner">
+        <nav class="header__nav" aria-label="Hovedmenu" data-i18n-attr="aria-label:nav.label">
+          <button
+            class="nav-toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="nav-menu"
+            aria-label="Åbn menu"
+            data-i18n-attr="aria-label:nav.toggle"
+            data-nav-toggle
+          >
+            <span></span>
+          </button>
+          <ul class="nav__list" id="nav-menu" data-nav-menu>
+            <li><a href="plan.html" data-i18n="nav.program">Program</a></li>
+            <li><a href="stedet.html" data-i18n="nav.venue">Stedet</a></li>
+            <li><a href="index.html#praktisk" data-i18n="nav.practical">Praktisk</a></li>
+            <li><a href="index.html#gaver" data-i18n="nav.gifts">Gaver</a></li>
+          </ul>
+        </nav>
+
+        <a class="monogram" href="index.html" aria-label="Cecilie &amp; Esben">
+          <span class="mark" aria-hidden="true"></span>
+        </a>
+
+        <div class="header__actions">
+          <a class="btn header__rsvp" href="index.html#svar" data-i18n="nav.rsvp">Svar</a>
+          <div class="lang" role="group" aria-label="Skift sprog" data-i18n-attr="aria-label:lang.label">
+            <button class="lang__btn" type="button" data-lang-btn="da" aria-pressed="true"
+                    title="Dansk" data-i18n-attr="title:lang.da">DA</button>
+            <button class="lang__btn" type="button" data-lang-btn="en" aria-pressed="false"
+                    title="Engelsk" data-i18n-attr="title:lang.en">EN</button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main id="main" class="inv-page">
+      <div class="plan-intro">
+        <div class="wrap wrap--narrow">
+          <span class="eyebrow" data-i18n="inv.eyebrow">Invitationen</span>
+          <p class="plan-intro__text" data-i18n="inv.intro"></p>
+          <p class="plan-intro__actions">
+            <button class="btn" type="button" data-print data-i18n="inv.print">
+              Print invitationen
+            </button>
+            <a class="btn btn--ghost" href="plan.html" data-i18n="program.link">Se planen som flyer</a>
+            <a class="btn btn--ghost" href="index.html" data-i18n="plan.back">Tilbage til forsiden</a>
+          </p>
+        </div>
+      </div>
+
+      <!--
+        A4 landscape gatefold, 297 x 210 mm, printed double-sided and flipped on
+        the long edge. Panels are 74.25 | 148.5 | 74.25 mm.
+
+        Sheet 1 (inside), left to right:  practical | the invitation | programme
+        Sheet 2 (outside), left to right: right flap front | back | left flap front
+
+        The outside is deliberately mirrored: after the long-edge flip the right
+        flap lands on the left of the sheet, so folding both flaps inwards puts
+        "Cecilie" and "Esben" side by side on the closed card.
+      -->
+      <div class="sheets">
+        <!-- ---------------------------------------------------- inside -->
+        <figure class="sheet-wrap">
+          <figcaption class="sheet-label" data-i18n="inv.side.a">Side 1 · inderside</figcaption>
+
+          <div class="sheet">
+            <div class="fold" style="left: 74.25mm"></div>
+            <div class="fold" style="left: 222.75mm"></div>
+
+            <!-- Left flap: practical -->
+            <section class="panel panel--flap inv-practical">
+              <h2 class="inv-panel-title" data-i18n="inv.practical.title">Praktisk</h2>
+              <div class="inv-facts">
+                <div class="inv-fact">
+                  <h3 data-i18n="inv.practical.1.label"></h3>
+                  <p data-i18n="inv.practical.1.value"></p>
+                </div>
+                <div class="inv-fact">
+                  <h3 data-i18n="inv.practical.2.label"></h3>
+                  <p data-i18n="inv.practical.2.value"></p>
+                </div>
+                <div class="inv-fact">
+                  <h3 data-i18n="inv.practical.3.label"></h3>
+                  <p data-i18n="inv.practical.3.value"></p>
+                </div>
+                <div class="inv-fact">
+                  <h3 data-i18n="inv.practical.4.label"></h3>
+                  <p data-i18n="inv.practical.4.value"></p>
+                </div>
+              </div>
+              <p class="inv-web">
+                <span class="inv-web__label" data-i18n="inv.practical.web.label"></span>
+                <strong data-i18n="inv.web">cecilieesben.dk</strong>
+              </p>
+            </section>
+
+            <!-- Centre: the invitation itself -->
+            <section class="panel panel--centre inv-main">
+              <span class="mark inv-main__mark" aria-hidden="true"></span>
+              <p class="inv-main__eyebrow" data-i18n="inv.main.eyebrow"></p>
+              <h1 class="inv-main__names">Cecilie <span class="inv-amp">&amp;</span> Esben</h1>
+              <p class="inv-main__invite" data-i18n="inv.main.invite"></p>
+              <p class="inv-main__date" data-i18n="inv.main.date"></p>
+              <p class="inv-main__venue" data-i18n="inv.main.venue"></p>
+              <p class="inv-main__address" data-i18n="inv.main.address"></p>
+              <p class="inv-main__weekend" data-i18n="inv.main.weekend"></p>
+              <p class="inv-main__closing" data-i18n="inv.main.closing"></p>
+              <img
+                class="inv-main__scene"
+                src="assets/img/illustrations/silkeborg-panorama.svg"
+                alt=""
+                width="1600"
+                height="560"
+              />
+            </section>
+
+            <!-- Right flap: the plan -->
+            <section class="panel panel--flap inv-program">
+              <h2 class="inv-panel-title" data-i18n="inv.program.title">Programmet</h2>
+              <div class="inv-days" data-schedule="card"></div>
+              <p class="inv-program__note" data-i18n="inv.program.note"></p>
+            </section>
+          </div>
+        </figure>
+
+        <!-- --------------------------------------------------- outside -->
+        <figure class="sheet-wrap">
+          <figcaption class="sheet-label" data-i18n="inv.side.b">Side 2 · yderside</figcaption>
+
+          <div class="sheet">
+            <div class="fold" style="left: 74.25mm"></div>
+            <div class="fold" style="left: 222.75mm"></div>
+
+            <!-- Right flap, front — lands on the right of the closed card -->
+            <section class="panel panel--flap inv-cover inv-cover--right">
+              <p class="inv-cover__name">Esben</p>
+              <p class="inv-cover__date" data-i18n="inv.cover.date">12. juni 2027</p>
+              <div class="inv-cover__scene inv-cover__scene--right" aria-hidden="true"></div>
+            </section>
+
+            <!-- Centre: the back of the folded card, and the one photograph -->
+            <section class="panel panel--centre inv-back">
+              <figure class="inv-back__photo">
+                <img class="photo" src="assets/img/par/par-07.jpg" alt=""
+                     data-i18n-attr="alt:us.1.alt" />
+              </figure>
+              <p class="inv-back__text" data-i18n="inv.back.text"></p>
+              <p class="inv-back__web" data-i18n="inv.web">cecilieesben.dk</p>
+            </section>
+
+            <!-- Left flap, front — lands on the left of the closed card -->
+            <section class="panel panel--flap inv-cover inv-cover--left">
+              <span class="mark inv-cover__mark" aria-hidden="true"></span>
+              <p class="inv-cover__name">Cecilie</p>
+              <p class="inv-cover__weekend" data-i18n="inv.cover.weekend"></p>
+              <div class="inv-cover__scene inv-cover__scene--left" aria-hidden="true"></div>
+            </section>
+          </div>
+        </figure>
+      </div>
+
+      <p class="sheet-note" data-i18n="inv.fold.note"></p>
+    </main>
+
+    <footer class="footer inv-page__footer">
+      <span class="mark footer__mark" aria-hidden="true"></span>
+      <p class="footer__title" data-i18n="footer.title">Vi glæder os til at se jer</p>
+      <p class="footer__names" data-i18n="footer.names">Cecilie &amp; Esben</p>
+      <p class="footer__date" data-i18n="footer.date"></p>
+    </footer>
+
+    <script src="assets/js/translations.js"></script>
+    <script src="assets/js/i18n.js"></script>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>

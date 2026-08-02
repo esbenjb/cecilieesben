@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="da">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Planen · Cecilie &amp; Esben</title>
+    <meta name="description" content="" />
+    <meta name="theme-color" content="#fbf7ef" />
+    <link rel="icon" href="assets/img/monogram.svg" type="image/svg+xml" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Jost:ital,wght@0,300;0,400;0,500;1,300&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/print-a6.css" media="print" />
+  </head>
+
+  <body data-title-key="meta.title.plan" data-description-key="meta.description.plan">
+    <a class="skip-link" href="#main" data-i18n="nav.home">Forsiden</a>
+
+    <header class="header is-scrolled" data-header data-header-solid>
+      <div class="header__inner">
+        <nav class="header__nav" aria-label="Hovedmenu" data-i18n-attr="aria-label:nav.label">
+          <button
+            class="nav-toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="nav-menu"
+            aria-label="Åbn menu"
+            data-i18n-attr="aria-label:nav.toggle"
+            data-nav-toggle
+          >
+            <span></span>
+          </button>
+          <ul class="nav__list" id="nav-menu" data-nav-menu>
+            <li><a href="plan.html" aria-current="page" data-i18n="nav.program">Program</a></li>
+            <li><a href="stedet.html" data-i18n="nav.venue">Stedet</a></li>
+            <li><a href="index.html#praktisk" data-i18n="nav.practical">Praktisk</a></li>
+            <li><a href="index.html#gaver" data-i18n="nav.gifts">Gaver</a></li>
+          </ul>
+        </nav>
+
+        <a class="monogram" href="index.html" aria-label="Cecilie &amp; Esben">
+          <span class="mark" aria-hidden="true"></span>
+        </a>
+
+        <div class="header__actions">
+          <a class="btn header__rsvp" href="index.html#svar" data-i18n="nav.rsvp">Svar</a>
+          <div class="lang" role="group" aria-label="Skift sprog" data-i18n-attr="aria-label:lang.label">
+            <button
+              class="lang__btn"
+              type="button"
+              data-lang-btn="da"
+              aria-pressed="true"
+              title="Dansk"
+              data-i18n-attr="title:lang.da"
+            >
+              DA
+            </button>
+            <button
+              class="lang__btn"
+              type="button"
+              data-lang-btn="en"
+              aria-pressed="false"
+              title="Engelsk"
+              data-i18n-attr="title:lang.en"
+            >
+              EN
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main id="main" class="plan-page">
+      <div class="plan-intro">
+        <div class="wrap wrap--narrow">
+          <span class="eyebrow" data-i18n="plan.eyebrow">Planen</span>
+          <p class="plan-intro__text" data-i18n="plan.intro"></p>
+          <p class="plan-intro__actions">
+            <button class="btn" type="button" data-print data-i18n="plan.print">Print planen</button>
+            <a class="btn btn--ghost" href="invitation.html" data-i18n="inv.link">Se invitationen</a>
+            <a class="btn btn--ghost" href="index.html" data-i18n="plan.back">Tilbage til forsiden</a>
+          </p>
+        </div>
+      </div>
+
+      <!--
+        The flyer. Sized as A6 (105 x 148 mm) on screen and printed 1:1 with
+        @page size A6 — what you see here is what comes out of the printer.
+      -->
+      <div class="flyer-stage">
+        <figure class="flyer-photo">
+          <img class="photo" src="assets/img/par/par-12.jpg" alt=""
+               data-i18n-attr="alt:us.2.alt" loading="lazy" />
+        </figure>
+
+        <article class="flyer">
+          <div class="flyer__inner">
+            <header class="flyer__head">
+              <span class="mark flyer__mark" aria-hidden="true"></span>
+              <h1 class="flyer__names">Cecilie <span class="flyer__amp">&amp;</span> Esben</h1>
+              <p class="flyer__title" data-i18n="plan.title">Bryllupsweekend</p>
+              <p class="flyer__dates" data-i18n="plan.dates">11.–13. juni 2027</p>
+            </header>
+
+            <div class="plan-days" data-schedule="flyer"></div>
+
+            <footer class="flyer__foot">
+              <p data-i18n="plan.footer"></p>
+            </footer>
+          </div>
+        </article>
+      </div>
+    </main>
+
+    <footer class="footer plan-page__footer">
+      <span class="mark footer__mark" aria-hidden="true"></span>
+      <p class="footer__title" data-i18n="footer.title">Vi glæder os til at se jer</p>
+      <p class="footer__names" data-i18n="footer.names">Cecilie &amp; Esben</p>
+      <p class="footer__date" data-i18n="footer.date"></p>
+    </footer>
+
+    <script src="assets/js/translations.js"></script>
+    <script src="assets/js/i18n.js"></script>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>

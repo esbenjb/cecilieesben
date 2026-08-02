@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="da">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cecilie &amp; Esben · 12. juni 2027</title>
+    <meta name="description" content="" />
+    <meta name="theme-color" content="#fbf7ef" />
+    <link rel="icon" href="assets/img/monogram.svg" type="image/svg+xml" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Jost:ital,wght@0,300;0,400;0,500;1,300&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+
+  <body data-title-key="meta.title" data-description-key="meta.description">
+    <a class="skip-link" href="#main" data-i18n="nav.home">Forsiden</a>
+
+    <header class="header" data-header>
+      <div class="header__inner">
+        <nav class="header__nav" aria-label="Hovedmenu" data-i18n-attr="aria-label:nav.label">
+          <button
+            class="nav-toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="nav-menu"
+            aria-label="Åbn menu"
+            data-i18n-attr="aria-label:nav.toggle"
+            data-nav-toggle
+          >
+            <span></span>
+          </button>
+          <ul class="nav__list" id="nav-menu" data-nav-menu>
+            <li><a href="#program" data-i18n="nav.program">Program</a></li>
+            <li><a href="stedet.html" data-i18n="nav.venue">Stedet</a></li>
+            <li><a href="#praktisk" data-i18n="nav.practical">Praktisk</a></li>
+            <li><a href="#gaver" data-i18n="nav.gifts">Gaver</a></li>
+          </ul>
+        </nav>
+
+        <a class="monogram" href="index.html" aria-label="Cecilie &amp; Esben">
+          <span class="mark" aria-hidden="true"></span>
+        </a>
+
+        <div class="header__actions">
+          <a class="btn header__rsvp" href="#svar" data-i18n="nav.rsvp">Svar</a>
+          <div class="lang" role="group" aria-label="Skift sprog" data-i18n-attr="aria-label:lang.label">
+            <button
+              class="lang__btn"
+              type="button"
+              data-lang-btn="da"
+              aria-pressed="true"
+              title="Dansk"
+              data-i18n-attr="title:lang.da"
+            >
+              DA
+            </button>
+            <button
+              class="lang__btn"
+              type="button"
+              data-lang-btn="en"
+              aria-pressed="false"
+              title="Engelsk"
+              data-i18n-attr="title:lang.en"
+            >
+              EN
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- Hero -->
+      <section class="hero">
+        <div class="hero__inner">
+          <p class="hero__dateline" data-i18n="hero.dateline">— 12. juni 2027 —</p>
+          <h1 class="hero__names">
+            Cecilie <span class="hero__amp">&amp;</span> Esben
+          </h1>
+          <p class="hero__tagline" data-i18n="hero.tagline">vi skal giftes!</p>
+          <p class="hero__venue" data-i18n="hero.venue">
+            Gl. Skovridergaard · Silkeborg · 11.–13. juni
+          </p>
+          <p class="hero__cta">
+            <a class="btn" href="#svar" data-i18n="hero.cta">Svar på invitationen</a>
+          </p>
+        </div>
+        <div class="hero__scene">
+          <img
+            src="assets/img/illustrations/silkeborg-panorama.svg"
+            alt="Akvarel af Silkeborgsøerne med skov, sø og hjuldamperen Hjejlen"
+            data-i18n-attr="alt:hero.scene.alt"
+            width="1600"
+            height="560"
+          />
+        </div>
+      </section>
+
+      <!-- Statement -->
+      <section class="section section--paper">
+        <div class="wrap wrap--narrow statement" data-reveal>
+          <span class="eyebrow" data-i18n="welcome.eyebrow">Velkommen</span>
+          <p class="statement__lead" data-i18n="statement.lead">
+            Vi bliver gift på Gl. Skovridergaard ved Silkeborg — en gammel
+            skovridergård fra 1798 midt i Søhøjlandet.
+          </p>
+          <p class="statement__body" data-i18n="welcome.body"></p>
+          <p class="statement__signature" data-i18n="welcome.signature"></p>
+        </div>
+      </section>
+
+      <!-- The two of us -->
+      <section class="section">
+        <div class="wrap">
+          <div class="section-head" data-reveal>
+            <span class="eyebrow" data-i18n="us.eyebrow">Os to</span>
+            <h2 class="section-title" data-i18n="us.title">Vejen hertil</h2>
+            <p class="section-intro" data-i18n="us.intro"></p>
+          </div>
+
+          <div class="us" data-reveal>
+            <figure class="us__item us__item--wide">
+              <img class="photo" src="assets/img/par/par-07.jpg" alt=""
+                   data-i18n-attr="alt:us.1.alt" loading="lazy" />
+            </figure>
+            <figure class="us__item">
+              <img class="photo" src="assets/img/par/par-12.jpg" alt=""
+                   data-i18n-attr="alt:us.2.alt" loading="lazy" />
+            </figure>
+            <figure class="us__item">
+              <img class="photo" src="assets/img/par/par-01.jpg" alt=""
+                   data-i18n-attr="alt:us.3.alt" loading="lazy" />
+            </figure>
+            <figure class="us__item">
+              <img class="photo" src="assets/img/par/par-02.jpg" alt=""
+                   data-i18n-attr="alt:us.4.alt" loading="lazy" />
+            </figure>
+            <figure class="us__item">
+              <img class="photo" src="assets/img/par/par-09.jpg" alt=""
+                   data-i18n-attr="alt:us.5.alt" loading="lazy" />
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- Countdown -->
+      <section class="countdown" data-countdown aria-live="off">
+        <p class="countdown__title" data-i18n="countdown.title">Der er ikke længe til</p>
+        <div class="countdown__grid" data-countdown-grid>
+          <div class="countdown__unit">
+            <span class="countdown__value" data-countdown-value="days">—</span>
+            <span class="countdown__label" data-i18n="countdown.days">dage</span>
+          </div>
+          <div class="countdown__unit">
+            <span class="countdown__value" data-countdown-value="hours">—</span>
+            <span class="countdown__label" data-i18n="countdown.hours">timer</span>
+          </div>
+          <div class="countdown__unit">
+            <span class="countdown__value" data-countdown-value="minutes">—</span>
+            <span class="countdown__label" data-i18n="countdown.minutes">minutter</span>
+          </div>
+          <div class="countdown__unit">
+            <span class="countdown__value" data-countdown-value="seconds">—</span>
+            <span class="countdown__label" data-i18n="countdown.seconds">sekunder</span>
+          </div>
+        </div>
+        <p class="countdown__message" data-countdown-message hidden></p>
+      </section>
+
+      <!-- Programme -->
+      <section class="section" id="program">
+        <div class="wrap">
+          <div class="section-head" data-reveal>
+            <span class="eyebrow" data-i18n="program.eyebrow">Programmet</span>
+            <h2 class="section-title" data-i18n="program.title">Tre dage i Søhøjlandet</h2>
+            <p class="section-intro" data-i18n="program.intro"></p>
+          </div>
+
+          <div class="days" data-schedule="cards" data-reveal></div>
+
+          <p class="links">
+            <a class="btn btn--ghost" href="plan.html" data-i18n="program.link">Se planen som flyer</a>
+          </p>
+        </div>
+      </section>
+
+      <!-- Venue teaser -->
+      <section class="section section--paper">
+        <div class="wrap teaser" data-reveal>
+          <!-- Set --photo to a real picture. Paths in a custom property are
+               resolved against assets/css/style.css, so use ../img/… -->
+          <div class="teaser__media" role="presentation"></div>
+          <div class="teaser__text">
+            <span class="eyebrow" data-i18n="venue.eyebrow">Stedet</span>
+            <h2 class="teaser__title" data-i18n="venue.title">Gl. Skovridergaard</h2>
+            <p data-i18n="venue.teaser"></p>
+            <p class="teaser__cta">
+              <a class="btn btn--ghost" href="stedet.html" data-i18n="venue.cta">Se stedet</a>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- The illustrated set: Hjejlen, the rings, the heather hills -->
+      <section class="section">
+        <div class="wrap">
+          <div class="section-head" data-reveal>
+            <span class="eyebrow" data-i18n="around.eyebrow">Søhøjlandet</span>
+            <h2 class="section-title" data-i18n="around.title">Landet omkring os</h2>
+            <p class="section-intro" data-i18n="around.intro"></p>
+          </div>
+
+          <div class="figures">
+            <figure class="figure" data-reveal>
+              <img
+                src="assets/img/illustrations/hjejlen.svg"
+                alt=""
+                data-i18n-attr="alt:fig.hjejlen.alt"
+                width="720"
+                height="400"
+                loading="lazy"
+              />
+              <figcaption>
+                <h3 class="figure__title" data-i18n="fig.hjejlen.title">Hjejlen</h3>
+                <p data-i18n="fig.hjejlen.text"></p>
+              </figcaption>
+            </figure>
+
+            <figure class="figure" data-reveal>
+              <img
+                src="assets/img/illustrations/ringene.svg"
+                alt=""
+                data-i18n-attr="alt:fig.ringene.alt"
+                width="720"
+                height="480"
+                loading="lazy"
+              />
+              <figcaption>
+                <h3 class="figure__title" data-i18n="fig.ringene.title">Ringene i Almindsø</h3>
+                <p data-i18n="fig.ringene.text"></p>
+              </figcaption>
+            </figure>
+
+            <figure class="figure" data-reveal>
+              <img
+                src="assets/img/illustrations/sindbjerg-stoubjerg.svg"
+                alt=""
+                data-i18n-attr="alt:fig.bakkerne.alt"
+                width="1600"
+                height="620"
+                loading="lazy"
+              />
+              <figcaption>
+                <h3 class="figure__title" data-i18n="fig.bakkerne.title">Sindbjerg &amp; Stoubjerg</h3>
+                <p data-i18n="fig.bakkerne.text"></p>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- Practical -->
+      <section class="section" id="praktisk">
+        <div class="wrap">
+          <div class="section-head" data-reveal>
+            <span class="eyebrow" data-i18n="practical.eyebrow">Praktisk</span>
+            <h2 class="section-title" data-i18n="practical.title">Det I skal vide</h2>
+          </div>
+          <div class="cards">
+            <article class="card" data-reveal>
+              <h3 data-i18n="practical.1.title"></h3>
+              <p data-i18n="practical.1.body"></p>
+            </article>
+            <article class="card" data-reveal>
+              <h3 data-i18n="practical.2.title"></h3>
+              <p data-i18n="practical.2.body"></p>
+            </article>
+            <article class="card" data-reveal>
+              <h3 data-i18n="practical.3.title"></h3>
+              <p data-i18n="practical.3.body"></p>
+            </article>
+            <article class="card" data-reveal>
+              <h3 data-i18n="practical.4.title"></h3>
+              <p data-i18n="practical.4.body"></p>
+            </article>
+            <article class="card" data-reveal>
+              <h3 data-i18n="practical.5.title"></h3>
+              <p data-i18n="practical.5.body"></p>
+              <span class="card__contact" data-i18n="practical.5.contact"></span>
+            </article>
+            <article class="card" data-reveal>
+              <h3 data-i18n="practical.6.title"></h3>
+              <p data-i18n="practical.6.body"></p>
+              <!-- TODO: opdatér mailto, når adressen er valgt -->
+              <a class="card__contact" href="mailto:bryllup@example.dk" data-i18n="practical.6.contact"></a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Illustrated break -->
+      <div class="band" aria-hidden="true">
+        <img
+          src="assets/img/illustrations/sindbjerg-stoubjerg.svg"
+          alt=""
+          width="1600"
+          height="620"
+          loading="lazy"
+        />
+      </div>
+
+      <!-- Gifts -->
+      <section class="section section--forest" id="gaver">
+        <div class="wrap wrap--narrow gifts" data-reveal>
+          <span class="eyebrow" data-i18n="gifts.eyebrow">Gaver</span>
+          <h2 class="section-title" data-i18n="gifts.title">Ønskeseddel</h2>
+          <p class="gifts__body" data-i18n="gifts.body"></p>
+          <div class="gifts__details">
+            <div>
+              <span class="gifts__label" data-i18n="gifts.account.label"></span>
+              <strong class="gifts__value" data-i18n="gifts.account.value"></strong>
+            </div>
+            <div>
+              <span class="gifts__label" data-i18n="gifts.mobilepay.label"></span>
+              <strong class="gifts__value" data-i18n="gifts.mobilepay.value"></strong>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- RSVP -->
+      <section class="section section--paper" id="svar">
+        <div class="wrap">
+          <div class="section-head" data-reveal>
+            <span class="eyebrow" data-i18n="rsvp.eyebrow">Svar udbedes</span>
+            <h2 class="section-title" data-i18n="rsvp.title">Kommer I?</h2>
+            <p class="section-intro" data-i18n="rsvp.deadline"></p>
+          </div>
+
+          <form class="form" data-rsvp-form novalidate data-reveal>
+            <div class="form__row form__row--two">
+              <div class="field">
+                <label for="rsvp-name" data-i18n="rsvp.name">Navn(e)</label>
+                <input
+                  id="rsvp-name"
+                  name="name"
+                  type="text"
+                  autocomplete="name"
+                  required
+                  data-i18n-attr="placeholder:rsvp.name.placeholder"
+                />
+              </div>
+              <div class="field">
+                <label for="rsvp-email" data-i18n="rsvp.email">E-mail</label>
+                <input
+                  id="rsvp-email"
+                  name="email"
+                  type="email"
+                  autocomplete="email"
+                  required
+                  data-i18n-attr="placeholder:rsvp.email.placeholder"
+                />
+              </div>
+            </div>
+
+            <fieldset class="fieldset">
+              <legend data-i18n="rsvp.attending.legend">Deltager I?</legend>
+              <div class="choices">
+                <label class="choice">
+                  <input type="radio" name="attending" value="yes" checked />
+                  <span data-i18n="rsvp.attending.yes">Ja, vi kommer</span>
+                </label>
+                <label class="choice">
+                  <input type="radio" name="attending" value="no" />
+                  <span data-i18n="rsvp.attending.no">Desværre ikke</span>
+                </label>
+              </div>
+            </fieldset>
+
+            <div data-attending-fields>
+              <div class="form__row">
+                <fieldset class="fieldset">
+                  <legend data-i18n="rsvp.days.legend">Hvilke dage deltager I?</legend>
+                  <div class="choices">
+                    <label class="choice">
+                      <input type="checkbox" name="days" value="fredag" />
+                      <span data-i18n="rsvp.days.fri">Fredag 11. juni</span>
+                    </label>
+                    <label class="choice">
+                      <input type="checkbox" name="days" value="lørdag" checked />
+                      <span data-i18n="rsvp.days.sat">Lørdag 12. juni</span>
+                    </label>
+                    <label class="choice">
+                      <input type="checkbox" name="days" value="søndag" />
+                      <span data-i18n="rsvp.days.sun">Søndag 13. juni</span>
+                    </label>
+                  </div>
+                </fieldset>
+
+                <fieldset class="fieldset">
+                  <legend data-i18n="rsvp.overnight.legend">Overnatning</legend>
+                  <div class="choices">
+                    <label class="choice">
+                      <input type="checkbox" name="overnight" value="fredag-lørdag" />
+                      <span data-i18n="rsvp.overnight.fri">Natten til lørdag</span>
+                    </label>
+                    <label class="choice">
+                      <input type="checkbox" name="overnight" value="lørdag-søndag" />
+                      <span data-i18n="rsvp.overnight.sat">Natten til søndag</span>
+                    </label>
+                  </div>
+                </fieldset>
+
+                <div class="form__row form__row--two">
+                  <div class="field">
+                    <label for="rsvp-guests" data-i18n="rsvp.guests">Antal gæster</label>
+                    <input id="rsvp-guests" name="guests" type="number" min="1" max="12" value="2" />
+                  </div>
+                  <div class="field">
+                    <label for="rsvp-phone" data-i18n="rsvp.phone">Telefon</label>
+                    <input
+                      id="rsvp-phone"
+                      name="phone"
+                      type="tel"
+                      autocomplete="tel"
+                      data-i18n-attr="placeholder:rsvp.phone.placeholder"
+                    />
+                  </div>
+                </div>
+
+                <div class="field">
+                  <label for="rsvp-diet" data-i18n="rsvp.diet">Allergier</label>
+                  <input
+                    id="rsvp-diet"
+                    name="diet"
+                    type="text"
+                    data-i18n-attr="placeholder:rsvp.diet.placeholder"
+                  />
+                </div>
+
+                <div class="field">
+                  <label for="rsvp-song" data-i18n="rsvp.song">Sangønske</label>
+                  <input
+                    id="rsvp-song"
+                    name="song"
+                    type="text"
+                    data-i18n-attr="placeholder:rsvp.song.placeholder"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="rsvp-message" data-i18n="rsvp.message">Hilsen til os</label>
+              <textarea
+                id="rsvp-message"
+                name="message"
+                data-i18n-attr="placeholder:rsvp.message.placeholder"
+              ></textarea>
+            </div>
+
+            <div class="form__actions">
+              <button class="btn" type="submit" data-rsvp-submit data-i18n="rsvp.submit">
+                Send svar
+              </button>
+              <p class="form__status" role="status" aria-live="polite" data-rsvp-status hidden></p>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span class="mark footer__mark" aria-hidden="true"></span>
+      <p class="footer__title" data-i18n="footer.title">Vi glæder os til at se jer</p>
+      <p class="footer__names" data-i18n="footer.names">Cecilie &amp; Esben</p>
+      <p class="footer__date" data-i18n="footer.date"></p>
+    </footer>
+
+    <script src="assets/js/translations.js"></script>
+    <script src="assets/js/i18n.js"></script>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>

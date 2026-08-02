@@ -1,0 +1,2093 @@
+/* ==========================================================================
+   Cecilie & Esben · 12.06.2027 · Gl. Skovridergaard, Silkeborg
+
+   Palette: the Hjejlen paddle steamer on the Silkeborg lakes — brass funnel
+   terracotta, black hull ink, lake blue-grey, forest green — over the warm
+   greige/cream of the wedding-planner reference. Display type is terracotta,
+   as in the watercolour reference.
+   ========================================================================== */
+
+:root {
+  /* Neutrals */
+  --paper: #fbf7ef;
+  --paper-2: #fffdf9;
+  --sand: #efe6d6;
+  --taupe: #a89a8a;
+  --ink: #2c332d;
+  --muted: #77796f;
+
+  /* Landscape */
+  --sage: #9cab92;
+  --sage-deep: #6e8168;
+  --forest: #34483a;
+  --lake: #47646e;
+  --lake-soft: #7e9aa1;
+
+  /* Hjejlen */
+  --terracotta: #a9503c;
+  --terracotta-deep: #8c4131;
+  --brass: #c08a4e;
+
+  --shadow-sm: 0 1px 2px rgba(44, 51, 45, 0.05), 0 6px 18px rgba(44, 51, 45, 0.05);
+  --shadow-lg: 0 28px 70px rgba(44, 51, 45, 0.13);
+
+  --font-display: 'Fraunces', 'Iowan Old Style', Georgia, 'Times New Roman', serif;
+  --font-body: 'Jost', 'Avenir Next', 'Segoe UI', system-ui, -apple-system, sans-serif;
+
+  --wrap: 1180px;
+  --gutter: clamp(1.25rem, 5vw, 3.5rem);
+  --section-y: clamp(4.5rem, 10vw, 8.5rem);
+  --radius: 3px;
+  --header-h: 5rem;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-h) + 1rem);
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 0.96rem + 0.2vw, 1.0625rem);
+  font-weight: 300;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+}
+
+body.is-locked {
+  overflow: hidden;
+}
+
+img,
+svg {
+  max-width: 100%;
+  display: block;
+}
+
+/* Any `display` we set later would otherwise beat the hidden attribute — which
+   is what keeps the lightbox, the countdown message and the form status out of
+   the page until they are wanted. */
+[hidden] {
+  display: none !important;
+}
+
+a {
+  color: var(--terracotta);
+  text-underline-offset: 0.25em;
+  text-decoration-thickness: 1px;
+}
+
+a:hover {
+  color: var(--terracotta-deep);
+}
+
+:focus-visible {
+  outline: 2px solid var(--terracotta);
+  outline-offset: 3px;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-variation-settings: 'SOFT' 0, 'WONK' 0, 'opsz' 100;
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  color: var(--terracotta);
+}
+
+p {
+  margin: 0 0 1em;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -5rem;
+  z-index: 100;
+  padding: 0.75rem 1.25rem;
+  background: var(--terracotta);
+  color: var(--paper-2);
+  border-radius: var(--radius);
+  text-decoration: none;
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 1rem;
+  color: var(--paper-2);
+}
+
+/* --- Layout --------------------------------------------------------------- */
+
+.wrap {
+  width: min(var(--wrap), 100%);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.wrap--narrow {
+  width: min(58rem, 100%);
+}
+
+.section {
+  padding-block: var(--section-y);
+}
+
+.section--paper {
+  background: var(--paper-2);
+}
+
+.section--sand {
+  background: var(--sand);
+}
+
+.section--forest {
+  background: var(--forest);
+  color: var(--sand);
+}
+
+.section--forest h2,
+.section--forest h3 {
+  color: var(--paper-2);
+}
+
+.section-head {
+  max-width: 46rem;
+  margin: 0 auto clamp(2.75rem, 5vw, 4.5rem);
+  text-align: center;
+}
+
+.eyebrow {
+  display: block;
+  margin-bottom: 1.25rem;
+  font-size: 0.6875rem;
+  font-weight: 400;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: var(--taupe);
+}
+
+.section--forest .eyebrow {
+  color: var(--sage);
+}
+
+.section-title {
+  font-size: clamp(2.125rem, 1.4rem + 2.9vw, 3.5rem);
+}
+
+.section-intro {
+  margin-top: 1.5rem;
+  color: var(--muted);
+}
+
+.section--forest .section-intro {
+  color: rgba(239, 230, 214, 0.78);
+}
+
+/* --- Buttons -------------------------------------------------------------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.95rem 2.25rem;
+  border: 1px solid var(--terracotta);
+  border-radius: 2px;
+  background: var(--terracotta);
+  color: var(--paper-2);
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+.btn:hover {
+  background: var(--terracotta-deep);
+  border-color: var(--terracotta-deep);
+  color: var(--paper-2);
+}
+
+.btn:disabled {
+  opacity: 0.55;
+  cursor: progress;
+}
+
+.btn--ghost {
+  background: transparent;
+  color: var(--terracotta);
+}
+
+.btn--ghost:hover {
+  background: var(--terracotta);
+  color: var(--paper-2);
+}
+
+.btn--light {
+  background: transparent;
+  border-color: rgba(251, 247, 239, 0.45);
+  color: var(--paper-2);
+}
+
+.btn--light:hover {
+  background: var(--paper-2);
+  border-color: var(--paper-2);
+  color: var(--forest);
+}
+
+/* --- Header --------------------------------------------------------------- */
+
+.header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 60;
+  min-height: var(--header-h);
+  display: flex;
+  align-items: center;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.header.is-scrolled {
+  background: rgba(251, 247, 239, 0.93);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 1px 0 rgba(44, 51, 45, 0.08);
+}
+
+.header__inner {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 1rem;
+  width: min(1440px, 100%);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* Fine-line sketch, centred like the reference. */
+.monogram {
+  grid-column: 2;
+  justify-self: center;
+  color: var(--terracotta);
+  text-decoration: none;
+}
+
+/* Masked so the line sketch inherits the surrounding text colour. */
+.mark {
+  display: block;
+  width: clamp(7rem, 12vw, 10rem);
+  aspect-ratio: 260 / 76;
+  background: currentColor;
+  -webkit-mask-image: url('../img/monogram.svg');
+  mask-image: url('../img/monogram.svg');
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+}
+
+.header__nav {
+  grid-column: 1;
+  grid-row: 1;
+  min-width: 0;
+}
+
+.nav__list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem clamp(0.9rem, 1.8vw, 1.75rem);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nav__list a {
+  color: var(--terracotta);
+  font-size: 0.8125rem;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 2px;
+  transition: border-color 0.2s ease;
+}
+
+.nav__list a:hover,
+.nav__list a[aria-current='page'] {
+  border-color: currentColor;
+}
+
+.header__actions {
+  grid-column: 3;
+  grid-row: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.625rem;
+}
+
+.header__rsvp {
+  padding: 0.75rem 1.5rem;
+  font-size: 0.6875rem;
+}
+
+.nav-toggle {
+  display: none;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--terracotta);
+  cursor: pointer;
+}
+
+.nav-toggle span,
+.nav-toggle span::before,
+.nav-toggle span::after {
+  display: block;
+  width: 1.375rem;
+  height: 1px;
+  background: currentColor;
+}
+
+.nav-toggle span {
+  position: relative;
+  margin-inline: auto;
+}
+
+.nav-toggle span::before,
+.nav-toggle span::after {
+  content: '';
+  position: absolute;
+}
+
+.nav-toggle span::before {
+  top: -6px;
+}
+
+.nav-toggle span::after {
+  top: 6px;
+}
+
+/* Language toggle — pinned top right on every page and viewport. */
+.lang {
+  display: flex;
+  align-items: center;
+  gap: 0.125rem;
+  flex: none;
+  padding: 0.1875rem;
+  border: 1px solid rgba(169, 80, 60, 0.28);
+  border-radius: 999px;
+  background: rgba(255, 253, 249, 0.75);
+}
+
+.lang__btn {
+  padding: 0.375rem 0.75rem;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--taupe);
+  font-family: var(--font-body);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.lang__btn:hover {
+  color: var(--terracotta);
+}
+
+.lang__btn.is-active {
+  background: var(--terracotta);
+  color: var(--paper-2);
+}
+
+/* --- Hero ----------------------------------------------------------------- */
+
+.hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100svh;
+  padding-top: calc(var(--header-h) + clamp(2.5rem, 8vw, 6rem));
+  background: linear-gradient(180deg, var(--paper) 0%, #f3f2ea 55%, #e9eee9 100%);
+  overflow: hidden;
+}
+
+.hero__inner {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  padding-inline: var(--gutter);
+  padding-bottom: clamp(1.5rem, 4vw, 3rem);
+}
+
+.hero__dateline {
+  font-size: clamp(0.875rem, 0.8rem + 0.3vw, 1.0625rem);
+  letter-spacing: 0.08em;
+  color: var(--terracotta);
+}
+
+.hero__names {
+  margin-top: clamp(1rem, 2.5vw, 1.75rem);
+  font-size: clamp(3.25rem, 1.2rem + 9vw, 8rem);
+  line-height: 0.95;
+  color: var(--terracotta);
+}
+
+.hero__amp {
+  font-variation-settings: 'SOFT' 20, 'WONK' 1, 'opsz' 144;
+  font-style: italic;
+  padding-inline: 0.1em;
+}
+
+.hero__tagline {
+  margin-top: clamp(1rem, 2vw, 1.5rem);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.125rem, 0.95rem + 0.8vw, 1.625rem);
+  color: var(--terracotta);
+}
+
+.hero__venue {
+  margin-top: 1.5rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--taupe);
+}
+
+/* The watercolour panorama sits on the bottom edge of the hero. */
+.hero__scene {
+  width: 100%;
+  margin-top: auto;
+}
+
+.hero__scene img {
+  width: 100%;
+  height: clamp(11rem, 26vw, 22rem);
+  object-fit: cover;
+  object-position: center bottom;
+}
+
+/* --- Intro statement ------------------------------------------------------ */
+
+.statement {
+  text-align: center;
+}
+
+.statement__lead {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 1.05rem + 2vw, 2.75rem);
+  line-height: 1.24;
+  color: var(--terracotta);
+}
+
+.statement__body {
+  max-width: 40rem;
+  margin: 2rem auto 0;
+  color: var(--muted);
+}
+
+.statement__signature {
+  margin-top: 2.25rem;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.25rem;
+  color: var(--taupe);
+}
+
+/* --- Countdown ------------------------------------------------------------ */
+
+.countdown {
+  background: var(--forest);
+  color: var(--sand);
+  padding-block: clamp(2.75rem, 6vw, 4.5rem);
+  text-align: center;
+}
+
+.countdown__title {
+  margin-bottom: 1.75rem;
+  font-size: 0.6875rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--sage);
+}
+
+.countdown__grid {
+  display: flex;
+  justify-content: center;
+  gap: clamp(1.25rem, 5vw, 3.5rem);
+}
+
+.countdown__unit {
+  min-width: 3.5rem;
+}
+
+.countdown__value {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 1.3rem + 2.4vw, 3.25rem);
+  line-height: 1;
+  color: var(--paper-2);
+  font-variant-numeric: tabular-nums;
+}
+
+.countdown__label {
+  display: block;
+  margin-top: 0.625rem;
+  font-size: 0.625rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(239, 230, 214, 0.7);
+}
+
+.countdown__message {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 1.2rem + 1.4vw, 2.25rem);
+  color: var(--paper-2);
+}
+
+/* --- Programme ------------------------------------------------------------ */
+
+.days {
+  display: grid;
+  gap: clamp(1.5rem, 3vw, 2rem);
+  grid-template-columns: repeat(auto-fit, minmax(17.5rem, 1fr));
+  align-items: start;
+}
+
+.day {
+  padding: clamp(1.75rem, 3vw, 2.5rem);
+  border: 1px solid var(--sand);
+  border-radius: var(--radius);
+  background: var(--paper-2);
+  box-shadow: var(--shadow-sm);
+}
+
+.day--feature {
+  border-color: var(--forest);
+  background: var(--forest);
+  color: var(--sand);
+  box-shadow: var(--shadow-lg);
+}
+
+.day__day {
+  font-size: 0.6875rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--taupe);
+}
+
+.day--feature .day__day {
+  color: var(--sage);
+}
+
+.day__date {
+  display: block;
+  margin-top: 0.625rem;
+  font-family: var(--font-display);
+  font-size: 1.875rem;
+  color: var(--terracotta);
+}
+
+.day--feature .day__date {
+  color: var(--paper-2);
+}
+
+.day__title {
+  margin-top: 0.375rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.day--feature .day__title {
+  color: var(--sage);
+}
+
+.day__list {
+  display: grid;
+  gap: 1.5rem;
+  margin: 2rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.day__item {
+  display: grid;
+  grid-template-columns: 3.5rem 1fr;
+  gap: 1rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--sand);
+}
+
+.day--feature .day__item {
+  border-top-color: rgba(156, 171, 146, 0.3);
+}
+
+.day__item:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.day__time {
+  font-family: var(--font-display);
+  font-size: 1.0625rem;
+  color: var(--brass);
+  font-variant-numeric: tabular-nums;
+}
+
+.day--feature .day__time {
+  color: var(--sage);
+}
+
+.day__item h4 {
+  margin: 0 0 0.25rem;
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+}
+
+.day--feature .day__item h4 {
+  color: var(--paper-2);
+}
+
+.day__item p {
+  margin: 0;
+  font-size: 0.9375rem;
+  color: var(--muted);
+}
+
+.day--feature .day__item p {
+  color: rgba(239, 230, 214, 0.72);
+}
+
+/* --- Venue teaser --------------------------------------------------------- */
+
+.teaser {
+  display: grid;
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: center;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 60rem) {
+  .teaser {
+    grid-template-columns: 1.05fr 1fr;
+  }
+}
+
+.teaser__media {
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius);
+  background:
+    var(--photo, none) center / cover no-repeat,
+    linear-gradient(165deg, var(--sage-deep), var(--lake-soft));
+  box-shadow: var(--shadow-lg);
+}
+
+.teaser__title {
+  font-size: clamp(2rem, 1.4rem + 2.4vw, 3rem);
+}
+
+.teaser__text p {
+  margin-top: 1.5rem;
+  color: var(--muted);
+  font-size: 1.0625rem;
+}
+
+.teaser__cta {
+  margin-top: 2.25rem;
+}
+
+/* --- Photographs ---------------------------------------------------------- */
+
+/*
+ * Snapshots come in every colour temperature going. Pulling the saturation
+ * back and warming them slightly lands them next to the watercolours instead
+ * of fighting them.
+ */
+.photo {
+  filter: saturate(0.82) sepia(0.08) contrast(1.02);
+}
+
+/* A photograph used as texture behind a dark section, not as a subject. */
+.photo-bg {
+  background-image:
+    linear-gradient(rgba(44, 51, 45, 0.82), rgba(44, 51, 45, 0.88)),
+    var(--photo, none);
+  background-size: cover;
+  background-position: center;
+}
+
+/* Editorial collage of the two of them. */
+.us {
+  display: grid;
+  gap: clamp(0.75rem, 1.5vw, 1.25rem);
+  grid-template-columns: repeat(6, 1fr);
+  grid-auto-rows: clamp(7rem, 13vw, 11rem);
+}
+
+.us__item {
+  margin: 0;
+  overflow: hidden;
+  border-radius: var(--radius);
+  background: var(--sand);
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.us__item--wide {
+  grid-column: span 4;
+}
+
+.us__item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 60rem) {
+  .us {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .us__item,
+  .us__item--wide {
+    grid-column: span 1;
+  }
+}
+
+@media (max-width: 30rem) {
+  .us {
+    grid-template-columns: 1fr;
+  }
+
+  .us__item,
+  .us__item--wide {
+    grid-column: span 1;
+    grid-row: span 2;
+  }
+}
+
+/* --- Illustration set ----------------------------------------------------- */
+
+/* Full-bleed illustrated band used to break between sections. */
+.band {
+  background: var(--paper);
+}
+
+.band img {
+  width: 100%;
+  height: clamp(9rem, 22vw, 17rem);
+  object-fit: cover;
+  object-position: center 62%;
+}
+
+.figures {
+  display: grid;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+}
+
+.figure {
+  margin: 0;
+}
+
+.figure img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border: 1px solid var(--sand);
+  border-radius: var(--radius);
+  background: var(--paper-2);
+}
+
+.figure__title {
+  margin-top: 1.5rem;
+  font-size: 1.5rem;
+}
+
+.figure figcaption p {
+  margin-top: 0.75rem;
+  color: var(--muted);
+  font-size: 0.9375rem;
+}
+
+/* --- Cards ---------------------------------------------------------------- */
+
+.cards {
+  display: grid;
+  gap: clamp(1.25rem, 2.5vw, 2rem);
+  grid-template-columns: repeat(auto-fit, minmax(16.5rem, 1fr));
+}
+
+.card {
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  border: 1px solid var(--sand);
+  border-radius: var(--radius);
+  background: var(--paper-2);
+}
+
+.card h3 {
+  margin-bottom: 0.875rem;
+  font-size: 1.5rem;
+}
+
+.card p {
+  color: var(--muted);
+  font-size: 0.9375rem;
+}
+
+.card__contact {
+  display: inline-block;
+  margin-top: 1.125rem;
+  font-size: 0.8125rem;
+  letter-spacing: 0.04em;
+  color: var(--brass);
+}
+
+/* --- Gifts ---------------------------------------------------------------- */
+
+.gifts {
+  text-align: center;
+}
+
+.gifts__body {
+  max-width: 40rem;
+  margin-inline: auto;
+  color: rgba(239, 230, 214, 0.82);
+}
+
+.gifts__details {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(1.75rem, 5vw, 4.5rem);
+  margin-top: 2.75rem;
+}
+
+.gifts__label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.625rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--sage);
+}
+
+.gifts__value {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--paper-2);
+}
+
+/* --- Form ----------------------------------------------------------------- */
+
+.form {
+  display: grid;
+  gap: 1.75rem;
+  max-width: 45rem;
+  margin-inline: auto;
+}
+
+.form__row {
+  display: grid;
+  gap: 1.75rem;
+}
+
+@media (min-width: 40rem) {
+  .form__row--two {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.field {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.field label,
+.fieldset legend {
+  font-size: 0.6875rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.field__hint {
+  letter-spacing: 0.04em;
+  text-transform: none;
+  color: var(--taupe);
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  border: 1px solid var(--sand);
+  border-radius: var(--radius);
+  background: var(--paper-2);
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 1rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.field textarea {
+  min-height: 7rem;
+  resize: vertical;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  border-color: var(--terracotta);
+  box-shadow: 0 0 0 3px rgba(169, 80, 60, 0.12);
+  outline: none;
+}
+
+.fieldset {
+  display: grid;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.choices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.choice {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.75rem 1.25rem;
+  border: 1px solid var(--sand);
+  border-radius: 999px;
+  background: var(--paper-2);
+  font-size: 0.9375rem;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.choice:hover {
+  border-color: var(--taupe);
+}
+
+.choice input {
+  margin: 0;
+  accent-color: var(--terracotta);
+}
+
+.choice:has(input:checked) {
+  border-color: var(--terracotta);
+  background: rgba(169, 80, 60, 0.06);
+}
+
+.form__actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.form__status {
+  margin: 0;
+  padding: 0.875rem 1.25rem;
+  border-radius: var(--radius);
+  font-size: 0.9375rem;
+  text-align: center;
+}
+
+.form__status[data-state='success'] {
+  background: rgba(110, 129, 104, 0.14);
+  color: var(--forest);
+}
+
+.form__status[data-state='error'] {
+  background: rgba(169, 80, 60, 0.1);
+  color: var(--terracotta-deep);
+}
+
+.form__status[data-state='pending'] {
+  color: var(--muted);
+}
+
+/* --- Day cards: note under each day --------------------------------------- */
+
+.day__note {
+  margin: 1.75rem 0 0;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--sand);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.0625rem;
+  line-height: 1.4;
+  color: var(--taupe);
+}
+
+.day--feature .day__note {
+  border-top-color: rgba(156, 171, 146, 0.3);
+  color: var(--sage);
+}
+
+/* --- Plan page ------------------------------------------------------------ */
+
+.plan-page {
+  background: var(--paper);
+}
+
+.plan-intro {
+  padding: calc(var(--header-h) + clamp(2.5rem, 7vw, 4.5rem)) 0 clamp(2rem, 4vw, 3rem);
+  text-align: center;
+}
+
+.plan-intro__text {
+  max-width: 34rem;
+  margin-inline: auto;
+  color: var(--muted);
+}
+
+.plan-intro__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+/*
+ * On a laptop the flyer is a card lying on a photograph, so the page never
+ * reads as a small card floating in empty space. On a phone the photo steps
+ * aside and the card takes the full width instead.
+ */
+/*
+ * On a laptop the card is laid next to a photograph of the same size, like two
+ * things on a table — which fills the width without the card floating alone in
+ * empty space. On a phone the photo steps aside and the card takes over.
+ */
+.flyer-stage {
+  display: grid;
+  justify-items: center;
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+  padding: clamp(2.5rem, 6vw, 4.5rem) var(--gutter) clamp(3rem, 7vw, 5rem);
+  background: var(--sand);
+}
+
+.flyer-photo {
+  display: none;
+}
+
+@media (min-width: 60rem) {
+  .flyer-stage {
+    grid-auto-flow: column;
+    align-items: center;
+    padding-block: clamp(3.5rem, 7vw, 6rem);
+  }
+
+  .flyer-photo {
+    display: block;
+    width: 105mm;
+    height: 148mm;
+    margin: 0;
+    overflow: hidden;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .flyer-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+/*
+ * A6 is 105 x 148 mm. Every measurement inside the flyer is a multiple of
+ * --u, which is a millimetre by default and shrinks to fit narrow viewports —
+ * so the card keeps its exact proportions instead of wrapping or cramming.
+ */
+.flyer {
+  --u: 1mm;
+  width: calc(105 * var(--u));
+  min-height: calc(148 * var(--u));
+  background: var(--paper-2);
+  border: 1px solid var(--sand);
+  box-shadow: var(--shadow-lg);
+}
+
+@media (max-width: 30rem) {
+  .flyer {
+    --u: calc((100vw - 2 * var(--gutter)) / 105);
+  }
+}
+
+.flyer__inner {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(148 * var(--u));
+  padding: calc(7 * var(--u)) calc(6.5 * var(--u)) calc(5 * var(--u));
+}
+
+.flyer__head {
+  text-align: center;
+  padding-bottom: calc(2 * var(--u));
+  border-bottom: 1px solid var(--sand);
+}
+
+.flyer__mark {
+  width: calc(17 * var(--u));
+  margin: 0 auto calc(1.5 * var(--u));
+  color: var(--terracotta);
+}
+
+.flyer__names {
+  font-size: calc(5.6 * var(--u));
+  line-height: 1;
+  color: var(--terracotta);
+}
+
+.flyer__amp {
+  font-style: italic;
+  font-variation-settings: 'SOFT' 20, 'WONK' 1, 'opsz' 144;
+}
+
+.flyer__title {
+  margin: calc(1.6 * var(--u)) 0 0;
+  font-size: calc(2.4 * var(--u));
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--taupe);
+}
+
+.flyer__dates {
+  margin: calc(1.5 * var(--u)) 0 0;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: calc(3.5 * var(--u));
+  color: var(--terracotta);
+}
+
+.plan-days {
+  flex: 1;
+  padding-top: calc(2 * var(--u));
+}
+
+.plan-day + .plan-day {
+  margin-top: calc(2 * var(--u));
+  padding-top: calc(2 * var(--u));
+  border-top: 1px solid var(--sand);
+}
+
+.plan-day__head {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0 calc(2 * var(--u));
+}
+
+.plan-day__day {
+  font-family: var(--font-display);
+  font-size: calc(3.8 * var(--u));
+  color: var(--terracotta);
+}
+
+.plan-day__date {
+  font-weight: 400;
+  font-size: calc(2.6 * var(--u));
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--taupe);
+}
+
+.plan-day__title {
+  margin: 0;
+  font-size: calc(2.5 * var(--u));
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--sage-deep);
+}
+
+.plan-day__list {
+  margin: calc(1.2 * var(--u)) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.plan-item {
+  display: grid;
+  grid-template-columns: calc(19 * var(--u)) 1fr;
+  gap: 0 calc(3 * var(--u));
+  padding-block: calc(0.45 * var(--u));
+}
+
+.plan-item__time {
+  font-family: var(--font-display);
+  font-size: calc(2.9 * var(--u));
+  line-height: 1.35;
+  color: var(--brass);
+  font-variant-numeric: tabular-nums;
+}
+
+.plan-item h4 {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: calc(2.9 * var(--u));
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: 0.01em;
+  color: var(--ink);
+}
+
+/*
+ * Times and titles only — the descriptions live on the front page. Keeping the
+ * flyer to that on screen too means what you see is exactly what prints.
+ */
+.plan-item p {
+  display: none;
+}
+
+.plan-day__note {
+  margin: calc(1.2 * var(--u)) 0 0;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: calc(2.6 * var(--u));
+  line-height: 1.3;
+  color: var(--taupe);
+}
+
+.flyer__foot {
+  margin-top: calc(3 * var(--u));
+  padding-top: calc(2 * var(--u));
+  border-top: 1px solid var(--sand);
+  text-align: center;
+}
+
+.flyer__foot p {
+  margin: 0;
+  font-size: calc(2.4 * var(--u));
+  letter-spacing: 0.1em;
+  color: var(--taupe);
+}
+
+/* --- Invitation: A4 landscape gatefold ------------------------------------ */
+
+/*
+ * 297 x 210 mm, printed double-sided and folded into three panels of
+ * 74.25 | 148.5 | 74.25 mm. As with the flyer, everything is a multiple of
+ * --u so the whole sheet scales down for on-screen preview without reflowing.
+ * The invitation is pure white — no cream — as asked.
+ */
+.inv-page {
+  background: var(--paper);
+}
+
+.sheets {
+  display: grid;
+  gap: clamp(2rem, 5vw, 3.5rem);
+  justify-items: center;
+  padding: 0 var(--gutter) clamp(2rem, 5vw, 3rem);
+}
+
+.sheet-wrap {
+  margin: 0;
+}
+
+.sheet-label {
+  margin-bottom: 0.75rem;
+  font-size: 0.625rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--taupe);
+  text-align: center;
+}
+
+.sheet-note {
+  margin: 0 auto;
+  padding: 0 var(--gutter) clamp(3rem, 7vw, 5rem);
+  max-width: 34rem;
+  font-size: 0.8125rem;
+  color: var(--taupe);
+  text-align: center;
+}
+
+.sheet {
+  --u: 1mm;
+  position: relative;
+  display: grid;
+  grid-template-columns:
+    calc(74.25 * var(--u)) calc(148.5 * var(--u)) calc(74.25 * var(--u));
+  width: calc(297 * var(--u));
+  height: calc(210 * var(--u));
+  background: #fff;
+  box-shadow: var(--shadow-lg);
+}
+
+@media (max-width: 78rem) {
+  .sheet {
+    --u: calc((100vw - 2 * var(--gutter)) / 297);
+  }
+}
+
+/* Fold guides — on screen only, plus faint marks in the paper margin. */
+.fold {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 0;
+  border-left: 1px dashed rgba(169, 154, 138, 0.55);
+  pointer-events: none;
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  padding: calc(11 * var(--u)) calc(8 * var(--u));
+  overflow: hidden;
+}
+
+.panel--centre {
+  padding-inline: calc(16 * var(--u));
+  text-align: center;
+}
+
+/* --- Invitation: centre panel --- */
+
+.inv-main {
+  position: relative;
+  align-items: center;
+  /* Centred in the space left above the panorama along the foot. */
+  justify-content: center;
+  padding-bottom: calc(38 * var(--u));
+}
+
+.inv-main__mark {
+  width: calc(34 * var(--u));
+  color: var(--terracotta);
+}
+
+.inv-main__eyebrow {
+  margin: calc(6 * var(--u)) 0 0;
+  font-size: calc(2.4 * var(--u));
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--taupe);
+}
+
+.inv-main__names {
+  margin: calc(4 * var(--u)) 0 0;
+  font-size: calc(14 * var(--u));
+  line-height: 1;
+  color: var(--terracotta);
+}
+
+.inv-amp {
+  font-style: italic;
+  font-variation-settings: 'SOFT' 20, 'WONK' 1, 'opsz' 144;
+}
+
+.inv-main__invite {
+  margin: calc(5 * var(--u)) 0 0;
+  max-width: calc(96 * var(--u));
+  font-size: calc(3.1 * var(--u));
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.inv-main__date {
+  margin: calc(5 * var(--u)) 0 0;
+  font-family: var(--font-display);
+  font-size: calc(5 * var(--u));
+  color: var(--terracotta);
+}
+
+.inv-main__venue {
+  margin: calc(3.5 * var(--u)) 0 0;
+  font-family: var(--font-display);
+  font-size: calc(4 * var(--u));
+  color: var(--ink);
+}
+
+.inv-main__address {
+  margin: calc(1.5 * var(--u)) 0 0;
+  font-size: calc(2.4 * var(--u));
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--taupe);
+}
+
+.inv-main__weekend {
+  margin: calc(5 * var(--u)) 0 0;
+  max-width: calc(92 * var(--u));
+  font-size: calc(2.9 * var(--u));
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.inv-main__closing {
+  margin: calc(4 * var(--u)) 0 0;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: calc(4 * var(--u));
+  color: var(--taupe);
+}
+
+/* The panorama runs full width along the foot of the centre panel. */
+.inv-main__scene {
+  position: absolute;
+  inset: auto 0 0;
+  width: 100%;
+  height: calc(30 * var(--u));
+  object-fit: cover;
+  object-position: center bottom;
+}
+
+/* --- Invitation: flaps --- */
+
+.inv-panel-title {
+  font-size: calc(6.5 * var(--u));
+  color: var(--terracotta);
+  text-align: center;
+}
+
+.inv-facts {
+  margin-top: calc(7 * var(--u));
+}
+
+.inv-fact + .inv-fact {
+  margin-top: calc(6 * var(--u));
+}
+
+.inv-fact h3 {
+  margin-bottom: calc(1.6 * var(--u));
+  font-family: var(--font-body);
+  font-size: calc(2.3 * var(--u));
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--brass);
+}
+
+.inv-fact p {
+  margin: 0;
+  font-size: calc(2.9 * var(--u));
+  line-height: 1.45;
+  color: var(--ink);
+}
+
+.inv-web {
+  margin: auto 0 0;
+  padding-top: calc(6 * var(--u));
+  border-top: 1px solid var(--sand);
+  text-align: center;
+}
+
+.inv-web__label {
+  display: block;
+  margin-bottom: calc(1.4 * var(--u));
+  font-size: calc(2.2 * var(--u));
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--taupe);
+}
+
+.inv-web strong {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: calc(4 * var(--u));
+  color: var(--terracotta);
+}
+
+/* --- Invitation: the programme flap --- */
+
+.inv-days {
+  margin-top: calc(6 * var(--u));
+}
+
+.inv-day + .inv-day {
+  margin-top: calc(4.5 * var(--u));
+}
+
+.inv-day__head {
+  padding-bottom: calc(1.6 * var(--u));
+  border-bottom: 1px solid var(--sand);
+}
+
+.inv-day__day {
+  font-family: var(--font-display);
+  font-size: calc(4.2 * var(--u));
+  color: var(--terracotta);
+}
+
+.inv-day__date {
+  display: block;
+  font-weight: 400;
+  font-size: calc(2.1 * var(--u));
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--taupe);
+}
+
+/* The day's subtitle is redundant next to the date at this size. */
+.inv-day__title {
+  display: none;
+}
+
+.inv-day__list {
+  margin: calc(2.4 * var(--u)) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.inv-item {
+  display: grid;
+  grid-template-columns: calc(15 * var(--u)) 1fr;
+  gap: 0 calc(2.5 * var(--u));
+  padding-block: calc(1.1 * var(--u));
+}
+
+.inv-item__time {
+  font-family: var(--font-display);
+  font-size: calc(2.7 * var(--u));
+  line-height: 1.3;
+  color: var(--brass);
+  font-variant-numeric: tabular-nums;
+}
+
+.inv-item h4 {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: calc(2.7 * var(--u));
+  font-weight: 400;
+  line-height: 1.3;
+  color: var(--ink);
+}
+
+.inv-program__note {
+  margin: auto 0 0;
+  padding-top: calc(4 * var(--u));
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: calc(2.6 * var(--u));
+  color: var(--taupe);
+  text-align: center;
+}
+
+/* --- Invitation: outside --- */
+
+.inv-cover {
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/*
+ * The mark and the sub-line are taken out of flow so that the two names sit at
+ * exactly the same height on both flaps — otherwise "Cecilie" and "Esben" would
+ * not line up once the card is folded shut.
+ */
+.inv-cover__mark {
+  position: absolute;
+  top: calc(42 * var(--u));
+  left: 50%;
+  width: calc(44 * var(--u));
+  transform: translateX(-50%);
+  color: var(--terracotta);
+}
+
+.inv-cover__name {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: calc(11 * var(--u));
+  line-height: 1;
+  color: var(--terracotta);
+}
+
+.inv-cover__weekend,
+.inv-cover__date {
+  position: absolute;
+  inset: auto 0 calc(48 * var(--u));
+  margin: 0;
+  font-size: calc(2.2 * var(--u));
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--taupe);
+}
+
+/*
+ * Each flap carries half of the panorama, sized to the width of the two flaps
+ * together — so once the card is closed the illustration runs across the seam.
+ * The height is stated explicitly: 1600x560 scaled to 148.5mm wide is 52mm.
+ */
+.inv-cover__scene {
+  position: absolute;
+  inset: auto 0 0;
+  height: calc(34 * var(--u));
+  background-image: url('../img/illustrations/silkeborg-panorama.svg');
+  background-size: calc(148.5 * var(--u)) calc(52 * var(--u));
+  background-repeat: no-repeat;
+}
+
+.inv-cover__scene--left {
+  background-position: left bottom;
+}
+
+.inv-cover__scene--right {
+  background-position: right bottom;
+}
+
+/* --- Invitation: back panel --- */
+
+.inv-back {
+  align-items: center;
+  justify-content: center;
+}
+
+.inv-back__photo {
+  width: calc(84 * var(--u));
+  height: calc(105 * var(--u));
+  margin: 0;
+  overflow: hidden;
+  background: var(--sand);
+}
+
+.inv-back__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.inv-back__text {
+  margin: calc(8 * var(--u)) 0 0;
+  max-width: calc(80 * var(--u));
+  font-size: calc(2.8 * var(--u));
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.inv-back__web {
+  margin: calc(2.5 * var(--u)) 0 0;
+  font-family: var(--font-display);
+  font-size: calc(5 * var(--u));
+  color: var(--terracotta);
+}
+
+/* --- Venue page ----------------------------------------------------------- */
+
+.page-hero {
+  padding: calc(var(--header-h) + clamp(3.5rem, 9vw, 6.5rem)) 0 clamp(2.5rem, 5vw, 4rem);
+  background: linear-gradient(180deg, var(--paper) 0%, #f3f2ea 100%);
+  text-align: center;
+}
+
+.page-hero__lead {
+  margin-top: 2rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.125rem, 1rem + 0.7vw, 1.5rem);
+  line-height: 1.55;
+  color: var(--terracotta);
+  text-align: left;
+}
+
+.page-hero__scene {
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+}
+
+.page-hero__scene img {
+  width: 100%;
+  height: clamp(9rem, 20vw, 16rem);
+  object-fit: cover;
+  object-position: center bottom;
+}
+
+.gallery {
+  display: grid;
+  gap: clamp(0.75rem, 1.5vw, 1.25rem);
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+}
+
+.shot {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  aspect-ratio: 4 / 3;
+  border: 1px solid var(--sand);
+  border-radius: var(--radius);
+  background:
+    var(--photo, none) center / cover no-repeat,
+    linear-gradient(165deg, #dfe3d7, #b9c6bb);
+  cursor: pointer;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.shot--wide {
+  grid-column: span 2;
+  aspect-ratio: 16 / 9;
+}
+
+@media (max-width: 46rem) {
+  .shot--wide {
+    grid-column: span 1;
+    aspect-ratio: 4 / 3;
+  }
+}
+
+.shot:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.shot__caption {
+  position: absolute;
+  inset: auto 0 0;
+  padding: 2.75rem 1rem 0.875rem;
+  background: linear-gradient(to top, rgba(44, 51, 45, 0.72), transparent);
+  color: var(--paper-2);
+  font-size: 0.8125rem;
+  letter-spacing: 0.04em;
+  text-align: left;
+}
+
+.gallery__note {
+  margin-top: 1.75rem;
+  font-size: 0.875rem;
+  color: var(--taupe);
+  text-align: center;
+}
+
+.facts {
+  display: grid;
+  gap: 1.75rem;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  margin: 0;
+}
+
+.fact {
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--sand);
+}
+
+.fact dt {
+  margin-bottom: 0.5rem;
+  font-size: 0.625rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--taupe);
+}
+
+.fact dd {
+  margin: 0;
+  color: var(--muted);
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 3rem;
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  display: grid;
+  place-items: center;
+  padding: clamp(1rem, 5vw, 3rem);
+  background: rgba(30, 36, 31, 0.93);
+}
+
+.lightbox__figure {
+  max-width: min(72rem, 100%);
+  margin: 0;
+  text-align: center;
+}
+
+.lightbox img {
+  width: auto;
+  max-height: 80svh;
+  margin-inline: auto;
+  border-radius: var(--radius);
+}
+
+.lightbox figcaption {
+  margin-top: 1rem;
+  color: var(--sand);
+  font-size: 0.875rem;
+}
+
+.lightbox__close {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 1px solid rgba(251, 247, 239, 0.35);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--paper-2);
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.lightbox__close:hover {
+  background: rgba(251, 247, 239, 0.12);
+}
+
+/* --- Footer --------------------------------------------------------------- */
+
+.footer {
+  padding-block: clamp(3.5rem, 7vw, 5.5rem);
+  background: var(--forest);
+  color: var(--sand);
+  text-align: center;
+}
+
+.footer__mark {
+  width: 9rem;
+  margin: 0 auto 2rem;
+  color: var(--sage);
+}
+
+.footer__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 1.2rem + 1.4vw, 2.25rem);
+  color: var(--paper-2);
+}
+
+.footer__names {
+  margin-top: 1.5rem;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.5rem;
+  color: var(--sage);
+}
+
+.footer__date {
+  margin-top: 0.5rem;
+  font-size: 0.6875rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(239, 230, 214, 0.6);
+}
+
+/* --- Motion --------------------------------------------------------------- */
+
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(1.5rem);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* --- Print: the plan page comes out as a 1:1 A6 flyer --------------------- */
+
+@media print {
+  html,
+  body {
+    background: #fff;
+  }
+
+  /* Everything except the flyer itself is screen furniture. */
+  .header,
+  .skip-link,
+  .plan-intro,
+  .footer,
+  .lightbox {
+    display: none !important;
+  }
+
+  .plan-page,
+  .flyer-stage {
+    min-height: 0;
+    padding: 0;
+    background: #fff;
+  }
+
+  .flyer-photo {
+    display: none;
+  }
+
+  .flyer {
+    --u: 1mm; /* back to true millimetres on paper, whatever the screen did */
+    border: 0;
+    box-shadow: none;
+    background: #fff;
+  }
+
+  /* --- Invitation --- */
+
+  .inv-page,
+  .sheets {
+    padding: 0;
+    gap: 0;
+    background: #fff;
+  }
+
+  .sheet-label,
+  .sheet-note,
+  .inv-page__footer {
+    display: none !important;
+  }
+
+  .sheet-wrap {
+    break-inside: avoid;
+  }
+
+  .sheet {
+    --u: 1mm;
+    box-shadow: none;
+    break-after: page;
+  }
+
+  .sheet-wrap:last-of-type .sheet {
+    break-after: auto;
+  }
+
+  /* Fold guides shrink to short pale ticks at the top and bottom edges. */
+  .fold {
+    border-left: 0;
+    width: 0.2mm;
+    background: linear-gradient(
+      to bottom,
+      var(--sand) 0 5mm,
+      transparent 5mm calc(100% - 5mm),
+      var(--sand) calc(100% - 5mm) 100%
+    );
+  }
+
+  /* Illustrations and the photograph must survive the printer's defaults. */
+  .sheet,
+  .sheet * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* --- Mobile navigation ---------------------------------------------------- */
+
+@media (max-width: 60rem) {
+  .header__inner {
+    grid-template-columns: auto 1fr auto;
+  }
+
+  .monogram {
+    grid-column: 1;
+    justify-self: start;
+  }
+
+  .header__nav {
+    grid-column: 2;
+    justify-self: end;
+  }
+
+  .nav-toggle {
+    display: block;
+  }
+
+  .header__actions {
+    grid-column: 3;
+  }
+
+  .header__rsvp {
+    display: none;
+  }
+
+  .nav__list {
+    position: fixed;
+    inset: var(--header-h) 0 auto;
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 0.5rem var(--gutter) 1.5rem;
+    background: var(--paper-2);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .nav__list.is-open {
+    display: flex;
+  }
+
+  .nav__list li {
+    border-bottom: 1px solid var(--sand);
+  }
+
+  .nav__list li:last-child {
+    border-bottom: 0;
+  }
+
+  .nav__list a {
+    display: block;
+    padding-block: 1rem;
+    border-bottom: 0;
+    font-size: 0.9375rem;
+  }
+}

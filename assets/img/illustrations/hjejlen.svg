@@ -1,0 +1,143 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" width="720" height="400"
+     role="img" aria-label="Akvarel af hjuldamperen Hjejlen på Silkeborgsøerne">
+  <!--
+    Hjejlen (1861) — the world's oldest coal-fired paddle steamer, sailing the
+    Silkeborg lakes to Himmelbjerget. Watercolour house style: washed-back
+    naturals, wet edges, paper grain. See DESIGN.md.
+  -->
+  <defs>
+    <linearGradient id="hj-sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F3EFE6"/>
+      <stop offset="70%" stop-color="#E7EDE9"/>
+      <stop offset="100%" stop-color="#DCE6E6"/>
+    </linearGradient>
+    <linearGradient id="hj-water" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#9DB4B8"/>
+      <stop offset="100%" stop-color="#66808A"/>
+    </linearGradient>
+
+    <filter id="hj-wash" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.014" numOctaves="3" seed="7" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="7" xChannelSelector="R" yChannelSelector="G"/>
+      <feGaussianBlur stdDeviation="0.7"/>
+    </filter>
+    <filter id="hj-bleed" x="-14%" y="-14%" width="128%" height="128%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.022" numOctaves="2" seed="3" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="12" xChannelSelector="R" yChannelSelector="G"/>
+      <feGaussianBlur stdDeviation="3"/>
+    </filter>
+    <filter id="hj-grain" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" seed="11"/>
+      <feColorMatrix type="saturate" values="0"/>
+    </filter>
+  </defs>
+
+  <rect width="720" height="400" fill="url(#hj-sky)"/>
+
+  <!-- Distant wooded shore -->
+  <g filter="url(#hj-bleed)" opacity="0.5">
+    <path d="M0 236 C 120 220, 220 236, 330 226 C 450 216, 560 234, 720 222 L720 268 L0 268 Z"
+          fill="#93A487"/>
+  </g>
+  <g filter="url(#hj-bleed)" opacity="0.75">
+    <path d="M0 252 C 140 240, 250 256, 380 246 C 520 236, 620 252, 720 244 L720 282 L0 282 Z"
+          fill="#6E8168"/>
+    <path d="M74 250 l11-26 11 26z M300 246 l13-30 13 30z M556 248 l12-28 12 28z" fill="#566B54"/>
+  </g>
+
+  <!-- Water -->
+  <rect x="0" y="278" width="720" height="122" fill="url(#hj-water)"/>
+  <g filter="url(#hj-bleed)" opacity="0.35">
+    <rect x="0" y="278" width="720" height="18" fill="#566B54"/>
+  </g>
+
+  <!-- Coal smoke, drifting aft -->
+  <g filter="url(#hj-bleed)" fill="#B4B7B2" opacity="0.45">
+    <ellipse cx="352" cy="128" rx="17" ry="12"/>
+    <ellipse cx="326" cy="100" rx="23" ry="15"/>
+    <ellipse cx="286" cy="76" rx="30" ry="18"/>
+    <ellipse cx="230" cy="58" rx="38" ry="21"/>
+    <ellipse cx="158" cy="48" rx="44" ry="22"/>
+  </g>
+
+  <g filter="url(#hj-wash)">
+    <!-- Canopy roof over the aft deck -->
+    <path d="M236 196 h250 l-8 12 H244 Z" fill="#F6F2E8"/>
+    <g stroke="#CFC7B4" stroke-width="2">
+      <path d="M250 208 V236"/><path d="M300 208 V236"/><path d="M350 208 V236"/>
+      <path d="M400 208 V236"/><path d="M450 208 V236"/>
+    </g>
+
+    <!-- Deck house / wheelhouse forward -->
+    <rect x="472" y="188" width="74" height="50" fill="#F6F2E8"/>
+    <rect x="472" y="182" width="74" height="9" fill="#E0D3B9"/>
+    <g fill="#8FA9AE" opacity="0.65">
+      <rect x="482" y="198" width="16" height="16"/>
+      <rect x="506" y="198" width="16" height="16"/>
+      <rect x="530" y="198" width="12" height="16"/>
+    </g>
+
+    <!-- Passengers, suggested as loose marks -->
+    <g fill="#4A5157" opacity="0.55">
+      <rect x="262" y="214" width="9" height="22" rx="4"/>
+      <rect x="288" y="216" width="9" height="20" rx="4"/>
+      <rect x="330" y="213" width="9" height="23" rx="4"/>
+      <rect x="372" y="216" width="9" height="20" rx="4"/>
+      <rect x="418" y="214" width="9" height="22" rx="4"/>
+    </g>
+    <g fill="#BE7460" opacity="0.5">
+      <rect x="308" y="215" width="9" height="21" rx="4"/>
+      <rect x="396" y="215" width="9" height="21" rx="4"/>
+    </g>
+
+    <!-- Funnel -->
+    <rect x="352" y="122" width="26" height="70" fill="#C3A175"/>
+    <rect x="350" y="118" width="30" height="12" fill="#4A5157"/>
+    <rect x="352" y="150" width="26" height="7" fill="#4A5157" opacity="0.35"/>
+
+    <!-- Mast and Dannebrog -->
+    <path d="M566 186 V116" stroke="#4A5157" stroke-width="4"/>
+    <path d="M566 118 l40 12 -40 12z" fill="#BE7460"/>
+    <path d="M578 122 h4 v20 h-4z M566 128 h34 v4 h-34z" fill="#F6F2E8" opacity="0.85"/>
+
+    <!-- Hull -->
+    <path d="M150 238 h446 l-16 40 c-14 12 -404 12 -418 0 Z" fill="#3A4247"/>
+    <path d="M150 238 h446 l-3 8 H152 Z" fill="#F6F2E8" opacity="0.8"/>
+    <path d="M158 268 h432 l-6 10 c-14 12 -404 12 -418 0 Z" fill="#8A4B3C" opacity="0.85"/>
+
+    <!-- Paddle box: the feature that makes her a paddle steamer -->
+    <path d="M312 246 a56 46 0 0 1 112 0 v32 h-112 z" fill="#2F373C"/>
+    <path d="M320 248 a48 40 0 0 1 96 0" fill="none" stroke="#C3A175" stroke-width="3"/>
+    <g stroke="#C3A175" stroke-width="2.5" opacity="0.75">
+      <path d="M368 208 V246"/>
+      <path d="M340 214 l28 32"/>
+      <path d="M396 214 l-28 32"/>
+      <path d="M322 234 l46 12"/>
+      <path d="M414 234 l-46 12"/>
+    </g>
+
+    <!-- Bow rail -->
+    <g stroke="#F6F2E8" stroke-width="2" opacity="0.8">
+      <path d="M560 238 V218"/><path d="M584 238 V222"/><path d="M556 222 h32"/>
+    </g>
+  </g>
+
+  <!-- Wake and reflection -->
+  <g filter="url(#hj-bleed)" opacity="0.3">
+    <ellipse cx="372" cy="292" rx="240" ry="12" fill="#3A4247"/>
+  </g>
+  <g stroke="#F3EFE6" stroke-linecap="round" opacity="0.4" filter="url(#hj-bleed)">
+    <path d="M100 302 H300" stroke-width="5"/>
+    <path d="M60 322 H250" stroke-width="4"/>
+    <path d="M420 306 H660" stroke-width="4"/>
+    <path d="M300 344 H580" stroke-width="5"/>
+    <path d="M120 362 H420" stroke-width="4"/>
+  </g>
+  <g opacity="0.22" filter="url(#hj-bleed)">
+    <rect x="290" y="292" width="160" height="56" fill="#3A4247"/>
+    <rect x="352" y="292" width="26" height="80" fill="#C3A175"/>
+  </g>
+
+  <rect width="720" height="400" filter="url(#hj-grain)" opacity="0.1"
+        style="mix-blend-mode:multiply"/>
+</svg>

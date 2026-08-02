@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 76" width="260" height="76"
+     role="img" aria-label="Stregtegning af Gl. Skovridergaard mellem træer ved søen">
+  <!--
+    PLACEHOLDER ASSET — fine-line pen sketch used as the site monogram.
+    Replace with a hand-drawn single-weight ink sketch of Gl. Skovridergaard.
+    See DESIGN.md. currentColor is inherited, so it recolours with the header.
+  -->
+  <g fill="none" stroke="currentColor" stroke-width="1.1"
+     stroke-linecap="round" stroke-linejoin="round">
+    <!-- left trees -->
+    <path d="M26 56 V34"/>
+    <path d="M18 40 c4-10 12-14 16-20 4 6 12 10 16 20 -4 6-12 8-16 8s-12-2-16-8z"/>
+    <path d="M52 56 V40"/>
+    <path d="M46 44 c2-7 8-10 12-15 3 5 9 8 11 15 -3 5-8 6-11 6s-9-1-12-6z"/>
+
+    <!-- the manor: main gable plus two wings -->
+    <path d="M84 56 V38 l20-13 20 13 V56"/>
+    <path d="M84 38 l20-13 20 13"/>
+    <path d="M100 56 V46 h8 v10"/>
+    <path d="M92 42 h6 v6 h-6z"/>
+    <path d="M110 42 h6 v6 h-6z"/>
+    <path d="M124 56 V44 l13-8 13 8 V56"/>
+    <path d="M124 44 l13-8 13 8"/>
+    <path d="M132 48 h5 v5 h-5z"/>
+    <path d="M70 56 V46 l14-9"/>
+    <path d="M104 25 V18"/>
+    <path d="M104 18 l9 3 -9 3"/>
+
+    <!-- right trees -->
+    <path d="M172 56 V38"/>
+    <path d="M164 44 c3-9 11-12 14-18 4 6 11 9 14 18 -4 6-10 7-14 7s-11-1-14-7z"/>
+    <path d="M204 56 V42"/>
+    <path d="M198 46 c2-7 8-9 11-14 3 5 8 7 10 14 -3 5-7 6-10 6s-8-1-11-6z"/>
+    <path d="M230 56 V44"/>
+    <path d="M224 48 c2-6 7-8 9-12 3 4 7 6 9 12 -2 4-6 5-9 5s-7-1-9-5z"/>
+
+    <!-- lake -->
+    <path d="M8 62 h60"/>
+    <path d="M78 62 h58"/>
+    <path d="M146 62 h44"/>
+    <path d="M200 62 h52"/>
+    <path d="M22 68 h44"/>
+    <path d="M96 68 h72"/>
+    <path d="M186 68 h50"/>
+  </g>
+</svg>
