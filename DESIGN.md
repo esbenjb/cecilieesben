@@ -123,9 +123,11 @@ Rules for choosing and placing photographs:
 - **As a subject** (the collage on the front page, the panel beside the flyer):
   pick pictures where the two of them are clearly the subject. Full colour,
   `.photo` treatment, generous size.
-- **As texture** (behind the countdown and the closing band on the venue page):
-  the photograph sits under a `rgba(44,51,45,0.82)`–`0.88` scrim. It reads as
-  depth, not as a picture — the crop barely matters.
+- **As texture**: the `.photo-bg` utility puts a photograph under a
+  `rgba(44,51,45,0.82)`–`0.88` scrim behind a dark section. It is unused at the
+  moment, and only works with a *landscape* — every close-up we have turns into
+  a single enormous cropped face behind the text. The dark bands are plain
+  forest green until there is a wide shot worth putting there.
 - **Never** put a card or a block of text directly over an unblurred face. If a
   photograph needs to fill space behind something, put the two side by side
   instead.
