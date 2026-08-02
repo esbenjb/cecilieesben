@@ -25,6 +25,14 @@
     { key: 'sun', items: 1 },
   ];
 
+  // Each shape names its own classes; 'notes' and 'texts' say how much of the
+  // wording survives at that size.
+  var SHAPES = {
+    cards: { block: 'day', item: 'day__item', feature: true, texts: true, notes: true },
+    flyer: { block: 'plan-day', item: 'plan-item', texts: false, notes: true },
+    card: { block: 'inv-day', item: 'inv-item', texts: false, notes: false },
+  };
+
   function renderSchedule() {
     var hosts = document.querySelectorAll('[data-schedule]');
     if (!hosts.length) return;
@@ -32,35 +40,34 @@
     var t = window.i18n.t;
 
     hosts.forEach(function (host) {
-      var variant = host.getAttribute('data-schedule'); // 'cards' | 'flyer'
+      var shape = SHAPES[host.getAttribute('data-schedule')] || SHAPES.cards;
       host.textContent = '';
 
       SCHEDULE.forEach(function (day) {
         var article = document.createElement('article');
-        article.className = variant === 'flyer' ? 'plan-day' : 'day';
-        if (variant === 'cards' && day.feature) article.classList.add('day--feature');
+        article.className = shape.block;
+        if (shape.feature && day.feature) article.classList.add(shape.block + '--feature');
 
         var head = document.createElement('header');
-        head.className = variant === 'flyer' ? 'plan-day__head' : 'day__head';
-        head.innerHTML =
-          '<span class="' + (variant === 'flyer' ? 'plan-day__day' : 'day__day') + '"></span>' +
-          '<strong class="' + (variant === 'flyer' ? 'plan-day__date' : 'day__date') + '"></strong>' +
-          '<p class="' + (variant === 'flyer' ? 'plan-day__title' : 'day__title') + '"></p>';
-        head.children[0].textContent = t('program.' + day.key + '.day');
-        head.children[1].textContent = t('program.' + day.key + '.date');
-        head.children[2].textContent = t('program.' + day.key + '.title');
+        head.className = shape.block + '__head';
+        ['day', 'date', 'title'].forEach(function (part, index) {
+          var el = document.createElement(index === 1 ? 'strong' : index === 2 ? 'p' : 'span');
+          el.className = shape.block + '__' + part;
+          el.textContent = t('program.' + day.key + '.' + part);
+          head.appendChild(el);
+        });
         article.appendChild(head);
 
         var list = document.createElement('ul');
-        list.className = variant === 'flyer' ? 'plan-day__list' : 'day__list';
+        list.className = shape.block + '__list';
 
         for (var i = 1; i <= day.items; i++) {
           var prefix = 'program.' + day.key + '.' + i + '.';
           var li = document.createElement('li');
-          li.className = variant === 'flyer' ? 'plan-item' : 'day__item';
+          li.className = shape.item;
 
           var time = document.createElement('span');
-          time.className = variant === 'flyer' ? 'plan-item__time' : 'day__time';
+          time.className = shape.item + '__time';
           time.textContent = t(prefix + 'time');
 
           var body = document.createElement('div');
@@ -68,9 +75,11 @@
           title.textContent = t(prefix + 'title');
           body.appendChild(title);
 
-          var text = document.createElement('p');
-          text.textContent = t(prefix + 'text');
-          body.appendChild(text);
+          if (shape.texts) {
+            var text = document.createElement('p');
+            text.textContent = t(prefix + 'text');
+            body.appendChild(text);
+          }
 
           li.appendChild(time);
           li.appendChild(body);
@@ -78,10 +87,12 @@
         }
         article.appendChild(list);
 
-        var note = document.createElement('p');
-        note.className = variant === 'flyer' ? 'plan-day__note' : 'day__note';
-        note.textContent = t('program.' + day.key + '.note');
-        article.appendChild(note);
+        if (shape.notes) {
+          var note = document.createElement('p');
+          note.className = shape.block + '__note';
+          note.textContent = t('program.' + day.key + '.note');
+          article.appendChild(note);
+        }
 
         host.appendChild(article);
       });

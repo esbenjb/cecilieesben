@@ -1,0 +1,6 @@
+/* Paper size for plan.html. @page is document-level, so each printable page
+   links its own tiny stylesheet rather than sharing one in style.css. */
+@page {
+  size: A6 portrait;
+  margin: 0;
+}

@@ -21,12 +21,15 @@ Deploy by dropping the folder on Netlify, Vercel or GitHub Pages.
 | --- | --- |
 | `index.html` | Front page — hero, welcome, photos of the two of us, countdown, programme, venue teaser, the three illustrations, practical info, gifts, RSVP |
 | `plan.html` | The weekend plan as an A6 flyer. Prints 1:1 on A6; on a laptop the card sits beside a photo, on a phone it scales down to fit |
+| `invitation.html` | The printed invitation: A4 landscape gatefold, double-sided. The weekend plan sits on the inside of the right flap |
 | `stedet.html` | Gl. Skovridergaard — gallery, facts, map links |
 | `DESIGN.md` | The design system: illustration style, palette, photography rules, flyer spec, and Silkeborg reference material for new assets |
 
 ```
 assets/
   css/style.css              All styling; design tokens at the top
+  css/print-a6.css           Paper size for plan.html
+  css/print-a4.css           Paper size for invitation.html
   js/translations.js         Every visitor-facing string, da + en
   js/i18n.js                 Language switching
   js/main.js                 Schedule, countdown, nav, RSVP, gallery lightbox
@@ -60,7 +63,21 @@ Defined once, in the `program.*` keys plus the `SCHEDULE` list at the top of
 `assets/js/main.js`. Both the day cards on the front page and the A6 flyer are
 rendered from it, so they cannot drift apart. To add an item, add
 `program.<day>.<n>.time|title|text` in both languages and bump the day's `items`
-count — then check the flyer still fits A6 (see `DESIGN.md` §4).
+count — then check the flyer still fits A6 and the invitation's right flap
+still fits (see `DESIGN.md` §4).
+
+## Printing
+
+`@page` is document-level, so each printable page links its own one-rule
+stylesheet: `print-a6.css` for the flyer, `print-a4.css` for the invitation.
+Check the paper size in the print dialog before running a batch.
+
+The invitation is an **A4 landscape gatefold**, 297 × 210 mm, printed
+double-sided and flipped on the **long edge**, then folded along the two marks
+so the flaps meet in the middle. Panels are 74.25 | 148.5 | 74.25 mm. Sheet
+side 2 is deliberately mirrored — after the flip the right flap lands on the
+left of the sheet, which is what puts "Cecilie" and "Esben" side by side on the
+closed card.
 
 ## Photos
 

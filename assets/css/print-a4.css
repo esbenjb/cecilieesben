@@ -1,0 +1,5 @@
+/* Paper size for invitation.html — see the note in print-a6.css. */
+@page {
+  size: A4 landscape;
+  margin: 0;
+}

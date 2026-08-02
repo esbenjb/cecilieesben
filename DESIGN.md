@@ -136,7 +136,7 @@ Rules for choosing and placing photographs:
 
 ---
 
-## 4. The A6 flyer
+## 4. The printed pieces
 
 `plan.html` shows the weekend plan as a card that is exactly A6 — 105 × 148 mm
 — on screen and on paper. `@page { size: A6 portrait; margin: 0 }` prints it
@@ -153,9 +153,28 @@ Two things make it work:
   photo panel that is exactly 148 mm tall — if the card is taller than the
   photo, it no longer fits on one A6 page.
 
-The schedule itself is rendered from one source (`SCHEDULE` in
-`assets/js/main.js` plus the `program.*` keys), so the front page and the flyer
-can never drift apart.
+### The invitation — A4 gatefold
+
+`invitation.html` is 297 × 210 mm, folded into panels of 74.25 | 148.5 | 74.25 mm
+so the two flaps meet in the middle, following the gatefold in
+`Design inspiration/Wedding invitation.jpg`.
+
+- **Inside**, left to right: practical details | the invitation | the programme.
+- **Outside**: the two flap fronts carry "Cecilie" and "Esben", with half of the
+  Silkeborg panorama each, sized to the width of both flaps together so the
+  illustration runs across the seam once the card is closed. The centre is the
+  back of the folded card.
+- The names are vertically centred and their ornaments absolutely positioned, so
+  the two words line up exactly across the fold.
+- **White, not cream** — the invitation is the one place the paper is pure
+  `#fff`, and it carries exactly **one photograph**, on the back.
+
+### One schedule, three shapes
+
+The programme is rendered from one source (`SCHEDULE` in `assets/js/main.js`
+plus the `program.*` keys) into three shapes — the front-page day cards, the A6
+flyer, and the invitation's flap — so they can never drift apart. Each shape
+declares in `SHAPES` how much of the wording survives at that size.
 
 ---
 
