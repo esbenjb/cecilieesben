@@ -50,7 +50,7 @@ window.TRANSLATIONS = {
 
     'welcome.eyebrow': 'Velkommen',
     'welcome.body':
-      'Efter at have kendt hinanden siden 2018, kærester siden 2019 og forlovet siden sommeren 2026, siger vi endelig ja til at bruge resten af livet sammen. Vi ønsker inderligt at fejre det sammen med alle de bedste mennesker vi kender. Vi har derfor lejet Gl. Skovridergaard i Silkeborg hele weekenden, så der er rigelig tid til hygge, grin og fest sammen.',
+      'Efter at have kendt hinanden siden 2018, kærester siden 2019 og forlovet siden sommeren 2025, siger vi endelig ja til at bruge resten af livet sammen. Vi ønsker inderligt at fejre det sammen med alle de bedste mennesker vi kender. Vi har derfor lejet Gl. Skovridergaard i Silkeborg hele weekenden, så der er rigelig tid til hygge, grin og fest sammen.',
     'welcome.signature': 'Kærlig hilsen Cecilie & Esben',
 
     'program.eyebrow': 'Programmet',
@@ -520,7 +520,7 @@ window.TRANSLATIONS = {
 
     'welcome.eyebrow': 'Welcome',
     'welcome.body':
-      'Having known each other since 2018, been a couple since 2019 and engaged since the summer of 2026, we are finally saying yes to spending the rest of our lives together. We dearly want to celebrate it with all the best people we know. So we have rented Gl. Skovridergaard in Silkeborg for the whole weekend, leaving plenty of time for good company, laughter and a proper party.',
+      'Having known each other since 2018, been a couple since 2019 and engaged since the summer of 2025, we are finally saying yes to spending the rest of our lives together. We dearly want to celebrate it with all the best people we know. So we have rented Gl. Skovridergaard in Silkeborg for the whole weekend, leaving plenty of time for good company, laughter and a proper party.',
     'welcome.signature': 'Love, Cecilie & Esben',
 
     'program.eyebrow': 'Programme',
