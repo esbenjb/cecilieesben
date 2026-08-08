@@ -35,15 +35,17 @@
             <span></span>
           </button>
           <ul class="nav__list" id="nav-menu" data-nav-menu>
+            <li><a href="#rejsen" data-i18n="nav.us">Vejen hertil</a></li>
             <li><a href="#program" data-i18n="nav.program">Program</a></li>
-            <li><a href="stedet.html" data-i18n="nav.venue">Stedet</a></li>
+            <li><a href="#stedet" data-i18n="nav.venue">Stedet</a></li>
+            <li><a href="#omkring" data-i18n="nav.around">Søhøjlandet</a></li>
             <li><a href="#praktisk" data-i18n="nav.practical">Praktisk</a></li>
             <li><a href="#gaver" data-i18n="nav.gifts">Gaver</a></li>
           </ul>
         </nav>
 
         <a class="monogram" href="index.html" aria-label="Cecilie &amp; Esben">
-          <span class="mark" aria-hidden="true"></span>
+          <span class="mark mark--boat" aria-hidden="true"></span>
         </a>
 
         <div class="header__actions">
@@ -79,11 +81,10 @@
            is a CSS background here rather than an image in the flow. -->
       <section class="hero">
         <div class="hero__inner">
-          <p class="hero__dateline" data-i18n="hero.dateline">— 12. juni 2027 —</p>
+          <p class="hero__dateline" data-i18n="hero.dateline">Bryllup · 12. juni 2027</p>
           <h1 class="hero__names">
             Cecilie <span class="hero__amp">&amp;</span> Esben
           </h1>
-          <p class="hero__tagline" data-i18n="hero.tagline">vi skal giftes!</p>
           <p class="hero__venue" data-i18n="hero.venue">
             Gl. Skovridergaard · Silkeborg · 11.–13. juni
           </p>
@@ -96,19 +97,19 @@
             <p class="countdown__title" data-i18n="countdown.title">Der er ikke længe til</p>
             <div class="countdown__grid" data-countdown-grid>
               <div class="countdown__unit">
-                <span class="countdown__value" data-countdown-value="days">—</span>
+                <span class="countdown__value" data-countdown-value="days">00</span>
                 <span class="countdown__label" data-i18n="countdown.days">dage</span>
               </div>
               <div class="countdown__unit">
-                <span class="countdown__value" data-countdown-value="hours">—</span>
+                <span class="countdown__value" data-countdown-value="hours">00</span>
                 <span class="countdown__label" data-i18n="countdown.hours">timer</span>
               </div>
               <div class="countdown__unit">
-                <span class="countdown__value" data-countdown-value="minutes">—</span>
+                <span class="countdown__value" data-countdown-value="minutes">00</span>
                 <span class="countdown__label" data-i18n="countdown.minutes">minutter</span>
               </div>
               <div class="countdown__unit">
-                <span class="countdown__value" data-countdown-value="seconds">—</span>
+                <span class="countdown__value" data-countdown-value="seconds">00</span>
                 <span class="countdown__label" data-i18n="countdown.seconds">sekunder</span>
               </div>
             </div>
@@ -122,6 +123,9 @@
         <div class="wrap wrap--narrow statement" data-reveal>
           <span class="eyebrow" data-i18n="welcome.eyebrow">Velkommen</span>
           <p class="statement__body" data-i18n="welcome.body"></p>
+          <!-- Closes the message. A heart, but the typographic one rather than
+               the emoji, so it can be the site's green instead of emoji red. -->
+          <p class="statement__heart" aria-hidden="true">&#9829;</p>
           <p class="statement__signature" data-i18n="welcome.signature"></p>
         </div>
       </section>
@@ -136,7 +140,7 @@
           </div>
 
           <!--
-            Twelve photographs, twelve places. Each button carries the
+            Forty photographs, forty places. Each button carries the
             coordinates the globe turns to — edit data-lat / data-lon here and
             the globe follows; the names themselves live in translations.js.
           -->
@@ -145,8 +149,8 @@
               <li>
                 <button class="trip" type="button" data-trip="island"
                         data-lat="64.05" data-lon="-16.18">
-                  <img class="photo" src="assets/img/par/par-13.jpg" alt=""
-                       data-i18n-attr="alt:travel.island.alt" loading="lazy" />
+                  <img class="photo" src="assets/img/par/grid/par-13.jpg" alt=""
+                       data-i18n-attr="alt:travel.island.alt" fetchpriority="high" />
                   <span class="trip__label">
                     <span class="trip__place" data-i18n="travel.island.place">Jökulsárlón</span>
                     <span class="trip__country" data-i18n="travel.island.country">Island</span>
@@ -154,9 +158,108 @@
                 </button>
               </li>
               <li>
+                <button class="trip" type="button" data-trip="reykjavik"
+                        data-lat="64.15" data-lon="-21.94">
+                  <img class="photo" src="assets/img/par/grid/par-17.jpg" alt=""
+                       data-i18n-attr="alt:travel.reykjavik.alt" />
+                  <span class="trip__label">
+                    <span class="trip__place" data-i18n="travel.reykjavik.place">Reykjavík</span>
+                    <span class="trip__country" data-i18n="travel.reykjavik.country">Island</span>
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button class="trip" type="button" data-trip="helsinki"
+                        data-lat="60.17" data-lon="24.94">
+                  <img class="photo" src="assets/img/par/grid/par-41.jpg" alt=""
+                       data-i18n-attr="alt:travel.helsinki.alt" />
+                  <span class="trip__label">
+                    <span class="trip__place" data-i18n="travel.helsinki.place">Helsinki</span>
+                    <span class="trip__country" data-i18n="travel.helsinki.country">Finland</span>
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button class="trip" type="button" data-trip="stockholm"
+                        data-lat="59.33" data-lon="18.08">
+                  <img class="photo" src="assets/img/par/grid/par-26.jpg" alt=""
+                       data-i18n-attr="alt:travel.stockholm.alt" />
+                  <span class="trip__label">
+                    <span class="trip__place" data-i18n="travel.stockholm.place">Stockholm</span>
+                    <span class="trip__country" data-i18n="travel.stockholm.country">Sverige</span>
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button class="trip" type="button" data-trip="riga"
+                        data-lat="56.95" data-lon="24.11">
+                  <img class="photo" src="assets/img/par/grid/par-18.jpg" alt=""
+                       data-i18n-attr="alt:travel.riga.alt" />
+                  <span class="trip__label">
+                    <span class="trip__place" data-i18n="travel.riga.place">Riga</span>
+                    <span class="trip__country" data-i18n="travel.riga.country">Letland</span>
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button class="trip" type="button" data-trip="bennevis"
+                        data-lat="56.8" data-lon="-5">
+                  <img class="photo" src="assets/img/par/grid/par-31.jpg" alt=""
+                       data-i18n-attr="alt:travel.bennevis.alt" loading="lazy" />
+                  <span class="trip__label">
+                    <span class="trip__place" data-i18n="travel.bennevis.place">Ben Nevis</span>
+                    <span class="trip__country" data-i18n="travel.bennevis.country">Skotland</span>
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button class="trip" type="button" data-trip="edinburgh"
+                        data-lat="55.95" data-lon="-3.19">
+                  <img class="photo" src="assets/img/par/grid/par-16.jpg" alt=""
+                       data-i18n-attr="alt:travel.edinburgh.alt" loading="lazy" />
+                  <span class="trip__label">
+                    <span class="trip__place" data-i18n="travel.edinburgh.place">Edinburgh</span>
+                    <span class="trip__country" data-i18n="travel.edinburgh.country">Skotland</span>
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button class="trip" type="button" data-trip="heidelberg"
+                        data-lat="49.41" data-lon="8.71">
+                  <img class="photo" src="assets/img/par/grid/par-30.jpg" alt=""
+                       data-i18n-attr="alt:travel.heidelberg.alt" loading="lazy" />
+                  <span class="trip__label">
+                    <span class="trip__place" data-i18n="travel.heidelberg.place">Heidelberg</span>
+                    <span class="trip__country" data-i18n="travel.heidelberg.country">Tyskland</span>
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button class="trip" type="button" data-trip="paris"
+                        data-lat="48.87" data-lon="2.3">
+                  <img class="photo" src="assets/img/par/grid/par-32.jpg" alt=""
+                       data-i18n-attr="alt:travel.paris.alt" loading="lazy" />
+                  <span class="trip__label">
+                    <span class="trip__place" data-i18n="travel.paris.place">Paris</span>
+                    <span class="trip__country" data-i18n="travel.paris.country">Frankrig</span>
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button class="trip" type="button" data-trip="munchen"
+                        data-lat="48.14" data-lon="11.58">
+                  <img class="photo" src="assets/img/par/grid/par-40.jpg" alt=""
+                       data-i18n-attr="alt:travel.munchen.alt" loading="lazy" />
+                  <span class="trip__label">
+                    <span class="trip__place" data-i18n="travel.munchen.place">München</span>
+                    <span class="trip__country" data-i18n="travel.munchen.country">Tyskland</span>
+                  </span>
+                </button>
+              </li>
+              <li>
                 <button class="trip" type="button" data-trip="budapest"
                         data-lat="47.49" data-lon="19.04">
-                  <img class="photo" src="assets/img/par/par-07.jpg" alt=""
+                  <img class="photo" src="assets/img/par/grid/par-07.jpg" alt=""
                        data-i18n-attr="alt:travel.budapest.alt" loading="lazy" />
                   <span class="trip__label">
                     <span class="trip__place" data-i18n="travel.budapest.place">Budapest</span>
@@ -167,7 +270,7 @@
               <li>
                 <button class="trip" type="button" data-trip="kitzbuhel"
                         data-lat="47.45" data-lon="12.39">
-                  <img class="photo" src="assets/img/par/par-02.jpg" alt=""
+                  <img class="photo" src="assets/img/par/grid/par-02.jpg" alt=""
                        data-i18n-attr="alt:travel.kitzbuhel.alt" loading="lazy" />
                   <span class="trip__label">
                     <span class="trip__place" data-i18n="travel.kitzbuhel.place">Kitzbühel</span>
@@ -178,7 +281,7 @@
               <li>
                 <button class="trip" type="button" data-trip="monza"
                         data-lat="45.62" data-lon="9.28">
-                  <img class="photo" src="assets/img/par/par-05.jpg" alt=""
+                  <img class="photo" src="assets/img/par/grid/par-05.jpg" alt=""
                        data-i18n-attr="alt:travel.monza.alt" loading="lazy" />
                   <span class="trip__label">
                     <span class="trip__place" data-i18n="travel.monza.place">Monza</span>
@@ -187,20 +290,108 @@
                 </button>
               </li>
               <li>
-                <button class="trip" type="button" data-trip="zanzibar"
-                        data-lat="-5.73" data-lon="39.3">
-                  <img class="photo" src="assets/img/par/par-01.jpg" alt=""
-                       data-i18n-attr="alt:travel.zanzibar.alt" loading="lazy" />
+                <button class="trip" type="button" data-trip="carcassonne"
+                        data-lat="43.21" data-lon="2.36">
+                  <img class="photo" src="assets/img/par/grid/par-29.jpg" alt=""
+                       data-i18n-attr="alt:travel.carcassonne.alt" loading="lazy" />
                   <span class="trip__label">
-                    <span class="trip__place" data-i18n="travel.zanzibar.place">Nungwi</span>
-                    <span class="trip__country" data-i18n="travel.zanzibar.country">Zanzibar</span>
+                    <span class="trip__place" data-i18n="travel.carcassonne.place">Carcassonne</span>
+                    <span class="trip__country" data-i18n="travel.carcassonne.country">Frankrig</span>
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button class="trip" type="button" data-trip="kazbek"
+                        data-lat="42.7" data-lon="44.52">
+                  <img class="photo" src="assets/img/par/grid/par-37.jpg" alt=""
+                       data-i18n-attr="alt:travel.kazbek.alt" loading="lazy" />
+                  <span class="trip__label">
+                    <span class="trip__place" data-i18n="travel.kazbek.place">Kazbek</span>
+                    <span class="trip__country" data-i18n="travel.kazbek.country">Georgien</span>
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button class="trip" type="button" data-trip="mosmieri"
+                        data-lat="42.03" data-lon="45.35">
+                  <img class="photo" src="assets/img/par/grid/par-36.jpg" alt=""
+                       data-i18n-attr="alt:travel.mosmieri.alt" loading="lazy" />
+                  <span class="trip__label">
+                    <span class="trip__place" data-i18n="travel.mosmieri.place">Kakheti</span>
+                    <span class="trip__country" data-i18n="travel.mosmieri.country">Georgien</span>
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button class="trip" type="button" data-trip="gallipoli"
+                        data-lat="40.06" data-lon="17.98">
+                  <img class="photo" src="assets/img/par/grid/par-15.jpg" alt=""
+                       data-i18n-attr="alt:travel.gallipoli.alt" loading="lazy" />
+                  <span class="trip__label">
+                    <span class="trip__place" data-i18n="travel.gallipoli.place">Gallipoli</span>
+                    <span class="trip__country" data-i18n="travel.gallipoli.country">Italien</span>
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button class="trip" type="button" data-trip="soller"
+                        data-lat="39.8" data-lon="2.69">
+                  <img class="photo" src="assets/img/par/grid/par-39.jpg" alt=""
+                       data-i18n-attr="alt:travel.soller.alt" loading="lazy" />
+                  <span class="trip__label">
+                    <span class="trip__place" data-i18n="travel.soller.place">Port de Sóller</span>
+                    <span class="trip__country" data-i18n="travel.soller.country">Spanien</span>
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button class="trip" type="button" data-trip="crete"
+                        data-lat="35.24" data-lon="24.81">
+                  <img class="photo" src="assets/img/par/grid/par-25.jpg" alt=""
+                       data-i18n-attr="alt:travel.crete.alt" loading="lazy" />
+                  <span class="trip__label">
+                    <span class="trip__place" data-i18n="travel.crete.place">Kreta</span>
+                    <span class="trip__country" data-i18n="travel.crete.country">Grækenland</span>
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button class="trip" type="button" data-trip="metsada"
+                        data-lat="31.32" data-lon="35.35">
+                  <img class="photo" src="assets/img/par/grid/par-42.jpg" alt=""
+                       data-i18n-attr="alt:travel.metsada.alt" loading="lazy" />
+                  <span class="trip__label">
+                    <span class="trip__place" data-i18n="travel.metsada.place">Masada</span>
+                    <span class="trip__country" data-i18n="travel.metsada.country">Israel</span>
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button class="trip" type="button" data-trip="giza"
+                        data-lat="29.98" data-lon="31.13">
+                  <img class="photo" src="assets/img/par/grid/par-19.jpg" alt=""
+                       data-i18n-attr="alt:travel.giza.alt" loading="lazy" />
+                  <span class="trip__label">
+                    <span class="trip__place" data-i18n="travel.giza.place">Giza</span>
+                    <span class="trip__country" data-i18n="travel.giza.country">Egypten</span>
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button class="trip" type="button" data-trip="luxor"
+                        data-lat="25.69" data-lon="32.64">
+                  <img class="photo" src="assets/img/par/grid/par-38.jpg" alt=""
+                       data-i18n-attr="alt:travel.luxor.alt" loading="lazy" />
+                  <span class="trip__label">
+                    <span class="trip__place" data-i18n="travel.luxor.place">Luxor</span>
+                    <span class="trip__country" data-i18n="travel.luxor.country">Egypten</span>
                   </span>
                 </button>
               </li>
               <li>
                 <button class="trip" type="button" data-trip="uganda"
                         data-lat="2.25" data-lon="31.8">
-                  <img class="photo" src="assets/img/par/par-11.jpg" alt=""
+                  <img class="photo" src="assets/img/par/grid/par-11.jpg" alt=""
                        data-i18n-attr="alt:travel.uganda.alt" loading="lazy" />
                   <span class="trip__label">
                     <span class="trip__place" data-i18n="travel.uganda.place">Murchison Falls</span>
@@ -209,9 +400,42 @@
                 </button>
               </li>
               <li>
+                <button class="trip" type="button" data-trip="bwindi"
+                        data-lat="-1.05" data-lon="29.68">
+                  <img class="photo" src="assets/img/par/grid/par-33.jpg" alt=""
+                       data-i18n-attr="alt:travel.bwindi.alt" loading="lazy" />
+                  <span class="trip__label">
+                    <span class="trip__place" data-i18n="travel.bwindi.place">Bwindi</span>
+                    <span class="trip__country" data-i18n="travel.bwindi.country">Uganda</span>
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button class="trip" type="button" data-trip="zanzibar"
+                        data-lat="-5.73" data-lon="39.3">
+                  <img class="photo" src="assets/img/par/grid/par-01.jpg" alt=""
+                       data-i18n-attr="alt:travel.zanzibar.alt" loading="lazy" />
+                  <span class="trip__label">
+                    <span class="trip__place" data-i18n="travel.zanzibar.place">Nungwi</span>
+                    <span class="trip__country" data-i18n="travel.zanzibar.country">Zanzibar</span>
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button class="trip" type="button" data-trip="seoul"
+                        data-lat="37.55" data-lon="126.99">
+                  <img class="photo" src="assets/img/par/grid/par-35.jpg" alt=""
+                       data-i18n-attr="alt:travel.seoul.alt" loading="lazy" />
+                  <span class="trip__label">
+                    <span class="trip__place" data-i18n="travel.seoul.place">Seoul</span>
+                    <span class="trip__country" data-i18n="travel.seoul.country">Sydkorea</span>
+                  </span>
+                </button>
+              </li>
+              <li>
                 <button class="trip" type="button" data-trip="thailand"
                         data-lat="18.79" data-lon="98.98">
-                  <img class="photo" src="assets/img/par/par-04.jpg" alt=""
+                  <img class="photo" src="assets/img/par/grid/par-04.jpg" alt=""
                        data-i18n-attr="alt:travel.thailand.alt" loading="lazy" />
                   <span class="trip__label">
                     <span class="trip__place" data-i18n="travel.thailand.place">Chiang Mai</span>
@@ -220,9 +444,20 @@
                 </button>
               </li>
               <li>
+                <button class="trip" type="button" data-trip="raleigh"
+                        data-lat="35.78" data-lon="-78.64">
+                  <img class="photo" src="assets/img/par/grid/par-34.jpg" alt=""
+                       data-i18n-attr="alt:travel.raleigh.alt" loading="lazy" />
+                  <span class="trip__label">
+                    <span class="trip__place" data-i18n="travel.raleigh.place">Raleigh</span>
+                    <span class="trip__country" data-i18n="travel.raleigh.country">USA</span>
+                  </span>
+                </button>
+              </li>
+              <li>
                 <button class="trip" type="button" data-trip="teotihuacan"
                         data-lat="19.69" data-lon="-98.83">
-                  <img class="photo" src="assets/img/par/par-03.jpg" alt=""
+                  <img class="photo" src="assets/img/par/grid/par-03.jpg" alt=""
                        data-i18n-attr="alt:travel.teotihuacan.alt" loading="lazy" />
                   <span class="trip__label">
                     <span class="trip__place" data-i18n="travel.teotihuacan.place">Teotihuacán</span>
@@ -233,7 +468,7 @@
               <li>
                 <button class="trip" type="button" data-trip="galapagos"
                         data-lat="-0.74" data-lon="-90.31">
-                  <img class="photo" src="assets/img/par/par-12.jpg" alt=""
+                  <img class="photo" src="assets/img/par/grid/par-12.jpg" alt=""
                        data-i18n-attr="alt:travel.galapagos.alt" loading="lazy" />
                   <span class="trip__label">
                     <span class="trip__place" data-i18n="travel.galapagos.place">Galápagos</span>
@@ -242,9 +477,42 @@
                 </button>
               </li>
               <li>
+                <button class="trip" type="button" data-trip="quilotoa"
+                        data-lat="-0.86" data-lon="-78.9">
+                  <img class="photo" src="assets/img/par/grid/par-20.jpg" alt=""
+                       data-i18n-attr="alt:travel.quilotoa.alt" loading="lazy" />
+                  <span class="trip__label">
+                    <span class="trip__place" data-i18n="travel.quilotoa.place">Quilotoa</span>
+                    <span class="trip__country" data-i18n="travel.quilotoa.country">Ecuador</span>
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button class="trip" type="button" data-trip="amazonas"
+                        data-lat="-3.1" data-lon="-60.03">
+                  <img class="photo" src="assets/img/par/grid/par-21.jpg" alt=""
+                       data-i18n-attr="alt:travel.amazonas.alt" loading="lazy" />
+                  <span class="trip__label">
+                    <span class="trip__place" data-i18n="travel.amazonas.place">Amazonfloden</span>
+                    <span class="trip__country" data-i18n="travel.amazonas.country">Brasilien</span>
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button class="trip" type="button" data-trip="uyuni"
+                        data-lat="-20.13" data-lon="-67.49">
+                  <img class="photo" src="assets/img/par/grid/par-22.jpg" alt=""
+                       data-i18n-attr="alt:travel.uyuni.alt" loading="lazy" />
+                  <span class="trip__label">
+                    <span class="trip__place" data-i18n="travel.uyuni.place">Salar de Uyuni</span>
+                    <span class="trip__country" data-i18n="travel.uyuni.country">Bolivia</span>
+                  </span>
+                </button>
+              </li>
+              <li>
                 <button class="trip" type="button" data-trip="brasilien"
                         data-lat="-22.91" data-lon="-43.17">
-                  <img class="photo" src="assets/img/par/par-10.jpg" alt=""
+                  <img class="photo" src="assets/img/par/grid/par-10.jpg" alt=""
                        data-i18n-attr="alt:travel.brasilien.alt" loading="lazy" />
                   <span class="trip__label">
                     <span class="trip__place" data-i18n="travel.brasilien.place">Rio de Janeiro</span>
@@ -253,9 +521,42 @@
                 </button>
               </li>
               <li>
+                <button class="trip" type="button" data-trip="sambadromen"
+                        data-lat="-22.91" data-lon="-43.2">
+                  <img class="photo" src="assets/img/par/grid/par-27.jpg" alt=""
+                       data-i18n-attr="alt:travel.sambadromen.alt" loading="lazy" />
+                  <span class="trip__label">
+                    <span class="trip__place" data-i18n="travel.sambadromen.place">Sambadromen</span>
+                    <span class="trip__country" data-i18n="travel.sambadromen.country">Brasilien</span>
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button class="trip" type="button" data-trip="iguazu"
+                        data-lat="-25.69" data-lon="-54.44">
+                  <img class="photo" src="assets/img/par/grid/par-24.jpg" alt=""
+                       data-i18n-attr="alt:travel.iguazu.alt" loading="lazy" />
+                  <span class="trip__label">
+                    <span class="trip__place" data-i18n="travel.iguazu.place">Iguazú</span>
+                    <span class="trip__country" data-i18n="travel.iguazu.country">Argentina</span>
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button class="trip" type="button" data-trip="petrohue"
+                        data-lat="-41.14" data-lon="-72.42">
+                  <img class="photo" src="assets/img/par/grid/par-23.jpg" alt=""
+                       data-i18n-attr="alt:travel.petrohue.alt" loading="lazy" />
+                  <span class="trip__label">
+                    <span class="trip__place" data-i18n="travel.petrohue.place">Petrohué</span>
+                    <span class="trip__country" data-i18n="travel.petrohue.country">Chile</span>
+                  </span>
+                </button>
+              </li>
+              <li>
                 <button class="trip" type="button" data-trip="patagonien"
                         data-lat="-49.33" data-lon="-72.89">
-                  <img class="photo" src="assets/img/par/par-06.jpg" alt=""
+                  <img class="photo" src="assets/img/par/grid/par-06.jpg" alt=""
                        data-i18n-attr="alt:travel.patagonien.alt" loading="lazy" />
                   <span class="trip__label">
                     <span class="trip__place" data-i18n="travel.patagonien.place">El Chaltén</span>
@@ -266,11 +567,22 @@
               <li>
                 <button class="trip" type="button" data-trip="torres"
                         data-lat="-50.94" data-lon="-72.99">
-                  <img class="photo" src="assets/img/par/par-09.jpg" alt=""
+                  <img class="photo" src="assets/img/par/grid/par-09.jpg" alt=""
                        data-i18n-attr="alt:travel.torres.alt" loading="lazy" />
                   <span class="trip__label">
                     <span class="trip__place" data-i18n="travel.torres.place">Torres del Paine</span>
                     <span class="trip__country" data-i18n="travel.torres.country">Chile</span>
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button class="trip" type="button" data-trip="silkeborg"
+                        data-lat="56.17" data-lon="9.55">
+                  <img class="photo" src="assets/img/par/grid/par-28.jpg" alt=""
+                       data-i18n-attr="alt:travel.silkeborg.alt" loading="lazy" />
+                  <span class="trip__label">
+                    <span class="trip__place" data-i18n="travel.silkeborg.place">Silkeborg</span>
+                    <span class="trip__country" data-i18n="travel.silkeborg.country">Danmark</span>
                   </span>
                 </button>
               </li>
@@ -286,6 +598,14 @@
                   <span class="globe__country" data-globe-country></span>
                 </p>
                 <p class="globe__hint" data-i18n="travel.hint"></p>
+                <button
+                  class="btn btn--ghost globe__shuffle"
+                  type="button"
+                  data-globe-shuffle
+                  data-i18n="travel.explore"
+                >
+                  Udforsk med os
+                </button>
               </div>
             </aside>
           </div>
@@ -310,7 +630,9 @@
       </section>
 
       <!-- Venue teaser -->
-      <section class="section section--paper">
+      <!-- The venue teaser. "Stedet" in the menu lands here, and the button
+           inside it opens the full page about the place. -->
+      <section class="section section--paper" id="stedet">
         <div class="wrap teaser" data-reveal>
           <!-- Paths in a custom property are resolved against
                assets/css/style.css, so use ../img/… -->
@@ -324,7 +646,7 @@
             <h2 class="teaser__title" data-i18n="venue.title">Gl. Skovridergaard</h2>
             <p data-i18n="venue.teaser"></p>
             <p class="teaser__cta">
-              <a class="btn btn--ghost" href="stedet.html" data-i18n="venue.cta">Se stedet</a>
+              <a class="btn btn--ghost" href="Gl-Skovridergaard.html" data-i18n="venue.cta">Se stedet</a>
             </p>
           </div>
         </div>
@@ -332,7 +654,7 @@
 
       <!-- The illustrated set: Hjejlen, the rings, the heather hills, over a
            wash of Himmelbjerget looking out across the lakes. -->
-      <section class="section section--himmelbjerget">
+      <section class="section section--himmelbjerget" id="omkring">
         <div class="wrap">
           <div class="section-head" data-reveal>
             <span class="eyebrow" data-i18n="around.eyebrow">Søhøjlandet</span>
@@ -482,13 +804,18 @@
             <article class="card" data-reveal>
               <h3 data-i18n="practical.5.title"></h3>
               <p data-i18n="practical.5.body"></p>
-              <span class="card__contact" data-i18n="practical.5.contact"></span>
+              <div class="card__contacts">
+                <a class="card__contact" href="tel:+4526848210" data-i18n="practical.5.phone"></a>
+                <a class="card__contact" href="mailto:williammoller@live.dk" data-i18n="practical.5.email"></a>
+              </div>
             </article>
             <article class="card" data-reveal>
               <h3 data-i18n="practical.6.title"></h3>
               <p data-i18n="practical.6.body"></p>
-              <!-- TODO: opdatér mailto, når adressen er valgt -->
-              <a class="card__contact" href="mailto:bryllup@example.dk" data-i18n="practical.6.contact"></a>
+              <!-- Landes hos Resend og videresendes til os begge, se api/inbound.mjs -->
+              <div class="card__contacts">
+                <a class="card__contact" href="mailto:info@cecilieesben.com" data-i18n="practical.6.contact"></a>
+              </div>
             </article>
           </div>
         </div>
@@ -526,6 +853,13 @@
           </div>
 
           <form class="form" data-rsvp-form novalidate data-reveal>
+            <!-- Left empty by anyone who can see the form; robots fill it in
+                 and api/rsvp.js throws those away. -->
+            <div class="form__trap" aria-hidden="true">
+              <label for="rsvp-website">Website</label>
+              <input id="rsvp-website" name="website" type="text" tabindex="-1" autocomplete="off" />
+            </div>
+
             <div class="form__row form__row--two">
               <div class="field">
                 <label for="rsvp-name" data-i18n="rsvp.name">Navn(e)</label>
@@ -659,7 +993,7 @@
     </main>
 
     <footer class="footer">
-      <span class="mark footer__mark" aria-hidden="true"></span>
+      <span class="mark mark--boat footer__mark" aria-hidden="true"></span>
       <p class="footer__title" data-i18n="footer.title">Vi glæder os til at se jer</p>
       <p class="footer__names" data-i18n="footer.names">Cecilie &amp; Esben</p>
       <p class="footer__date" data-i18n="footer.date"></p>

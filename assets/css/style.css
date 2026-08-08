@@ -1,10 +1,11 @@
 /* ==========================================================================
    Cecilie & Esben · 12.06.2027 · Gl. Skovridergaard, Silkeborg
 
-   Palette: the Hjejlen paddle steamer on the Silkeborg lakes — brass funnel
-   terracotta, black hull ink, lake blue-grey, forest green — over the warm
-   greige/cream of the wedding-planner reference. Display type is terracotta,
-   as in the watercolour reference.
+   Palette: the Hjejlen paddle steamer on the Silkeborg lakes — brass funnel,
+   black hull ink, lake blue-grey, forest green — over the warm greige/cream of
+   the wedding-planner reference. The accent that carries the display type and
+   the buttons is hunter green, dark enough to sit against the cream and of a
+   piece with the woods the whole weekend happens in.
    ========================================================================== */
 
 :root {
@@ -23,9 +24,9 @@
   --lake: #47646e;
   --lake-soft: #7e9aa1;
 
-  /* Hjejlen */
-  --terracotta: #a9503c;
-  --terracotta-deep: #8c4131;
+  /* Accent */
+  --hunter: #223c22;
+  --hunter-deep: #162816;
   --brass: #c08a4e;
 
   --shadow-sm: 0 1px 2px rgba(44, 51, 45, 0.05), 0 6px 18px rgba(44, 51, 45, 0.05);
@@ -81,17 +82,17 @@ svg {
 }
 
 a {
-  color: var(--terracotta);
+  color: var(--hunter);
   text-underline-offset: 0.25em;
   text-decoration-thickness: 1px;
 }
 
 a:hover {
-  color: var(--terracotta-deep);
+  color: var(--hunter-deep);
 }
 
 :focus-visible {
-  outline: 2px solid var(--terracotta);
+  outline: 2px solid var(--hunter);
   outline-offset: 3px;
 }
 
@@ -105,7 +106,7 @@ h4 {
   font-variation-settings: 'SOFT' 0, 'WONK' 0, 'opsz' 100;
   line-height: 1.08;
   letter-spacing: -0.01em;
-  color: var(--terracotta);
+  color: var(--hunter);
 }
 
 p {
@@ -122,7 +123,7 @@ p:last-child {
   top: -5rem;
   z-index: 100;
   padding: 0.75rem 1.25rem;
-  background: var(--terracotta);
+  background: var(--hunter);
   color: var(--paper-2);
   border-radius: var(--radius);
   text-decoration: none;
@@ -259,9 +260,9 @@ p:last-child {
   align-items: center;
   justify-content: center;
   padding: 0.95rem 2.25rem;
-  border: 1px solid var(--terracotta);
+  border: 1px solid var(--hunter);
   border-radius: 2px;
-  background: var(--terracotta);
+  background: var(--hunter);
   color: var(--paper-2);
   font-family: var(--font-body);
   font-size: 0.75rem;
@@ -274,8 +275,8 @@ p:last-child {
 }
 
 .btn:hover {
-  background: var(--terracotta-deep);
-  border-color: var(--terracotta-deep);
+  background: var(--hunter-deep);
+  border-color: var(--hunter-deep);
   color: var(--paper-2);
 }
 
@@ -286,11 +287,11 @@ p:last-child {
 
 .btn--ghost {
   background: transparent;
-  color: var(--terracotta);
+  color: var(--hunter);
 }
 
 .btn--ghost:hover {
-  background: var(--terracotta);
+  background: var(--hunter);
   color: var(--paper-2);
 }
 
@@ -338,7 +339,7 @@ p:last-child {
 .monogram {
   grid-column: 2;
   justify-self: center;
-  color: var(--terracotta);
+  color: var(--hunter);
   text-decoration: none;
 }
 
@@ -358,6 +359,28 @@ p:last-child {
   mask-repeat: no-repeat;
 }
 
+/*
+ * The Hjejlen drawing, in the header and the footer. Its own sheet of paper is
+ * a shade greyer than ours (#f0e9e0 against #fbf7ef), which would read as a
+ * pale rectangle pasted on the page — so the paper is knocked out of the file
+ * and only the ink is left.
+ *
+ * On the cream it is drawn as it was made, in its own sepia and maroon. The
+ * footer is dark forest, where that ink all but disappears, so there the same
+ * file is used as a mask instead and the boat is filled with the surrounding
+ * text colour. One asset, two renderings, and no background to mismatch.
+ */
+.mark--boat {
+  aspect-ratio: 800 / 388;
+  background: url('../img/hjejlen-mark.png') center / contain no-repeat;
+  -webkit-mask-image: none;
+  mask-image: none;
+}
+
+.monogram .mark--boat {
+  width: clamp(5rem, 9vw, 6.75rem);
+}
+
 .header__nav {
   grid-column: 1;
   grid-row: 1;
@@ -368,14 +391,16 @@ p:last-child {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 0.5rem clamp(0.9rem, 1.8vw, 1.75rem);
+  /* Tightened when the two long items joined the bar, so six sit on one line
+     with room to spare at the narrowest width the bar is shown at. */
+  gap: 0.5rem clamp(0.85rem, 1.35vw, 1.5rem);
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
 .nav__list a {
-  color: var(--terracotta);
+  color: var(--hunter);
   font-size: 0.8125rem;
   letter-spacing: 0.02em;
   text-decoration: none;
@@ -410,7 +435,7 @@ p:last-child {
   padding: 0;
   border: 0;
   background: none;
-  color: var(--terracotta);
+  color: var(--hunter);
   cursor: pointer;
 }
 
@@ -469,11 +494,11 @@ p:last-child {
 }
 
 .lang__btn:hover {
-  color: var(--terracotta);
+  color: var(--hunter);
 }
 
 .lang__btn.is-active {
-  background: var(--terracotta);
+  background: var(--hunter);
   color: var(--paper-2);
 }
 
@@ -481,7 +506,7 @@ p:last-child {
 
 /*
  * The lakes watercolour sits behind the whole first screen, under a cream
- * veil heavy enough to keep the terracotta type readable and fading to solid
+ * veil heavy enough to keep the hunter-green type readable and fading to solid
  * paper at the foot, so the hero dissolves into the section beneath it.
  */
 .hero {
@@ -520,14 +545,14 @@ p:last-child {
 .hero__dateline {
   font-size: clamp(0.875rem, 0.8rem + 0.3vw, 1.0625rem);
   letter-spacing: 0.08em;
-  color: var(--terracotta);
+  color: var(--hunter);
 }
 
 .hero__names {
   margin-top: clamp(1rem, 2.5vw, 1.75rem);
   font-size: clamp(3.25rem, 1.2rem + 9vw, 8rem);
   line-height: 0.95;
-  color: var(--terracotta);
+  color: var(--hunter);
 }
 
 .hero__amp {
@@ -541,7 +566,7 @@ p:last-child {
   font-family: var(--font-display);
   font-style: italic;
   font-size: clamp(1.125rem, 0.95rem + 0.8vw, 1.625rem);
-  color: var(--terracotta);
+  color: var(--hunter);
 }
 
 /* A shade darker than the taupe used elsewhere: this line sits over the
@@ -566,11 +591,21 @@ p:last-child {
   font-family: var(--font-display);
   font-size: clamp(1.25rem, 1.05rem + 0.9vw, 1.75rem);
   line-height: 1.45;
-  color: var(--terracotta);
+  color: var(--hunter);
+}
+
+/* U+2665 rather than the emoji: an emoji heart arrives in its own red, which
+   is the one colour this palette no longer has. As a text glyph it simply
+   takes the hunter green like everything else. */
+.statement__heart {
+  margin: 1.5rem 0 0;
+  font-size: 1.375rem;
+  line-height: 1;
+  color: var(--hunter);
 }
 
 .statement__signature {
-  margin-top: 2.25rem;
+  margin-top: 1.75rem;
   font-family: var(--font-display);
   font-style: italic;
   font-size: 1.25rem;
@@ -625,7 +660,7 @@ p:last-child {
   font-family: var(--font-display);
   font-style: italic;
   font-size: clamp(1.125rem, 1rem + 0.6vw, 1.5rem);
-  color: var(--terracotta);
+  color: var(--hunter);
 }
 
 /* --- Programme ------------------------------------------------------------ */
@@ -672,7 +707,7 @@ p:last-child {
   margin-top: 0.625rem;
   font-family: var(--font-display);
   font-size: 1.875rem;
-  color: var(--terracotta);
+  color: var(--hunter);
 }
 
 .day--feature .day__date {
@@ -930,12 +965,12 @@ p:last-child {
   transform: none;
 }
 
-/* The selected tile keeps a terracotta hairline once the pointer moves on. */
+/* The selected tile keeps a hunter-green hairline once the pointer moves on. */
 .trip[aria-current]::after {
   content: '';
   position: absolute;
   inset: 0;
-  border: 2px solid var(--terracotta);
+  border: 2px solid var(--hunter);
   border-radius: var(--radius);
   pointer-events: none;
 }
@@ -971,7 +1006,7 @@ p:last-child {
   font-weight: 400;
   font-size: clamp(1.375rem, 1.15rem + 0.9vw, 1.75rem);
   line-height: 1.1;
-  color: var(--terracotta);
+  color: var(--hunter);
 }
 
 .globe__country {
@@ -987,6 +1022,11 @@ p:last-child {
   color: var(--taupe);
 }
 
+.globe__shuffle {
+  margin-top: 1.25rem;
+  padding-inline: 1.5rem;
+}
+
 /*
  * On a phone the globe leads, and stays put as a slim bar while the
  * photographs scroll underneath it: globe on the left, place name alongside.
@@ -996,12 +1036,19 @@ p:last-child {
     order: -1;
   }
 
+  /* The globe on the left, and beside it the name of the place with the
+     shuffle underneath — all of it slim enough to stay pinned. */
   .globe__sticky {
     top: var(--header-h);
     z-index: 5;
-    display: flex;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-areas:
+      'stage label'
+      'stage action';
     align-items: center;
-    gap: 1.25rem;
+    column-gap: 1.25rem;
+    row-gap: 0.5rem;
     padding: 0.75rem 0 1rem;
     background: var(--paper);
     text-align: left;
@@ -1012,19 +1059,127 @@ p:last-child {
   }
 
   .globe__stage {
-    flex: none;
+    grid-area: stage;
     width: 6.5rem;
     margin-inline: 0;
   }
 
   .globe__label {
+    grid-area: label;
+    align-self: end;
     margin: 0;
     min-height: 0;
     gap: 0.35rem;
   }
 
+  .globe__shuffle {
+    grid-area: action;
+    align-self: start;
+    justify-self: start;
+    margin-top: 0;
+    padding: 0.5rem 1.1rem;
+    font-size: 0.625rem;
+  }
+
   .globe__hint {
     display: none;
+  }
+
+  /*
+   * There is no pointer to hover with, so the photographs become a carousel
+   * and swiping takes over the job: whichever card sits nearest the middle is
+   * the selected one, and the globe turns to it. globe.js reads the scroll
+   * position; everything below is only the look of it.
+   *
+   * The peek is paid for with padding rather than a narrower card, which is
+   * what lets the first and last photograph reach the middle: the content box
+   * is exactly one card wide, so `flex: 0 0 100%` is one card, and the padding
+   * either side is the sliver of the neighbours you can see.
+   */
+  .travel__grid {
+    --peek: 17%;
+
+    display: flex;
+    columns: initial;
+    gap: 0.75rem;
+    /* Out to the screen edges, so the neighbours run off the sides. */
+    margin-inline: calc(var(--gutter) * -1);
+    padding-inline: var(--peek);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+  }
+
+  .travel__grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .travel__grid li {
+    flex: 0 0 100%;
+    margin-bottom: 0;
+    scroll-snap-align: center;
+  }
+
+  /*
+   * Side by side the cards need one shape between them, or the carousel
+   * lurches with every swipe. They get a square, and the photograph sits
+   * inside it on the sand rather than being cropped to fit — a centre crop
+   * this tight leaves half the couple outside the frame on the wide shots.
+   * The mount is the same colour as the card, so it reads as a print laid on
+   * paper rather than as a photograph that has come up short.
+   */
+  .trip {
+    aspect-ratio: 1 / 1;
+    opacity: 0.4;
+    transition: opacity 0.35s ease;
+  }
+
+  /*
+   * The mount is a blurred wash of the photograph itself, set from globe.js.
+   * Without it the sliver of a neighbour showing past the card edge is often
+   * bare mount — a tall photograph touches neither side — and a blank edge
+   * invites nobody to swipe. This way the colours of the next place always
+   * show, however the photograph is shaped.
+   */
+  .trip::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--shot, none) center / cover no-repeat;
+    transform: scale(1.2);
+    filter: blur(1.25rem) saturate(0.7);
+    opacity: 0.55;
+  }
+
+  .trip img {
+    position: relative;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .trip[aria-current] {
+    opacity: 1;
+  }
+
+  /* The name is already up in the globe bar, and a dark gradient over the
+     mount would only muddy it. */
+  .trip__label {
+    display: none;
+  }
+
+  /* Lifting and zooming belong to a pointer; on a touch screen the styles
+     only stick to whatever was tapped last. */
+  .trip:hover,
+  .trip:focus-visible {
+    transform: none;
+    box-shadow: none;
+  }
+
+  .trip:hover img,
+  .trip:focus-visible img {
+    transform: none;
+    filter: none;
   }
 }
 
@@ -1116,11 +1271,25 @@ p:last-child {
   grid-template-columns: repeat(auto-fit, minmax(16.5rem, 1fr));
 }
 
+/* A column so the contacts can be pushed to the foot of the card: the cards in
+   a row are already the same height, so that puts every address on one line
+   however much or little text sits above it. */
 .card {
+  display: flex;
+  flex-direction: column;
   padding: clamp(1.5rem, 3vw, 2.25rem);
   border: 1px solid var(--sand);
   border-radius: var(--radius);
   background: var(--paper-2);
+}
+
+.card > p:last-of-type {
+  margin-bottom: 0;
+}
+
+.card__contacts {
+  margin-top: auto;
+  padding-top: 1.125rem;
 }
 
 .card h3 {
@@ -1135,10 +1304,15 @@ p:last-child {
 
 .card__contact {
   display: inline-block;
-  margin-top: 1.125rem;
   font-size: 0.8125rem;
   letter-spacing: 0.04em;
   color: var(--brass);
+}
+
+/* A card with two ways to get hold of someone: a gap between them, and they
+   drop onto their own line when the card is too narrow to hold both. */
+.card__contact + .card__contact {
+  margin-left: 1.25rem;
 }
 
 /* --- Gifts ---------------------------------------------------------------- */
@@ -1230,7 +1404,7 @@ p:last-child {
 .field input:focus,
 .field select:focus,
 .field textarea:focus {
-  border-color: var(--terracotta);
+  border-color: var(--hunter);
   box-shadow: 0 0 0 3px rgba(169, 80, 60, 0.12);
   outline: none;
 }
@@ -1268,12 +1442,22 @@ p:last-child {
 
 .choice input {
   margin: 0;
-  accent-color: var(--terracotta);
+  accent-color: var(--hunter);
 }
 
 .choice:has(input:checked) {
-  border-color: var(--terracotta);
+  border-color: var(--hunter);
   background: rgba(169, 80, 60, 0.06);
+}
+
+/* Out of sight and out of the tab order, but still a real field a robot will
+   find and fill in. Not `display: none`, which the better ones skip. */
+.form__trap {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
 }
 
 .form__actions {
@@ -1298,7 +1482,7 @@ p:last-child {
 
 .form__status[data-state='error'] {
   background: rgba(169, 80, 60, 0.1);
-  color: var(--terracotta-deep);
+  color: var(--hunter-deep);
 }
 
 .form__status[data-state='pending'] {
@@ -1430,13 +1614,13 @@ p:last-child {
 .flyer__mark {
   width: calc(17 * var(--u));
   margin: 0 auto calc(1.5 * var(--u));
-  color: var(--terracotta);
+  color: var(--hunter);
 }
 
 .flyer__names {
   font-size: calc(5.6 * var(--u));
   line-height: 1;
-  color: var(--terracotta);
+  color: var(--hunter);
 }
 
 .flyer__amp {
@@ -1457,7 +1641,7 @@ p:last-child {
   font-family: var(--font-display);
   font-style: italic;
   font-size: calc(3.5 * var(--u));
-  color: var(--terracotta);
+  color: var(--hunter);
 }
 
 .plan-days {
@@ -1481,7 +1665,7 @@ p:last-child {
 .plan-day__day {
   font-family: var(--font-display);
   font-size: calc(3.8 * var(--u));
-  color: var(--terracotta);
+  color: var(--hunter);
 }
 
 .plan-day__date {
@@ -1655,7 +1839,7 @@ p:last-child {
 
 .inv-main__mark {
   width: calc(34 * var(--u));
-  color: var(--terracotta);
+  color: var(--hunter);
 }
 
 .inv-main__eyebrow {
@@ -1670,7 +1854,7 @@ p:last-child {
   margin: calc(4 * var(--u)) 0 0;
   font-size: calc(14 * var(--u));
   line-height: 1;
-  color: var(--terracotta);
+  color: var(--hunter);
 }
 
 .inv-amp {
@@ -1690,7 +1874,7 @@ p:last-child {
   margin: calc(5 * var(--u)) 0 0;
   font-family: var(--font-display);
   font-size: calc(5 * var(--u));
-  color: var(--terracotta);
+  color: var(--hunter);
 }
 
 .inv-main__venue {
@@ -1738,7 +1922,7 @@ p:last-child {
 
 .inv-panel-title {
   font-size: calc(6.5 * var(--u));
-  color: var(--terracotta);
+  color: var(--hunter);
   text-align: center;
 }
 
@@ -1787,7 +1971,7 @@ p:last-child {
   font-family: var(--font-display);
   font-weight: 400;
   font-size: calc(4 * var(--u));
-  color: var(--terracotta);
+  color: var(--hunter);
 }
 
 /* --- Invitation: the programme flap --- */
@@ -1808,7 +1992,7 @@ p:last-child {
 .inv-day__day {
   font-family: var(--font-display);
   font-size: calc(4.2 * var(--u));
-  color: var(--terracotta);
+  color: var(--hunter);
 }
 
 .inv-day__date {
@@ -1885,7 +2069,7 @@ p:last-child {
   left: 50%;
   width: calc(44 * var(--u));
   transform: translateX(-50%);
-  color: var(--terracotta);
+  color: var(--hunter);
 }
 
 .inv-cover__name {
@@ -1893,7 +2077,7 @@ p:last-child {
   font-family: var(--font-display);
   font-size: calc(11 * var(--u));
   line-height: 1;
-  color: var(--terracotta);
+  color: var(--hunter);
 }
 
 .inv-cover__weekend,
@@ -1962,7 +2146,7 @@ p:last-child {
   margin: calc(2.5 * var(--u)) 0 0;
   font-family: var(--font-display);
   font-size: calc(5 * var(--u));
-  color: var(--terracotta);
+  color: var(--hunter);
 }
 
 /* --- Venue page ----------------------------------------------------------- */
@@ -1978,7 +2162,7 @@ p:last-child {
   font-family: var(--font-display);
   font-size: clamp(1.125rem, 1rem + 0.7vw, 1.5rem);
   line-height: 1.55;
-  color: var(--terracotta);
+  color: var(--hunter);
   text-align: left;
 }
 
@@ -2140,23 +2324,33 @@ p:last-child {
 
 /* --- Footer --------------------------------------------------------------- */
 
+/*
+ * The same cream as the header bar, so the page is bracketed by one colour
+ * top and bottom — and so the Hjejlen can be drawn in its own ink down here
+ * as well. Against the forest green it was a silhouette; against the paper
+ * every pencil line in it reads.
+ *
+ * The hairline is the header's, mirrored: the section above the footer is
+ * paper-2, a shade off this, and without a rule between them the join looks
+ * like a printing fault rather than an edge.
+ */
 .footer {
   padding-block: clamp(3.5rem, 7vw, 5.5rem);
-  background: var(--forest);
-  color: var(--sand);
+  border-top: 1px solid rgba(44, 51, 45, 0.08);
+  background: var(--paper);
+  color: var(--muted);
   text-align: center;
 }
 
 .footer__mark {
-  width: 9rem;
+  width: 11rem;
   margin: 0 auto 2rem;
-  color: var(--sage);
 }
 
 .footer__title {
   font-family: var(--font-display);
   font-size: clamp(1.5rem, 1.2rem + 1.4vw, 2.25rem);
-  color: var(--paper-2);
+  color: var(--hunter);
 }
 
 .footer__names {
@@ -2164,7 +2358,7 @@ p:last-child {
   font-family: var(--font-display);
   font-style: italic;
   font-size: 1.5rem;
-  color: var(--sage);
+  color: var(--hunter);
 }
 
 .footer__date {
@@ -2172,7 +2366,7 @@ p:last-child {
   font-size: 0.6875rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: rgba(239, 230, 214, 0.6);
+  color: var(--taupe);
 }
 
 /* --- Motion --------------------------------------------------------------- */
@@ -2297,7 +2491,15 @@ p:last-child {
 
 /* --- Mobile navigation ---------------------------------------------------- */
 
-@media (max-width: 60rem) {
+/*
+ * Everything in here is the header folding down to the burger, and it happens
+ * earlier than the rest of the layout changes. Six items need about 76rem
+ * before they will sit on one line — English is the wider of the two
+ * languages — and below that the bar wrapped onto two rows inside a header
+ * only one row tall. Better a burger a little early than a menu spilling out
+ * of the bar.
+ */
+@media (max-width: 76rem) {
   .header__inner {
     grid-template-columns: auto 1fr auto;
   }

@@ -22,7 +22,7 @@ Deploy by dropping the folder on Netlify, Vercel or GitHub Pages.
 | `index.html` | Front page — hero, welcome, photos of the two of us, countdown, programme, venue teaser, the three illustrations, practical info, gifts, RSVP |
 | `plan.html` | The weekend plan as an A6 flyer. Prints 1:1 on A6; on a laptop the card sits beside a photo, on a phone it scales down to fit |
 | `invitation.html` | The printed invitation: A4 landscape gatefold, double-sided. The weekend plan sits on the inside of the right flap |
-| `stedet.html` | Gl. Skovridergaard — gallery, facts, map links |
+| `Gl-Skovridergaard.html` | Gl. Skovridergaard — gallery, facts, map links |
 | `DESIGN.md` | The design system: illustration style, palette, photography rules, flyer spec, and Silkeborg reference material for new assets |
 
 ```
@@ -89,7 +89,7 @@ sips -s format jpeg -s formatOptions 80 --resampleHeightWidthMax 2000 in.HEIC --
 ```
 
 For venue photos, drop files into `assets/img/venue/` using the names already
-referenced in `stedet.html` (`gaarden.jpg`, `parken.jpg`, `orangeriet.jpg`,
+referenced in `Gl-Skovridergaard.html` (`gaarden.jpg`, `parken.jpg`, `orangeriet.jpg`,
 `salen.jpg`, `vaerelse.jpg`, `almindsoe.jpg`). Until then each slot shows a soft
 green placeholder.
 
@@ -99,13 +99,68 @@ Paths in `src` and `data-full` attributes are normal and start `assets/…`.
 
 ## RSVP
 
-The form validates in the browser and then, because no endpoint is configured
-yet, opens the guest's mail app with the reply pre-filled. To post it somewhere
-instead, set `FORM_ENDPOINT` at the top of `assets/js/main.js` to a Formspree /
-Google Form / own-backend URL — the form posts `FormData` and expects a 2xx.
+The form validates in the browser and then posts JSON to `/api/rsvp`, a Vercel
+serverless function that passes the reply on by e-mail through Resend. It needs
+one environment variable in the Vercel project:
 
-Also in `main.js`: `CONTACT_EMAIL`, and `CEREMONY`, the moment the countdown
-counts towards (12 June 2027 at 13.00, Danish summer time).
+| Variable | Required | Default |
+| --- | --- | --- |
+| `RESEND_API_KEY` | yes | — |
+| `RESEND_WEBHOOK_SECRET` | for `/api/inbound` | — |
+| `RSVP_TO` | no | `bageresben@gmail.com,ceciliegyldenvang@gmail.com` |
+| `RSVP_FROM` | no | `Bryllupssvar <svar@cecilieesben.com>` |
+
+`RSVP_TO` is a comma-separated list, and both functions send to all of it — so
+setting it to a single address in Vercel would quietly cut the other person out
+of every reply.
+
+The sender is on **cecilieesben.com**, which has to be verified with Resend —
+add the domain there and put the DNS records it gives you on the domain. Until
+that is done Resend refuses the message outright and the guest sees the error
+state, so check one reply gets through before the invitations go out.
+
+The e-mail's reply-to is the guest's own address, so answering in the inbox
+writes back to them. The form also carries a hidden `website` field that no
+guest can see; anything that fills it in is treated as a robot and dropped.
+
+There is no endpoint when the site is opened straight off disk, so a `file://`
+preview falls back to opening the guest's mail app with the reply pre-filled.
+That fallback is also what an emptied `FORM_ENDPOINT` in `assets/js/main.js`
+restores.
+
+Also in `main.js`: `CONTACT_EMAIL`, the address that fallback writes to, and
+`CEREMONY`, the moment the countdown counts towards (12 June 2027 at 13.00,
+Danish summer time).
+
+## Questions inbox
+
+The "Spørgsmål" card points guests at **info@cecilieesben.com**. That address is
+received by Resend, which posts an `email.received` webhook to `/api/inbound`,
+which forwards the message to both of us in one e-mail with reply-to set to the
+guest — so answering from the inbox writes straight back to them.
+
+To set it up in Resend: add `info@` as a receiving address on the domain, create
+a webhook pointing at `https://cecilieesben.com/api/inbound` subscribed to
+`email.received`, and copy its `whsec_…` signing secret into
+`RESEND_WEBHOOK_SECRET` in Vercel.
+
+Two things worth knowing about how it works:
+
+- **The webhook carries no body.** Resend sends metadata only, so the handler
+  fetches the message from `GET /emails/receiving/{id}` before forwarding it.
+  Inline images come back as `data:` URIs, which keeps the forward
+  self-contained.
+- **Attachments are not carried over.** They sit behind a separate API and
+  would have to be downloaded and re-uploaded one at a time. The forward lists
+  their filenames instead, so nothing goes missing without you knowing — open
+  the message in Resend to get the file itself.
+
+Requests are rejected unless they carry a valid Svix signature over the raw body
+and a timestamp within five minutes, because this endpoint sends mail and an
+unsigned one would be anybody's to fire.
+
+The functions in `/api` are `.mjs` on purpose: the project has no `package.json`,
+and that extension is what makes them unambiguously ES modules.
 
 ## Not tracked in git
 
@@ -119,7 +174,7 @@ Search for `TODO` in `assets/js/translations.js` and `assets/js/main.js`:
 
 - [ ] Contact e-mail (replaces `bryllup@example.dk`, in `main.js` and `index.html`)
 - [ ] Link to the wish list (`gifts.link` in translations.js, and the href in index.html)
-- [ ] Toastmaster name and phone
+- [x] Toastmaster name and phone
 - [ ] Confirm the RSVP deadline (currently 1. marts 2027)
 - [ ] Rewrite the welcome text in your own words
 - [ ] Accommodation details: price, how guests book
