@@ -74,17 +74,19 @@ Two layers: the **interface palette** (site chrome, type, UI) and the
 | `--taupe` | `#A89A8A` | Eyebrows, secondary labels |
 | `--ink` | `#2C332D` | Body text |
 | `--muted` | `#77796F` | Secondary text |
-| `--terracotta` | `#A9503C` | **All display type**, links, primary buttons |
-| `--terracotta-deep` | `#8C4131` | Hover state |
+| `--hunter` | `#223C22` | **All display type**, links, primary buttons |
+| `--hunter-deep` | `#162816` | Hover state |
 | `--brass` | `#C08A4E` | Times, small accents |
 | `--forest` | `#34483A` | Dark sections (countdown, gifts, footer) |
 | `--sage` | `#9CAB92` | Text on dark sections |
 | `--sage-deep` | `#6E8168` | — |
 | `--lake` | `#47646E` | — |
 
-The terracotta comes from Hjejlen's brass funnel and the red pennant; it is the
-one warm note and carries all the display typography, exactly as in the
-`Drawing style.webp` reference. Use it sparingly and never as a large fill.
+The hunter green is the accent, and it carries all the display typography.
+It is darker than `--forest`, which stays the colour of the full-bleed dark
+sections, so type set in it still reads as type against them. It puts the
+site in the same woods as the weekend itself; the brass is the one warm note
+left, kept for times and small accents.
 
 ### Illustration (washed back)
 
@@ -182,7 +184,7 @@ declares in `SHAPES` how much of the wording survives at that size.
 
 | Role | Face | Notes |
 | --- | --- | --- |
-| Display | **Fraunces** (variable, `opsz` 100, `SOFT` 0, `WONK` 0) | Warm high-contrast serif. All headings, always terracotta. The italic is used for taglines and the ampersand. |
+| Display | **Fraunces** (variable, `opsz` 100, `SOFT` 0, `WONK` 0) | Warm high-contrast serif. All headings, always hunter green. The italic is used for taglines and the ampersand. |
 | Body / UI | **Jost** 300 / 400 / 500 | Geometric sans. Body copy at 300. |
 
 Conventions:

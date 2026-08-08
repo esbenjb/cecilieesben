@@ -7,13 +7,14 @@
   // Ceremony start, Danish summer time (UTC+2).
   var CEREMONY = new Date('2027-06-12T13:00:00+02:00');
 
-  // TODO: paste a Formspree / Google Form / own endpoint here. While it is
-  // empty the form falls back to opening the guest's mail app with the reply
-  // pre-filled, so the site is usable from day one.
-  var FORM_ENDPOINT = '';
+  // The serverless function in api/rsvp.js, which passes the reply on by
+  // e-mail through Resend. Emptying this puts the form back to opening the
+  // guest's own mail app, which is what happens on a plain file:// preview.
+  var FORM_ENDPOINT = '/api/rsvp';
 
-  // TODO: replace with the address replies should be sent to.
-  var CONTACT_EMAIL = 'bryllup@example.dk';
+  // The address the mailto fallback writes to. It lands at Resend and is
+  // forwarded to us both, so no personal inbox is spelled out on the page.
+  var CONTACT_EMAIL = 'info@cecilieesben.com';
 
   /* --- Schedule -------------------------------------------------------- */
 
@@ -286,6 +287,9 @@
         diet: String(fd.get('diet') || ''),
         song: String(fd.get('song') || ''),
         message: String(fd.get('message') || ''),
+        // The trap field. Guests never see it, so anything in it came from a
+        // robot; api/rsvp.js drops those without sending anything on.
+        website: String(fd.get('website') || ''),
       };
     }
 
@@ -337,8 +341,8 @@
 
       fetch(FORM_ENDPOINT, {
         method: 'POST',
-        headers: { Accept: 'application/json' },
-        body: new FormData(form),
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(data),
       })
         .then(function (response) {
           if (!response.ok) throw new Error('Request failed');
@@ -402,6 +406,53 @@
     });
   }
 
+  /* --- Warming the photographs ----------------------------------------- */
+
+  /*
+   * The first five photographs load with the page; the rest are marked lazy,
+   * which on its own means a visitor who lands and scrolls straight down runs
+   * ahead of the loader and passes a column of empty frames.
+   *
+   * So once the page itself has finished, the remaining photographs are walked
+   * in document order and quietly promoted to eager, a few at a time — the
+   * browser fetches them at low priority while nobody is waiting, and by the
+   * time anyone scrolls that far they are already there. Flipping `loading`
+   * off `lazy` is what starts the fetch; nothing else has to change.
+   *
+   * On a metered or slow connection this is exactly the wrong favour to do
+   * somebody, so there it is left alone and the images load as they are
+   * reached, the way lazy loading intends.
+   */
+  function initPhotoWarmup() {
+    var pending = Array.prototype.slice.call(document.querySelectorAll('img[loading="lazy"]'));
+    if (!pending.length) return;
+
+    var link = navigator.connection;
+    if (link && (link.saveData || /^(slow-)?2g$/.test(link.effectiveType || ''))) return;
+
+    var BATCH = 3;
+    var GAP = 250;
+
+    var soon =
+      window.requestIdleCallback ||
+      function (fn) {
+        return window.setTimeout(fn, 1);
+      };
+
+    function warmNext() {
+      if (!pending.length) return;
+      pending.splice(0, BATCH).forEach(function (img) {
+        img.fetchPriority = 'low';
+        img.loading = 'eager';
+      });
+      window.setTimeout(function () {
+        soon(warmNext);
+      }, GAP);
+    }
+
+    soon(warmNext);
+  }
+
   /* --- Boot ------------------------------------------------------------ */
 
   function init() {
@@ -420,6 +471,10 @@
         window.print();
       });
     }
+
+    // Only once everything the page actually needs is in.
+    if (document.readyState === 'complete') initPhotoWarmup();
+    else window.addEventListener('load', initPhotoWarmup);
   }
 
   if (document.readyState === 'loading') {

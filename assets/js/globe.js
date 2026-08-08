@@ -18,7 +18,9 @@
   var LAND = '#93a689';
   var LAND_EDGE = 'rgba(46, 63, 50, 0.55)';
   var GRATICULE = 'rgba(251, 247, 239, 0.22)';
-  var PIN = '#a9503c';
+  // Brass rather than the hunter green of the rest of the site: the pin sits on
+  // green land, and a green pin on it is a pin nobody can find.
+  var PIN = '#c08a4e';
   var PIN_IDLE = 'rgba(251, 247, 239, 0.75)';
 
   /* --- Maths ------------------------------------------------------------ */
@@ -451,7 +453,16 @@
       spots.forEach(function (spot) {
         var img = spot.el.querySelector('img');
         var text = names(spot.el);
-        if (img) spot.el.setAttribute('data-full', img.getAttribute('src'));
+        if (img) {
+          var src = img.getAttribute('src');
+          // The grid is served the small copies in par/grid; the lightbox opens
+          // the full-size original that sits alongside them.
+          spot.el.setAttribute('data-full', src.replace('/par/grid/', '/par/'));
+          // The carousel mounts each photograph on a wash of its own colours;
+          // style.css does the blurring, but only the markup knows the source.
+          // The small copy is plenty for something this out of focus.
+          spot.el.style.setProperty('--shot', 'url("' + src + '")');
+        }
         spot.el.setAttribute(
           'data-caption',
           text.country ? text.place + ' · ' + text.country : text.place
@@ -468,17 +479,131 @@
       turnTo(spots[index]);
     }
 
+    /* --- Swiping --------------------------------------------------------- */
+
+    /*
+     * Below the breakpoint in style.css the grid becomes a snap carousel.
+     * There is nothing to hover with there, so the swipe itself does the
+     * choosing: whichever photograph is nearest the middle is the selected
+     * one. The breakpoint is repeated here because that is the only way for
+     * the script to know which of the two layouts it is looking at.
+     */
+    var grid = root.querySelector('[data-gallery]');
+    var narrow = window.matchMedia('(max-width: 61.99rem)');
+
+    function isCarousel() {
+      return !!grid && narrow.matches;
+    }
+
+    // The card whose middle sits closest to the middle of the viewport.
+    function nearestToCentre() {
+      var box = grid.getBoundingClientRect();
+      var mid = box.left + box.width / 2;
+      var best = active;
+      var bestGap = Infinity;
+
+      spots.forEach(function (spot, index) {
+        var r = spot.el.getBoundingClientRect();
+        var gap = Math.abs(r.left + r.width / 2 - mid);
+        if (gap < bestGap) {
+          bestGap = gap;
+          best = index;
+        }
+      });
+
+      return best;
+    }
+
+    function centre(index, smooth) {
+      if (!isCarousel()) return;
+      var r = spots[index].el.getBoundingClientRect();
+      var box = grid.getBoundingClientRect();
+      var delta = r.left + r.width / 2 - (box.left + box.width / 2);
+      if (Math.abs(delta) < 1) return;
+
+      if (grid.scrollBy) {
+        grid.scrollBy({ left: delta, behavior: reduced || !smooth ? 'auto' : 'smooth' });
+      } else {
+        grid.scrollLeft += delta;
+      }
+    }
+
+    if (grid) {
+      var pending = null;
+
+      grid.addEventListener(
+        'scroll',
+        function () {
+          if (!isCarousel()) return;
+          if (pending) window.cancelAnimationFrame(pending);
+          pending = window.requestAnimationFrame(function () {
+            pending = null;
+            select(nearestToCentre());
+          });
+        },
+        { passive: true }
+      );
+
+      // Coming back from a wide window, the selected card is wherever it was
+      // left; bring it back to the middle so the two layouts agree.
+      var onBreakpoint = function () {
+        if (isCarousel()) centre(active, false);
+      };
+      if (narrow.addEventListener) narrow.addEventListener('change', onBreakpoint);
+      else if (narrow.addListener) narrow.addListener(onBreakpoint);
+    }
+
     spots.forEach(function (spot, index) {
       spot.el.addEventListener('mouseenter', function () {
+        // In the carousel the scroll position decides, not the pointer — a tap
+        // would otherwise pick a card before it has come round to the middle.
+        if (isCarousel()) return;
         select(index);
       });
       spot.el.addEventListener('focus', function () {
         select(index);
+        centre(index, true);
       });
-      spot.el.addEventListener('click', function () {
+      spot.el.addEventListener('click', function (event) {
+        // Tapping a neighbour means "let me see that one", not "open it" —
+        // the lightbox would otherwise fill the screen with a photograph the
+        // visitor has only seen a sliver of. main.js listens on the list
+        // around us, so stopping the event here is enough to hold it back.
+        if (isCarousel() && index !== active) {
+          event.preventDefault();
+          event.stopPropagation();
+          select(index);
+          centre(index, true);
+          return;
+        }
         select(index);
       });
     });
+
+    /* --- Explore with us -------------------------------------------------- */
+
+    // Somewhere else, at random, but never where we already are: pick from the
+    // other places only, then step over the current one to land on it.
+    var shuffle = root.querySelector('[data-globe-shuffle]');
+    if (shuffle) {
+      shuffle.addEventListener('click', function () {
+        if (spots.length < 2) return;
+        var next = Math.floor(Math.random() * (spots.length - 1));
+        if (next >= active) next += 1;
+
+        select(next);
+
+        // Show the photograph as well as the globe, wherever it happens to be.
+        if (isCarousel()) {
+          centre(next, true);
+        } else {
+          spots[next].el.scrollIntoView({
+            block: 'center',
+            behavior: reduced ? 'auto' : 'smooth',
+          });
+        }
+      });
+    }
 
     /* --- Sizing ---------------------------------------------------------- */
 
