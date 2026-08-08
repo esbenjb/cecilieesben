@@ -108,7 +108,7 @@ one environment variable in the Vercel project:
 | `RESEND_API_KEY` | yes | — |
 | `RESEND_WEBHOOK_SECRET` | for `/api/inbound` | — |
 | `RSVP_TO` | no | `bageresben@gmail.com,ceciliegyldenvang@gmail.com` |
-| `RSVP_FROM` | no | `Bryllupssvar <svar@cecilieesben.com>` |
+| `RSVP_FROM` | no | `Cecilie & Esben <info@cecilieesben.com>` |
 
 `RSVP_TO` is a comma-separated list, and both functions send to all of it — so
 setting it to a single address in Vercel would quietly cut the other person out
@@ -123,14 +123,20 @@ The e-mail's reply-to is the guest's own address, so answering in the inbox
 writes back to them. The form also carries a hidden `website` field that no
 guest can see; anything that fills it in is treated as a robot and dropped.
 
-There is no endpoint when the site is opened straight off disk, so a `file://`
-preview falls back to opening the guest's mail app with the reply pre-filled.
-That fallback is also what an emptied `FORM_ENDPOINT` in `assets/js/main.js`
-restores.
+Posting to `/api/rsvp` is the only way a reply leaves the page. There is no
+mailto fallback: a guest fills the form in, presses send, and is done. If the
+endpoint is unreachable the form says so rather than handing the visitor their
+own mail client to finish the job, which is not answering an invitation.
 
-Also in `main.js`: `CONTACT_EMAIL`, the address that fallback writes to, and
-`CEREMONY`, the moment the countdown counts towards (12 June 2027 at 13.00,
-Danish summer time).
+That also means the form only works where the function exists. Opened straight
+off disk over `file://`, or on a plain static server, sending will fail.
+
+`main.js` is linked as `main.js?v=2`. Bump that number whenever the file
+changes in a way a returning visitor must not miss, so nobody keeps running a
+cached copy of the old one.
+
+Also in `main.js`: `CEREMONY`, the moment the countdown counts towards
+(12 June 2027 at 13.00, Danish summer time).
 
 ## Questions inbox
 

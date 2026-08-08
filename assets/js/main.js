@@ -7,14 +7,14 @@
   // Ceremony start, Danish summer time (UTC+2).
   var CEREMONY = new Date('2027-06-12T13:00:00+02:00');
 
-  // The serverless function in api/rsvp.js, which passes the reply on by
-  // e-mail through Resend. Emptying this puts the form back to opening the
-  // guest's own mail app, which is what happens on a plain file:// preview.
+  // The serverless function in api/rsvp.mjs, which sends the reply on by
+  // e-mail through Resend. This is the only way a reply leaves the page: the
+  // guest fills the form in, presses send, and is done. There is deliberately
+  // no mailto fallback any more. Handing somebody their own mail client to
+  // finish the job is not answering an invitation, it is homework, and a
+  // fallback that only fires when something is broken is a fallback nobody
+  // ever sees working.
   var FORM_ENDPOINT = '/api/rsvp';
-
-  // The address the mailto fallback writes to. It lands at Resend and is
-  // forwarded to us both, so no personal inbox is spelled out on the page.
-  var CONTACT_EMAIL = 'info@cecilieesben.com';
 
   /* --- Schedule -------------------------------------------------------- */
 
@@ -293,33 +293,6 @@
       };
     }
 
-    function asPlainText(data) {
-      return [
-        'Navn: ' + data.name,
-        'E-mail: ' + data.email,
-        'Telefon: ' + (data.phone || '-'),
-        'Deltager: ' + (data.attending === 'yes' ? 'Ja' : 'Nej'),
-        'Dage: ' + (data.days.join(', ') || '-'),
-        'Antal gæster: ' + (data.guests || '-'),
-        'Overnatning: ' + (data.overnight.join(', ') || '-'),
-        'Mad/allergi: ' + (data.diet || '-'),
-        'Sangønske: ' + (data.song || '-'),
-        'Hilsen: ' + (data.message || '-'),
-      ].join('\n');
-    }
-
-    function sendByMail(data) {
-      var href =
-        'mailto:' +
-        CONTACT_EMAIL +
-        '?subject=' +
-        encodeURIComponent('Svar på invitation – ' + data.name) +
-        '&body=' +
-        encodeURIComponent(asPlainText(data));
-      window.location.href = href;
-      setStatus('rsvp.success.mail', 'success');
-    }
-
     form.addEventListener('submit', function (event) {
       event.preventDefault();
       clearStatus();
@@ -328,11 +301,6 @@
       var error = validate(data);
       if (error) {
         setStatus(error, 'error');
-        return;
-      }
-
-      if (!FORM_ENDPOINT) {
-        sendByMail(data);
         return;
       }
 
