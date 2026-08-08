@@ -30,12 +30,13 @@ window.TRANSLATIONS = {
     'nav.gifts': 'Gaver',
     'nav.rsvp': 'Svar',
     'nav.home': 'Forsiden',
+    'lightbox.close': 'Luk billedet',
 
     'hero.dateline': '— 12. juni 2027 —',
     'hero.tagline': 'vi skal giftes!',
     'hero.venue': 'Gl. Skovridergaard · Silkeborg · 11.–13. juni',
     'hero.scene.alt':
-      'Akvarel af Silkeborgsøerne med skov, sø og hjuldamperen Hjejlen',
+      'Akvarel af Silkeborgsøerne med skovklædte odder, der spejler sig i det blanke vand',
     'hero.cta': 'Svar på invitationen',
 
     'countdown.title': 'Der er ikke længe til',
@@ -46,8 +47,6 @@ window.TRANSLATIONS = {
     'countdown.today': 'I dag er dagen!',
     'countdown.past': 'Tak fordi I fejrede dagen med os',
 
-    'statement.lead':
-      'Vi bliver gift på Gl. Skovridergaard ved Silkeborg — en gammel skovridergård fra 1798 midt i Søhøjlandet.',
     'welcome.eyebrow': 'Velkommen',
     'welcome.body':
       'Efter mange gode år sammen siger vi endelig ja til hinanden — og vi kan ikke forestille os at gøre det uden jer. Vi har lejet hele Gl. Skovridergaard en hel weekend, så vi kan nå at se jer alle sammen, spise godt, danse længe og sove ud bagefter.', // TODO: skriv jeres egen velkomsttekst
@@ -62,10 +61,14 @@ window.TRANSLATIONS = {
     'program.fri.day': 'Fredag',
     'program.fri.date': '11. juni 2027',
     'program.fri.title': 'Ankomst & grill',
-    'program.fri.1.time': '19.00–21.00',
-    'program.fri.1.title': 'Grillen er tændt',
+    'program.fri.1.time': '17.00',
+    'program.fri.1.title': 'Ankomst & fredagsdrink',
     'program.fri.1.text':
-      'Ingen bordplan, ingen taler, ingen faste tidspunkter. Grillen står klar i to timer — kom, når det passer jer, og spis når I bliver sultne.',
+      'Der er åbent fra kl. 17. Tjek ind på værelset, få en drink i hånden, og spil med i haven når I har lyst.',
+    'program.fri.2.time': '19.00–21.00',
+    'program.fri.2.title': 'Grillen er tændt',
+    'program.fri.2.text':
+      'Aftensmad fra grillen — men ingen siddende middag. Ingen bordplan, ingen taler, ingen faste tidspunkter: grillen står klar i to timer, så kig forbi når det passer jer, og spis når I bliver sultne.',
     'program.fri.note': 'I er velkomne fra fredag, så tag gerne hele weekenden med.',
 
     'program.sat.day': 'Lørdag',
@@ -104,6 +107,10 @@ window.TRANSLATIONS = {
     'program.sun.1.time': '09.00–11.00',
     'program.sun.1.title': 'Morgenmad',
     'program.sun.1.text': 'Sidste fælles bord, før vi siger farvel.',
+    'program.sun.2.time': 'Senest 13.00',
+    'program.sun.2.title': 'Udtjekning',
+    'program.sun.2.text':
+      'Værelserne skal være tømt senest kl. 13. Gå ikke uden at give os et kram.',
     'program.sun.note':
       'Ingen faste programpunkter. Sov længe, spis godt, og tag afsked i jeres eget tempo.',
 
@@ -168,8 +175,15 @@ window.TRANSLATIONS = {
     'venuepage.lead':
       'Vi holder hele bryllupsweekenden på Gl. Skovridergaard lige uden for Silkeborg. Gården går tilbage til 1798 og ligger i hjertet af det midtjyske søhøjland — med sin egen park, Silkeborg-skovene som nabo og Almindsø inden for gåafstand. I dag er det et hotel og konferencecenter, så alle gæster kan sove samme sted, som vi fejrer.',
     'venuepage.gallery.title': 'Billeder fra stedet',
+    'venuepage.shot.1': 'Hovedbygningen',
+    'venuepage.shot.2': 'Gården i parken',
+    'venuepage.shot.3': 'Havesalen',
+    'venuepage.shot.4': 'Restauranten',
+    'venuepage.shot.5': 'Værelserne',
+    'venuepage.shot.6': 'Ringene i Almindsø',
+    'venuepage.shot.7': 'Vindfløjen fra 1798',
     'venuepage.gallery.note':
-      'Flere billeder følger, når vi selv har været på besøg igen.',
+      'Billederne er hotellets egne. Flere følger, når vi selv har været på besøg igen.',
     'venuepage.facts.title': 'Kort fortalt',
     'venuepage.fact.1.label': 'Adresse',
     'venuepage.fact.1.value': 'Marienlundsvej 36, 8600 Silkeborg',
@@ -193,17 +207,72 @@ window.TRANSLATIONS = {
     'us.eyebrow': 'Os to',
     'us.title': 'Vejen hertil',
     'us.intro':
-      'Vi har rejst, spist, vandret og sovet i telt sammen i mange år. Her er et par nedslag undervejs — og den 12. juni samler vi jer alle sammen ét sted.',
-    'us.1.alt': 'Cecilie og Esben sidder på en mur med udsigt over en by',
-    'us.2.alt': 'Cecilie og Esben spiser aftensmad ved vandet i solnedgangen',
-    'us.3.alt': 'Cecilie og Esben ved morgenbordet med et dannebrogsflag',
-    'us.4.alt': 'Cecilie og Esben på en hyttealtan med et par øl',
-    'us.5.alt': 'Cecilie og Esben i et telt',
+      'Vi har rejst, spist, vandret og sovet i telt sammen i mange år. Her er tolv nedslag undervejs — og den 12. juni samler vi jer alle sammen ét sted.',
+
+    'travel.hint': 'Hold musen over et billede for at se hvor det er taget — og klik for at se det stort.',
+    'travel.island.place': 'Jökulsárlón',
+    'travel.island.country': 'Island',
+    'travel.island.alt':
+      'Cecilie og Esben foran isbjergene i gletsjerlagunen Jökulsárlón',
+    'travel.budapest.place': 'Budapest',
+    'travel.budapest.country': 'Ungarn',
+    'travel.budapest.alt':
+      'Cecilie og Esben på en mur med udsigt over Donau og Budapest',
+    'travel.kitzbuhel.place': 'Kitzbühel',
+    'travel.kitzbuhel.country': 'Østrig',
+    'travel.kitzbuhel.alt':
+      'Cecilie og Esben på en solbeskinnet hytteterrasse med hver sin fadøl',
+    'travel.monza.place': 'Monza',
+    'travel.monza.country': 'Italien',
+    'travel.monza.alt':
+      'Cecilie og Esben på tribunen til Formel 1 på Monza',
+    'travel.zanzibar.place': 'Nungwi',
+    'travel.zanzibar.country': 'Zanzibar',
+    'travel.zanzibar.alt':
+      'Cecilie og Esben ved morgenbordet med et dannebrogsflag på stranden i Nungwi',
+    'travel.uganda.place': 'Murchison Falls',
+    'travel.uganda.country': 'Uganda',
+    'travel.uganda.alt':
+      'Cecilie og Esben på savannen med giraffer i baggrunden',
+    'travel.thailand.place': 'Chiang Mai',
+    'travel.thailand.country': 'Thailand',
+    'travel.thailand.alt':
+      'Cecilie og Esben i vandet ved siden af en elefant',
+    'travel.teotihuacan.place': 'Teotihuacán',
+    'travel.teotihuacan.country': 'Mexico',
+    'travel.teotihuacan.alt':
+      'Cecilie og Esben i en luftballon over Teotihuacán ved solopgang',
+    'travel.galapagos.place': 'Galápagos',
+    'travel.galapagos.country': 'Ecuador',
+    'travel.galapagos.alt':
+      'Cecilie og Esben spiser aftensmad ved vandet i solnedgangen',
+    'travel.brasilien.place': 'Rio de Janeiro',
+    'travel.brasilien.country': 'Brasilien',
+    'travel.brasilien.alt':
+      'Cecilie og Esben foran et vægmaleri med ordet Brasil',
+    'travel.patagonien.place': 'El Chaltén',
+    'travel.patagonien.country': 'Argentina',
+    'travel.patagonien.alt':
+      'Cecilie og Esben med bjerget Fitz Roy i baggrunden',
+    'travel.torres.place': 'Torres del Paine',
+    'travel.torres.country': 'Chile',
+    'travel.torres.alt':
+      'Cecilie og Esben i teltet på en træplatform i skoven',
 
     'around.eyebrow': 'Søhøjlandet',
     'around.title': 'Landet omkring os',
     'around.intro':
-      'Gården ligger midt i det, folk kører langt for at se. Her er tre af vores yndlingssteder inden for en kort tur fra Gl. Skovridergaard.',
+      'Gården ligger midt i det, folk kører langt for at se. Her er fem af vores yndlingssteder inden for en kort tur fra Gl. Skovridergaard.',
+    'fig.soerne.title': 'Silkeborgsøerne',
+    'fig.soerne.text':
+      'Ni søer på stribe langs Gudenåen, fra byen og hele vejen ud til Himmelbjerget. Lej en kano, hop i fra en badebro, eller sæt jer på bredden og se på — vandet er aldrig langt væk.',
+    'fig.soerne.alt':
+      'Akvarel af Silkeborgsøerne med skovklædte odder, der spejler sig i det blanke vand',
+    'fig.himmelbjerget.title': 'Himmelbjerget',
+    'fig.himmelbjerget.text':
+      'Danmarks mest berømte bakke — 147 meter, med Julsø bredt ud nedenfor. Tårnet på toppen er fra 1875, og sidst på sommeren blomstrer lyngen hele vejen rundt om det.',
+    'fig.himmelbjerget.alt':
+      'Akvarel af Himmelbjergtårnet med udsigt ud over skoven og Julsø',
     'fig.hjejlen.title': 'Hjejlen',
     'fig.hjejlen.text':
       'Verdens ældste kulfyrede hjuldamper har sejlet fra Silkeborg til Himmelbjerget siden 1861. Turen tager halvanden time — og er stadig den smukkeste måde at se søerne på.',
@@ -225,13 +294,13 @@ window.TRANSLATIONS = {
       'Vi har reserveret værelser på Gl. Skovridergaard til alle weekendgæster. Skriv i formularen, hvilke nætter I ønsker, så fordeler vi værelserne.', // TODO: pris og booking-detaljer
     'practical.2.title': 'Transport',
     'practical.2.body':
-      'Der er ca. 45 minutter i bil fra Aarhus og 2 timer fra København. Silkeborg Station ligger 20 minutters gang væk — sig til, hvis I skal hentes.',
+      'I kan køre hele vejen til gården — der er ca. 45 minutter i bil fra Aarhus. Nærmeste lufthavn er Billund, og derfra er der også ca. 45 minutter i bil. Kommer I med toget, så stå af på Silkeborg Station og sig til — så henter vi jer.',
     'practical.3.title': 'Dresscode',
     'practical.3.body':
       'Festligt tøj. Vielsen og receptionen foregår udendørs på græs, så tag hensyn i valget af sko — og husk et lag til aftenen i parken.',
-    'practical.4.title': 'Børn',
+    'practical.4.title': 'Kosthensyn',
     'practical.4.body':
-      'Børn er meget velkomne hele weekenden. Skriv gerne antal og alder i formularen, så vi kan planlægge maden og aktiviteterne.', // TODO: bekræft
+      'Har I allergier, eller er der noget I ikke spiser, så skriv det i formularen. Køkkenet laver gerne alternativer — bare vi ved det i god tid.',
     'practical.5.title': 'Taler & indslag',
     'practical.5.body':
       'Vil I holde tale eller lave et indslag, så kontakt vores toastmaster i god tid.', // TODO: indsæt toastmaster
@@ -243,11 +312,9 @@ window.TRANSLATIONS = {
     'gifts.eyebrow': 'Gaver',
     'gifts.title': 'Ønskeseddel',
     'gifts.body':
-      'Den største gave er, at I kommer og fejrer dagen med os. Har I alligevel lyst til at give noget, sparer vi sammen til bryllupsrejsen — et bidrag, stort som småt, gør os meget glade.',
-    'gifts.account.label': 'Reg. og kontonummer',
-    'gifts.account.value': '0000 · 0000000000', // TODO: indsæt kontonummer
-    'gifts.mobilepay.label': 'MobilePay',
-    'gifts.mobilepay.value': '00000', // TODO: indsæt MobilePay-nummer
+      'Den største gave er, at I kommer og fejrer dagen med os. Har I alligevel lyst til at give noget, laver vi en ønskeseddel, som kommer til at ligge her.',
+    'gifts.link': 'Se ønskesedlen',
+    'gifts.note': 'Ønskesedlen er på vej — vi lægger den op i god tid inden bryllupet.',
 
     'rsvp.eyebrow': 'Svar udbedes',
     'rsvp.title': 'Kommer I?',
@@ -316,12 +383,13 @@ window.TRANSLATIONS = {
     'nav.gifts': 'Gifts',
     'nav.rsvp': 'RSVP',
     'nav.home': 'Home',
+    'lightbox.close': 'Close the picture',
 
     'hero.dateline': '— 12 June 2027 —',
     'hero.tagline': 'are getting married!',
     'hero.venue': 'Gl. Skovridergaard · Silkeborg · 11–13 June',
     'hero.scene.alt':
-      'Watercolour of the Silkeborg lakes with forest, water and the paddle steamer Hjejlen',
+      'Watercolour of the Silkeborg lakes, wooded headlands mirrored in still water',
     'hero.cta': 'RSVP',
 
     'countdown.title': 'Counting down',
@@ -332,8 +400,6 @@ window.TRANSLATIONS = {
     'countdown.today': 'Today is the day!',
     'countdown.past': 'Thank you for celebrating with us',
 
-    'statement.lead':
-      'We are getting married at Gl. Skovridergaard near Silkeborg — a forester’s estate from 1798 in the middle of the Danish Lake District.',
     'welcome.eyebrow': 'Welcome',
     'welcome.body':
       "After many good years together we are finally saying yes to each other — and we cannot imagine doing it without you. We have booked all of Gl. Skovridergaard for an entire weekend, so there is time to see everyone, eat well, dance late and sleep in afterwards.",
@@ -348,10 +414,14 @@ window.TRANSLATIONS = {
     'program.fri.day': 'Friday',
     'program.fri.date': '11 June 2027',
     'program.fri.title': 'Arrival & barbecue',
-    'program.fri.1.time': '19.00–21.00',
-    'program.fri.1.title': 'The grill is on',
+    'program.fri.1.time': '17.00',
+    'program.fri.1.title': 'Arrival & a Friday drink',
     'program.fri.1.text':
-      'No seating plan, no speeches, no fixed times. The grill runs for two hours — drop in when it suits you and eat when you get hungry.',
+      'The doors are open from 5pm. Check in, get a drink in your hand, and join a game in the garden whenever you feel like it.',
+    'program.fri.2.time': '19.00–21.00',
+    'program.fri.2.title': 'The grill is on',
+    'program.fri.2.text':
+      'Dinner off the grill — but no sit-down dinner. No seating plan, no speeches, no fixed times: the grill runs for two hours, so drop in when it suits you and eat when you get hungry.',
     'program.fri.note': 'You are welcome from Friday, so do take the whole weekend with us.',
 
     'program.sat.day': 'Saturday',
@@ -390,6 +460,10 @@ window.TRANSLATIONS = {
     'program.sun.1.time': '09.00–11.00',
     'program.sun.1.title': 'Breakfast',
     'program.sun.1.text': 'One last table together before we say goodbye.',
+    'program.sun.2.time': 'By 13.00',
+    'program.sun.2.title': 'Check-out',
+    'program.sun.2.text':
+      'Rooms need to be empty by 1pm. Do not leave without giving us a hug.',
     'program.sun.note':
       'Nothing scheduled. Sleep in, eat well, and say your goodbyes at your own pace.',
 
@@ -454,7 +528,15 @@ window.TRANSLATIONS = {
     'venuepage.lead':
       'The whole wedding weekend takes place at Gl. Skovridergaard just outside Silkeborg. The estate dates back to 1798 and sits in the heart of the mid-Jutland lake highlands — with its own park, the Silkeborg forests next door and Lake Almindsø within walking distance. Today it is a hotel and conference centre, so every guest can sleep in the same place we celebrate.',
     'venuepage.gallery.title': 'Pictures from the venue',
-    'venuepage.gallery.note': 'More pictures will follow after our next visit.',
+    'venuepage.shot.1': 'The main house',
+    'venuepage.shot.2': 'The house in the park',
+    'venuepage.shot.3': 'The garden room',
+    'venuepage.shot.4': 'The restaurant',
+    'venuepage.shot.5': 'The rooms',
+    'venuepage.shot.6': 'The rings in Almindsø',
+    'venuepage.shot.7': 'The 1798 weather vane',
+    'venuepage.gallery.note':
+      'The photographs are the hotel’s own. More will follow after our next visit.',
     'venuepage.facts.title': 'In brief',
     'venuepage.fact.1.label': 'Address',
     'venuepage.fact.1.value': 'Marienlundsvej 36, 8600 Silkeborg, Denmark',
@@ -475,20 +557,85 @@ window.TRANSLATIONS = {
       'The weekend is long enough for more than a party. Walk in the forest, swim in Lake Almindsø, rent a bike through the lake highlands, or visit Museum Jorn and Silkeborg Bad Art Centre, both a few minutes away.',
     'venuepage.back': 'Back to the front page',
 
+    'travel.hint': 'Hover a photograph to see where it was taken — click to open it.',
+    'travel.island.place': 'Jökulsárlón',
+    'travel.island.country': 'Iceland',
+    'travel.island.alt':
+      'Cecilie and Esben in front of the icebergs in the Jökulsárlón glacier lagoon',
+    'travel.budapest.place': 'Budapest',
+    'travel.budapest.country': 'Hungary',
+    'travel.budapest.alt':
+      'Cecilie and Esben on a wall overlooking the Danube and Budapest',
+    'travel.kitzbuhel.place': 'Kitzbühel',
+    'travel.kitzbuhel.country': 'Austria',
+    'travel.kitzbuhel.alt':
+      'Cecilie and Esben on a sunny mountain hut terrace with a beer each',
+    'travel.monza.place': 'Monza',
+    'travel.monza.country': 'Italy',
+    'travel.monza.alt':
+      'Cecilie and Esben in the grandstand at the Monza Formula 1 race',
+    'travel.zanzibar.place': 'Nungwi',
+    'travel.zanzibar.country': 'Zanzibar',
+    'travel.zanzibar.alt':
+      'Cecilie and Esben at the breakfast table with a Danish flag on the beach in Nungwi',
+    'travel.uganda.place': 'Murchison Falls',
+    'travel.uganda.country': 'Uganda',
+    'travel.uganda.alt':
+      'Cecilie and Esben on the savannah with giraffes behind them',
+    'travel.thailand.place': 'Chiang Mai',
+    'travel.thailand.country': 'Thailand',
+    'travel.thailand.alt':
+      'Cecilie and Esben in the water beside an elephant',
+    'travel.teotihuacan.place': 'Teotihuacán',
+    'travel.teotihuacan.country': 'Mexico',
+    'travel.teotihuacan.alt':
+      'Cecilie and Esben in a hot air balloon above Teotihuacán at sunrise',
+    'travel.galapagos.place': 'Galápagos',
+    'travel.galapagos.country': 'Ecuador',
+    'travel.galapagos.alt':
+      'Cecilie and Esben having dinner by the water at sunset',
+    'travel.brasilien.place': 'Rio de Janeiro',
+    'travel.brasilien.country': 'Brazil',
+    'travel.brasilien.alt':
+      'Cecilie and Esben in front of a mural reading Brasil',
+    'travel.patagonien.place': 'El Chaltén',
+    'travel.patagonien.country': 'Argentina',
+    'travel.patagonien.alt':
+      'Cecilie and Esben with Mount Fitz Roy behind them',
+    'travel.torres.place': 'Torres del Paine',
+    'travel.torres.country': 'Chile',
+    'travel.torres.alt':
+      'Cecilie and Esben in their tent on a wooden platform in the forest',
+
     'us.eyebrow': 'The two of us',
     'us.title': 'How we got here',
     'us.intro':
-      'We have travelled, eaten, hiked and slept in tents together for many years. Here are a few moments along the way — and on 12 June we gather all of you in one place.',
-    'us.1.alt': 'Cecilie and Esben sitting on a wall overlooking a town',
-    'us.2.alt': 'Cecilie and Esben having dinner by the water at sunset',
-    'us.3.alt': 'Cecilie and Esben at the breakfast table with a Danish flag',
-    'us.4.alt': 'Cecilie and Esben on a cabin terrace with a couple of beers',
-    'us.5.alt': 'Cecilie and Esben in a tent',
+      'We have travelled, eaten, hiked and slept in tents together for many years. Here are twelve moments along the way — and on 12 June we gather all of you in one place.',
 
     'around.eyebrow': 'The Lake District',
     'around.title': 'The country around us',
     'around.intro':
-      'The estate sits in the middle of what people drive a long way to see. Here are three of our favourite places within a short trip of Gl. Skovridergaard.',
+      'The estate sits in the middle of what people drive a long way to see. Here are five of our favourite places within a short trip of Gl. Skovridergaard.',
+    'fig.soerne.title': 'Silkeborgsøerne',
+    'fig.soerne.text':
+      'Ni søer på stribe langs Gudenåen, fra byen og hele vejen ud til Himmelbjerget. Lej en kano, hop i fra en badebro, eller sæt jer på bredden og se på — vandet er aldrig langt væk.',
+    'fig.soerne.alt':
+      'Akvarel af Silkeborgsøerne med skovklædte odder, der spejler sig i det blanke vand',
+    'fig.himmelbjerget.title': 'Himmelbjerget',
+    'fig.himmelbjerget.text':
+      'Danmarks mest berømte bakke — 147 meter, med Julsø bredt ud nedenfor. Tårnet på toppen er fra 1875, og sidst på sommeren blomstrer lyngen hele vejen rundt om det.',
+    'fig.himmelbjerget.alt':
+      'Akvarel af Himmelbjergtårnet med udsigt ud over skoven og Julsø',
+    'fig.soerne.title': 'The Silkeborg lakes',
+    'fig.soerne.text':
+      'Nine lakes strung along the Gudenå, from the town all the way out to Himmelbjerget. Rent a canoe, jump in off a jetty, or just sit on the bank and watch — the water is never far away.',
+    'fig.soerne.alt':
+      'Watercolour of the Silkeborg lakes, wooded headlands mirrored in still water',
+    'fig.himmelbjerget.title': 'Himmelbjerget',
+    'fig.himmelbjerget.text':
+      'Denmark’s most famous hill — 147 metres, with Julsø spread out below. The tower on top dates from 1875, and late in the summer the heather flowers all around it.',
+    'fig.himmelbjerget.alt':
+      'Watercolour of the Himmelbjerget tower looking out over the forest and Julsø',
     'fig.hjejlen.title': 'Hjejlen',
     'fig.hjejlen.text':
       'The world’s oldest coal-fired paddle steamer has sailed from Silkeborg to Himmelbjerget since 1861. The trip takes an hour and a half — and is still the loveliest way to see the lakes.',
@@ -511,13 +658,13 @@ window.TRANSLATIONS = {
       'We have reserved rooms at Gl. Skovridergaard for everyone staying the weekend. Tell us in the form which nights you would like, and we will allocate the rooms.',
     'practical.2.title': 'Getting there',
     'practical.2.body':
-      'About 45 minutes by car from Aarhus and 2 hours from Copenhagen. Silkeborg station is a 20-minute walk away — let us know if you need a lift.',
+      'You can drive all the way — about 45 minutes from Aarhus. The nearest airport is Billund, and that is also about a 45-minute drive. If you come by train, get off at Silkeborg Station and tell us — we will come and collect you.',
     'practical.3.title': 'Dress code',
     'practical.3.body':
       'Festive. The ceremony and reception are outdoors on grass, so choose your shoes accordingly — and bring a layer for the evening in the park.',
-    'practical.4.title': 'Children',
+    'practical.4.title': 'Dietary needs',
     'practical.4.body':
-      'Children are very welcome all weekend. Please note how many and their ages in the form so we can plan food and activities.',
+      'If you have allergies, or there is something you do not eat, put it in the form. The kitchen is happy to make alternatives — we just need to know in good time.',
     'practical.5.title': 'Speeches & performances',
     'practical.5.body':
       'If you would like to give a speech or perform something, please contact our toastmaster in good time.',
@@ -529,11 +676,9 @@ window.TRANSLATIONS = {
     'gifts.eyebrow': 'Gifts',
     'gifts.title': 'Wish list',
     'gifts.body':
-      'The greatest gift is that you come and celebrate the day with us. If you would still like to give something, we are saving up for our honeymoon — a contribution of any size would make us very happy.',
-    'gifts.account.label': 'Bank details',
-    'gifts.account.value': '0000 · 0000000000',
-    'gifts.mobilepay.label': 'MobilePay',
-    'gifts.mobilepay.value': '00000',
+      'The greatest gift is that you come and celebrate the day with us. If you would still like to give something, we are putting together a wish list, and it will appear here.',
+    'gifts.link': 'See the wish list',
+    'gifts.note': 'The wish list is on its way — we will put it up in good time before the wedding.',
 
     'rsvp.eyebrow': 'RSVP',
     'rsvp.title': 'Will you be there?',

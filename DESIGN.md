@@ -101,7 +101,7 @@ hull / ink     #4A5157  #3A4247
 ```
 
 Every colour above is deliberately one step duller than reality. If a new asset
-looks brighter than `assets/img/illustrations/hjejlen.svg`, it is wrong.
+looks brighter than `assets/img/illustrations/hjejlen.jpg`, it is wrong.
 
 ---
 
@@ -218,10 +218,11 @@ Figma as-is).
 
 | File | Size | What it is |
 | --- | --- | --- |
-| `illustrations/silkeborg-panorama.svg` | 1600 × 560 | Hero band — the lakes, forest shoreline, Hjejlen, a suggestion of the estate on the far bank |
-| `illustrations/hjejlen.svg` | 720 × 400 | Hjejlen in profile: black hull, white canopy deck, brass funnel, paddle box, Dannebrog, coal smoke |
-| `illustrations/ringene.svg` | 720 × 480 | Østre Søbad at Almindsø from above — the two interlocking timber rings, ripple circles around the swimmers |
-| `illustrations/sindbjerg-stoubjerg.svg` | 1600 × 620 | The heather hills above Sejs-Svejbæk — heather bank in front, grass hollows, sandy path, pine ridge, summer cumulus |
+| `illustrations/soerne.jpg` | 1401 × 686 | Hero band — the lakes, forest shoreline, Hjejlen, a suggestion of the estate on the far bank |
+| `illustrations/hjejlen.jpg` | 1401 × 686 | Hjejlen in profile: black hull, white canopy deck, brass funnel, paddle box, Dannebrog, coal smoke |
+| `illustrations/badebroen.jpg` | 1401 × 686 | Østre Søbad at Almindsø from above — the two interlocking timber rings, ripple circles around the swimmers |
+| `illustrations/himmelbjerget.jpg` | 1600 × 939 | The tower on Himmelbjerget above the lakes — washed behind "Landet omkring os" |
+| `illustrations/sindbjerg-stoubjerg.jpg` | 1401 × 686 | The heather hills above Sejs-Svejbæk — heather bank in front, grass hollows, sandy path, pine ridge, summer cumulus |
 | `monogram.svg` | 260 × 76 | Fine-line pen sketch of the estate between trees, above water. Single stroke weight, no shading. Rendered as a CSS mask so it takes the surrounding text colour |
 
 ### The ring motif
@@ -317,7 +318,7 @@ accurate.
 - [ ] Cream paper visible at the edges; wash fades out rather than stopping
 - [ ] Low horizon, empty space above for type
 - [ ] Paper grain at ~10 %
-- [ ] Sits next to `hjejlen.svg` without either looking out of place
+- [ ] Sits next to `hjejlen.jpg` without either looking out of place
 - [ ] Exported as SVG (or 2× PNG on transparent cream) at the sizes in §7
 - [ ] Danish alt text added to `assets/js/translations.js`, English alongside it
 

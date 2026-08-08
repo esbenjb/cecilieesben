@@ -83,11 +83,11 @@
         </div>
         <div class="page-hero__scene">
           <img
-            src="assets/img/illustrations/silkeborg-panorama.svg"
+            src="assets/img/illustrations/soerne.jpg"
             alt="Akvarel af Silkeborgsøerne med skov, sø og hjuldamperen Hjejlen"
             data-i18n-attr="alt:hero.scene.alt"
-            width="1600"
-            height="560"
+            width="1401"
+            height="686"
           />
         </div>
       </section>
@@ -100,7 +100,8 @@
           </div>
 
           <!--
-            Drop photos into assets/img/venue/ and point each --photo at them.
+            Photographs from glskov.dk, the hotel's own gallery. Swap in your
+            own by replacing the files in assets/img/venue/ — the names stay.
             Paths inside a custom property resolve against assets/css/style.css,
             hence ../img/… ; data-full is document-relative and stays assets/…
           -->
@@ -110,54 +111,63 @@
               type="button"
               style="--photo: url('../img/venue/gaarden.jpg')"
               data-full="assets/img/venue/gaarden.jpg"
-              data-caption="Gl. Skovridergaard"
+              data-i18n-attr="data-caption:venuepage.shot.1"
             >
-              <span class="shot__caption">Gl. Skovridergaard</span>
+              <span class="shot__caption" data-i18n="venuepage.shot.1">Hovedbygningen</span>
             </button>
             <button
               class="shot"
               type="button"
               style="--photo: url('../img/venue/parken.jpg')"
               data-full="assets/img/venue/parken.jpg"
-              data-caption="Parken"
+              data-i18n-attr="data-caption:venuepage.shot.2"
             >
-              <span class="shot__caption">Parken</span>
+              <span class="shot__caption" data-i18n="venuepage.shot.2">Gården i parken</span>
             </button>
             <button
               class="shot"
               type="button"
               style="--photo: url('../img/venue/orangeriet.jpg')"
               data-full="assets/img/venue/orangeriet.jpg"
-              data-caption="Orangeriet"
+              data-i18n-attr="data-caption:venuepage.shot.3"
             >
-              <span class="shot__caption">Orangeriet</span>
+              <span class="shot__caption" data-i18n="venuepage.shot.3">Havesalen</span>
             </button>
             <button
               class="shot"
               type="button"
               style="--photo: url('../img/venue/salen.jpg')"
               data-full="assets/img/venue/salen.jpg"
-              data-caption="Festsalen"
+              data-i18n-attr="data-caption:venuepage.shot.4"
             >
-              <span class="shot__caption">Festsalen</span>
+              <span class="shot__caption" data-i18n="venuepage.shot.4">Restauranten</span>
             </button>
             <button
               class="shot"
               type="button"
               style="--photo: url('../img/venue/vaerelse.jpg')"
               data-full="assets/img/venue/vaerelse.jpg"
-              data-caption="Værelserne"
+              data-i18n-attr="data-caption:venuepage.shot.5"
             >
-              <span class="shot__caption">Værelserne</span>
+              <span class="shot__caption" data-i18n="venuepage.shot.5">Værelserne</span>
             </button>
             <button
               class="shot"
               type="button"
               style="--photo: url('../img/venue/almindsoe.jpg')"
               data-full="assets/img/venue/almindsoe.jpg"
-              data-caption="Almindsø"
+              data-i18n-attr="data-caption:venuepage.shot.6"
             >
-              <span class="shot__caption">Almindsø</span>
+              <span class="shot__caption" data-i18n="venuepage.shot.6">Ringene i Almindsø</span>
+            </button>
+            <button
+              class="shot"
+              type="button"
+              style="--photo: url('../img/venue/detalje.jpg')"
+              data-full="assets/img/venue/detalje.jpg"
+              data-i18n-attr="data-caption:venuepage.shot.7"
+            >
+              <span class="shot__caption" data-i18n="venuepage.shot.7">Vindfløjen fra 1798</span>
             </button>
           </div>
 
@@ -223,10 +233,10 @@
       <!-- Illustrated break: the rings at Almindsø, a short walk from the estate -->
       <div class="band" aria-hidden="true">
         <img
-          src="assets/img/illustrations/ringene.svg"
+          src="assets/img/illustrations/badebroen.jpg"
           alt=""
-          width="720"
-          height="480"
+          width="1401"
+          height="686"
           loading="lazy"
         />
       </div>
@@ -251,7 +261,8 @@
     </footer>
 
     <div class="lightbox" data-lightbox hidden>
-      <button class="lightbox__close" type="button" data-lightbox-close aria-label="Luk">✕</button>
+      <button class="lightbox__close" type="button" data-lightbox-close aria-label="Luk"
+              data-i18n-attr="aria-label:lightbox.close">✕</button>
       <figure class="lightbox__figure">
         <img data-lightbox-image alt="" />
         <figcaption data-lightbox-caption></figcaption>
