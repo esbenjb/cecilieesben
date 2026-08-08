@@ -294,6 +294,10 @@ window.TRANSLATIONS = {
     'travel.bwindi.country': 'Uganda',
     'travel.bwindi.alt':
       'Cecilie og Esben i regnskoven i Bwindi med en bjerggorilla bag sig',
+    'travel.kigali.place': 'Kigali',
+    'travel.kigali.country': 'Rwanda',
+    'travel.kigali.alt':
+      'Cecilie mellem boderne i markedshallen i Kigali',
     'travel.zanzibar.country': 'Zanzibar',
     'travel.seoul.place': 'Seoul',
     'travel.seoul.country': 'Sydkorea',
@@ -755,6 +759,10 @@ window.TRANSLATIONS = {
     'travel.bwindi.country': 'Uganda',
     'travel.bwindi.alt':
       'Cecilie and Esben in the Bwindi rainforest with a mountain gorilla behind them',
+    'travel.kigali.place': 'Kigali',
+    'travel.kigali.country': 'Rwanda',
+    'travel.kigali.alt':
+      'Cecilie among the stalls in the market hall in Kigali',
     'travel.zanzibar.country': 'Zanzibar',
     'travel.seoul.place': 'Seoul',
     'travel.seoul.country': 'South Korea',
