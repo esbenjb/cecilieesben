@@ -298,6 +298,14 @@ window.TRANSLATIONS = {
     'travel.kigali.country': 'Rwanda',
     'travel.kigali.alt':
       'Cecilie mellem boderne i markedshallen i Kigali',
+    'travel.srilanka.place': 'Udawalawe',
+    'travel.srilanka.country': 'Sri Lanka',
+    'travel.srilanka.alt':
+      'Esben i en safarijeep i Udawalawe med en elefant lige ved siden af',
+    'travel.newyork.place': 'New York',
+    'travel.newyork.country': 'USA',
+    'travel.newyork.alt':
+      'Cecilie og Esben ved en madvogn på gaden i New York',
     'travel.zanzibar.country': 'Zanzibar',
     'travel.seoul.place': 'Seoul',
     'travel.seoul.country': 'Sydkorea',
@@ -763,6 +771,14 @@ window.TRANSLATIONS = {
     'travel.kigali.country': 'Rwanda',
     'travel.kigali.alt':
       'Cecilie among the stalls in the market hall in Kigali',
+    'travel.srilanka.place': 'Udawalawe',
+    'travel.srilanka.country': 'Sri Lanka',
+    'travel.srilanka.alt':
+      'Esben in a safari jeep in Udawalawe with an elephant right beside it',
+    'travel.newyork.place': 'New York',
+    'travel.newyork.country': 'USA',
+    'travel.newyork.alt':
+      'Cecilie and Esben at a food truck on a New York street',
     'travel.zanzibar.country': 'Zanzibar',
     'travel.seoul.place': 'Seoul',
     'travel.seoul.country': 'South Korea',
