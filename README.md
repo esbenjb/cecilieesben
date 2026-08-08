@@ -88,6 +88,11 @@ web-ready copies in `assets/img/par/` were made with:
 sips -s format jpeg -s formatOptions 80 --resampleHeightWidthMax 2000 in.HEIC --out out.jpg
 ```
 
+Every photo in "Vejen hertil" also needs a thumbnail in `assets/img/par/grid/`
+under the same name — same command with `--resampleHeightWidthMax 900`. The
+grid loads the small one; the lightbox swaps `/par/grid/` for `/par/` to reach
+the large one, so the two names must match.
+
 For venue photos, drop files into `assets/img/venue/` using the names already
 referenced in `Gl-Skovridergaard.html` (`gaarden.jpg`, `parken.jpg`, `orangeriet.jpg`,
 `salen.jpg`, `vaerelse.jpg`, `almindsoe.jpg`). Until then each slot shows a soft
