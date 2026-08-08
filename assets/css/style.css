@@ -163,6 +163,57 @@ p:last-child {
   color: var(--sand);
 }
 
+/*
+ * A watercolour washed across a whole section, the way the lakes are washed
+ * across the hero: a veil heavy enough to read type through, fading to the
+ * flat section colour top and bottom so it joins its neighbours cleanly.
+ * Cream veil over the paper sections, forest-green over the dark one.
+ */
+.section--hjejlen,
+.section--himmelbjerget {
+  background-image:
+    linear-gradient(
+      180deg,
+      var(--paper) 0%,
+      rgba(251, 247, 239, 0.9) 12%,
+      rgba(251, 247, 239, 0.85) 50%,
+      rgba(251, 247, 239, 0.9) 88%,
+      var(--paper) 100%
+    ),
+    var(--wash);
+  background-size: auto, cover;
+  background-position: center, center 55%;
+  background-repeat: no-repeat;
+  background-color: var(--paper);
+}
+
+.section--hjejlen {
+  --wash: url('../img/illustrations/hjejlen.jpg');
+}
+
+/* Paler than the others, so it takes a touch more veil than the shared one. */
+.section--himmelbjerget {
+  --wash: url('../img/illustrations/himmelbjerget.jpg');
+  background-position: center, center 60%;
+}
+
+.section--heather {
+  background-image:
+    linear-gradient(
+      180deg,
+      var(--forest) 0%,
+      rgba(52, 72, 58, 0.92) 14%,
+      rgba(52, 72, 58, 0.86) 50%,
+      rgba(52, 72, 58, 0.93) 86%,
+      var(--forest) 100%
+    ),
+    url('../img/illustrations/sindbjerg-stoubjerg.jpg');
+  background-size: auto, cover;
+  background-position: center, center 45%;
+  background-repeat: no-repeat;
+  background-color: var(--forest);
+}
+
 .section--forest h2,
 .section--forest h3 {
   color: var(--paper-2);
@@ -428,13 +479,31 @@ p:last-child {
 
 /* --- Hero ----------------------------------------------------------------- */
 
+/*
+ * The lakes watercolour sits behind the whole first screen, under a cream
+ * veil heavy enough to keep the terracotta type readable and fading to solid
+ * paper at the foot, so the hero dissolves into the section beneath it.
+ */
 .hero {
   position: relative;
   display: flex;
   flex-direction: column;
   min-height: 100svh;
   padding-top: calc(var(--header-h) + clamp(2.5rem, 8vw, 6rem));
-  background: linear-gradient(180deg, var(--paper) 0%, #f3f2ea 55%, #e9eee9 100%);
+  background-image:
+    linear-gradient(
+      180deg,
+      rgba(251, 247, 239, 0.82) 0%,
+      rgba(251, 247, 239, 0.62) 38%,
+      rgba(251, 247, 239, 0.74) 68%,
+      rgba(251, 247, 239, 0.97) 90%,
+      var(--paper) 100%
+    ),
+    url('../img/illustrations/soerne.jpg');
+  background-size: auto, cover;
+  background-position: center, center 60%;
+  background-repeat: no-repeat;
+  background-color: var(--paper);
   overflow: hidden;
 }
 
@@ -475,25 +544,14 @@ p:last-child {
   color: var(--terracotta);
 }
 
+/* A shade darker than the taupe used elsewhere: this line sits over the
+   watercolour rather than over flat paper. */
 .hero__venue {
   margin-top: 1.5rem;
   font-size: 0.75rem;
   letter-spacing: 0.26em;
   text-transform: uppercase;
-  color: var(--taupe);
-}
-
-/* The watercolour panorama sits on the bottom edge of the hero. */
-.hero__scene {
-  width: 100%;
-  margin-top: auto;
-}
-
-.hero__scene img {
-  width: 100%;
-  height: clamp(11rem, 26vw, 22rem);
-  object-fit: cover;
-  object-position: center bottom;
+  color: var(--muted);
 }
 
 /* --- Intro statement ------------------------------------------------------ */
@@ -502,17 +560,13 @@ p:last-child {
   text-align: center;
 }
 
-.statement__lead {
-  font-family: var(--font-display);
-  font-size: clamp(1.5rem, 1.05rem + 2vw, 2.75rem);
-  line-height: 1.24;
-  color: var(--terracotta);
-}
-
 .statement__body {
-  max-width: 40rem;
-  margin: 2rem auto 0;
-  color: var(--muted);
+  max-width: 42rem;
+  margin: 1.75rem auto 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 1.05rem + 0.9vw, 1.75rem);
+  line-height: 1.45;
+  color: var(--terracotta);
 }
 
 .statement__signature {
@@ -525,62 +579,66 @@ p:last-child {
 
 /* --- Countdown ------------------------------------------------------------ */
 
+/* Sits under the call to action in the hero, kept deliberately quiet. */
 .countdown {
-  background: var(--forest);
-  color: var(--sand);
-  padding-block: clamp(2.75rem, 6vw, 4.5rem);
+  margin-top: clamp(2.25rem, 5vw, 3.5rem);
   text-align: center;
 }
 
 .countdown__title {
-  margin-bottom: 1.75rem;
-  font-size: 0.6875rem;
-  letter-spacing: 0.32em;
+  margin-bottom: 1rem;
+  font-size: 0.625rem;
+  letter-spacing: 0.3em;
   text-transform: uppercase;
-  color: var(--sage);
+  color: var(--taupe);
 }
 
 .countdown__grid {
   display: flex;
   justify-content: center;
-  gap: clamp(1.25rem, 5vw, 3.5rem);
+  gap: clamp(1rem, 3.5vw, 2.5rem);
 }
 
 .countdown__unit {
-  min-width: 3.5rem;
+  min-width: 2.75rem;
 }
 
 .countdown__value {
   display: block;
   font-family: var(--font-display);
-  font-size: clamp(2rem, 1.3rem + 2.4vw, 3.25rem);
+  font-size: clamp(1.125rem, 0.95rem + 0.7vw, 1.5rem);
   line-height: 1;
-  color: var(--paper-2);
+  color: var(--muted);
   font-variant-numeric: tabular-nums;
 }
 
 .countdown__label {
   display: block;
-  margin-top: 0.625rem;
-  font-size: 0.625rem;
-  letter-spacing: 0.22em;
+  margin-top: 0.4rem;
+  font-size: 0.5625rem;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: rgba(239, 230, 214, 0.7);
+  color: var(--taupe);
 }
 
 .countdown__message {
   font-family: var(--font-display);
-  font-size: clamp(1.5rem, 1.2rem + 1.4vw, 2.25rem);
-  color: var(--paper-2);
+  font-style: italic;
+  font-size: clamp(1.125rem, 1rem + 0.6vw, 1.5rem);
+  color: var(--terracotta);
 }
 
 /* --- Programme ------------------------------------------------------------ */
 
+/*
+ * The three days stack rather than sit side by side. Saturday has four times
+ * as much in it as the other two, so as columns it always left one card
+ * towering over its neighbours; as full-width blocks each day simply takes
+ * the room it needs, and the entries inside flow into as many columns as fit.
+ */
 .days {
   display: grid;
   gap: clamp(1.5rem, 3vw, 2rem);
-  grid-template-columns: repeat(auto-fit, minmax(17.5rem, 1fr));
-  align-items: start;
 }
 
 .day {
@@ -635,27 +693,25 @@ p:last-child {
 
 .day__list {
   display: grid;
-  gap: 1.5rem;
+  gap: 1.5rem clamp(1.5rem, 3vw, 2.5rem);
+  grid-template-columns: repeat(auto-fill, minmax(19rem, 1fr));
   margin: 2rem 0 0;
   padding: 0;
   list-style: none;
 }
 
+/* Every entry carries its own rule, since in a multi-column list there is no
+   single "first" one to leave bare. */
 .day__item {
   display: grid;
-  grid-template-columns: 3.5rem 1fr;
+  grid-template-columns: 5rem 1fr;
   gap: 1rem;
-  padding-top: 1.5rem;
+  padding-top: 1.25rem;
   border-top: 1px solid var(--sand);
 }
 
 .day--feature .day__item {
   border-top-color: rgba(156, 171, 146, 0.3);
-}
-
-.day__item:first-child {
-  padding-top: 0;
-  border-top: 0;
 }
 
 .day__time {
@@ -750,53 +806,225 @@ p:last-child {
   background-position: center;
 }
 
-/* Editorial collage of the two of them. */
-.us {
+/* --- Vejen hertil: ten places, one globe ---------------------------------- */
+
+/* No align-items here: the globe column has to stretch the full height of the
+   row, or its sticky child would have nothing to travel along. */
+.travel {
   display: grid;
-  gap: clamp(0.75rem, 1.5vw, 1.25rem);
-  grid-template-columns: repeat(6, 1fr);
-  grid-auto-rows: clamp(7rem, 13vw, 11rem);
+  gap: clamp(2rem, 4vw, 3.5rem);
 }
 
-.us__item {
+@media (min-width: 62rem) {
+  .travel {
+    grid-template-columns: minmax(0, 1fr) 22rem;
+  }
+}
+
+/*
+ * Columns rather than a grid: the photographs keep their own proportions, so
+ * nobody gets cropped out of the frame. Tall and wide shots simply stack.
+ */
+.travel__grid {
+  columns: 2;
+  column-gap: clamp(0.75rem, 1.6vw, 1.25rem);
   margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.travel__grid li {
+  break-inside: avoid;
+  margin-bottom: clamp(0.75rem, 1.6vw, 1.25rem);
+}
+
+/* One photograph. Pointing at it turns the globe, clicking it opens it up. */
+.trip {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
   overflow: hidden;
+  border: 0;
   border-radius: var(--radius);
   background: var(--sand);
-  grid-column: span 2;
-  grid-row: span 2;
+  cursor: zoom-in;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
 
-.us__item--wide {
-  grid-column: span 4;
-}
-
-.us__item img {
+.trip img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+  transition: transform 0.6s ease, filter 0.4s ease;
 }
 
-@media (max-width: 60rem) {
-  .us {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .us__item,
-  .us__item--wide {
-    grid-column: span 1;
-  }
+.trip__label {
+  position: absolute;
+  inset: auto 0 0;
+  display: grid;
+  gap: 0.15rem;
+  padding: 3rem 0.9rem 0.85rem;
+  background: linear-gradient(to top, rgba(30, 36, 31, 0.8), transparent);
+  color: var(--paper-2);
+  text-align: left;
+  opacity: 0;
+  transform: translateY(0.35rem);
+  transition: opacity 0.35s ease, transform 0.35s ease;
 }
 
-@media (max-width: 30rem) {
-  .us {
-    grid-template-columns: 1fr;
+.trip__place {
+  font-family: var(--font-display);
+  font-size: 1.0625rem;
+  line-height: 1.15;
+}
+
+.trip__country {
+  font-size: 0.625rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(239, 230, 214, 0.8);
+}
+
+/* A quiet hint that there is a bigger version behind the picture. */
+.trip::after,
+.figure__zoom::after {
+  content: '';
+  position: absolute;
+  top: 0.7rem;
+  right: 0.7rem;
+  width: 1.75rem;
+  height: 1.75rem;
+  border: 1px solid rgba(251, 247, 239, 0.7);
+  border-radius: 999px;
+  background:
+    linear-gradient(rgba(251, 247, 239, 0.9), rgba(251, 247, 239, 0.9)) center / 0.7rem 1px no-repeat,
+    linear-gradient(rgba(251, 247, 239, 0.9), rgba(251, 247, 239, 0.9)) center / 1px 0.7rem no-repeat,
+    rgba(30, 36, 31, 0.35);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.trip:hover,
+.trip:focus-visible {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+}
+
+.trip:hover::after,
+.trip:focus-visible::after,
+.figure__zoom:hover::after,
+.figure__zoom:focus-visible::after {
+  opacity: 1;
+}
+
+.trip:hover img,
+.trip:focus-visible img {
+  transform: scale(1.04);
+  filter: saturate(0.95) sepia(0.03);
+}
+
+.trip:hover .trip__label,
+.trip:focus-visible .trip__label,
+.trip[aria-current] .trip__label {
+  opacity: 1;
+  transform: none;
+}
+
+/* The selected tile keeps a terracotta hairline once the pointer moves on. */
+.trip[aria-current]::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 2px solid var(--terracotta);
+  border-radius: var(--radius);
+  pointer-events: none;
+}
+
+/* --- The globe ------------------------------------------------------------ */
+
+.globe__sticky {
+  position: sticky;
+  top: calc(var(--header-h) + 1.5rem);
+  text-align: center;
+}
+
+.globe__stage {
+  width: min(20rem, 100%);
+  margin-inline: auto;
+  filter: drop-shadow(0 18px 34px rgba(44, 51, 45, 0.22));
+}
+
+.globe__canvas {
+  width: 100%;
+  border-radius: 50%;
+}
+
+.globe__label {
+  display: grid;
+  gap: 0.5rem;
+  margin: 1.75rem 0 0;
+  min-height: 3.5rem;
+}
+
+.globe__place {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.375rem, 1.15rem + 0.9vw, 1.75rem);
+  line-height: 1.1;
+  color: var(--terracotta);
+}
+
+.globe__country {
+  font-size: 0.625rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--taupe);
+}
+
+.globe__hint {
+  margin: 1.25rem 0 0;
+  font-size: 0.8125rem;
+  color: var(--taupe);
+}
+
+/*
+ * On a phone the globe leads, and stays put as a slim bar while the
+ * photographs scroll underneath it: globe on the left, place name alongside.
+ */
+@media (max-width: 61.99rem) {
+  .globe {
+    order: -1;
   }
 
-  .us__item,
-  .us__item--wide {
-    grid-column: span 1;
-    grid-row: span 2;
+  .globe__sticky {
+    top: var(--header-h);
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 0.75rem 0 1rem;
+    background: var(--paper);
+    text-align: left;
+  }
+
+  .section--paper .globe__sticky {
+    background: var(--paper-2);
+  }
+
+  .globe__stage {
+    flex: none;
+    width: 6.5rem;
+    margin-inline: 0;
+  }
+
+  .globe__label {
+    margin: 0;
+    min-height: 0;
+    gap: 0.35rem;
+  }
+
+  .globe__hint {
+    display: none;
   }
 }
 
@@ -814,23 +1042,59 @@ p:last-child {
   object-position: center 62%;
 }
 
+/* Two up, with the last one running the full width to close the set. */
 .figures {
   display: grid;
   gap: clamp(1.5rem, 3vw, 2.5rem);
-  grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 46rem) {
+  .figures {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .figure--wide {
+    grid-column: 1 / -1;
+  }
 }
 
 .figure {
   margin: 0;
 }
 
+/* The whole illustration is the control that opens it full size. */
+.figure__zoom {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: zoom-in;
+  transition: transform 0.35s ease;
+}
+
+.figure__zoom:hover {
+  transform: translateY(-3px);
+}
+
+/* The watercolours are all the same shape, so height:auto plus their own
+   ratio shows each one whole rather than cropping it into a box. */
 .figure img {
   width: 100%;
-  aspect-ratio: 3 / 2;
+  height: auto;
+  aspect-ratio: 1401 / 686;
   object-fit: cover;
   border: 1px solid var(--sand);
   border-radius: var(--radius);
   background: var(--paper-2);
+  transition: box-shadow 0.35s ease;
+}
+
+.figure__zoom:hover img,
+.figure__zoom:focus-visible img {
+  box-shadow: var(--shadow-lg);
 }
 
 .figure__title {
@@ -889,27 +1153,20 @@ p:last-child {
   color: rgba(239, 230, 214, 0.82);
 }
 
-.gifts__details {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: clamp(1.75rem, 5vw, 4.5rem);
+.gifts__cta {
   margin-top: 2.75rem;
 }
 
-.gifts__label {
-  display: block;
-  margin-bottom: 0.5rem;
-  font-size: 0.625rem;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: var(--sage);
+/* Until the wish list exists the button is a placeholder, not a promise. */
+.gifts__cta [data-gifts-pending] {
+  pointer-events: none;
+  opacity: 0.45;
 }
 
-.gifts__value {
-  font-family: var(--font-display);
-  font-size: 1.5rem;
-  color: var(--paper-2);
+.gifts__note {
+  margin-top: 1.5rem;
+  font-size: 0.8125rem;
+  color: var(--sage);
 }
 
 /* --- Form ----------------------------------------------------------------- */
@@ -1474,7 +1731,7 @@ p:last-child {
   width: 100%;
   height: calc(30 * var(--u));
   object-fit: cover;
-  object-position: center bottom;
+  object-position: center 55%;
 }
 
 /* --- Invitation: flaps --- */
@@ -1653,23 +1910,23 @@ p:last-child {
 /*
  * Each flap carries half of the panorama, sized to the width of the two flaps
  * together — so once the card is closed the illustration runs across the seam.
- * The height is stated explicitly: 1600x560 scaled to 148.5mm wide is 52mm.
+ * The height is stated explicitly: 1401x686 scaled to 148.5mm wide is 72.7mm.
  */
 .inv-cover__scene {
   position: absolute;
   inset: auto 0 0;
   height: calc(34 * var(--u));
-  background-image: url('../img/illustrations/silkeborg-panorama.svg');
-  background-size: calc(148.5 * var(--u)) calc(52 * var(--u));
+  background-image: url('../img/illustrations/soerne.jpg');
+  background-size: calc(148.5 * var(--u)) calc(72.7 * var(--u));
   background-repeat: no-repeat;
 }
 
 .inv-cover__scene--left {
-  background-position: left bottom;
+  background-position: left 62%;
 }
 
 .inv-cover__scene--right {
-  background-position: right bottom;
+  background-position: right 62%;
 }
 
 /* --- Invitation: back panel --- */
@@ -1733,13 +1990,21 @@ p:last-child {
   width: 100%;
   height: clamp(9rem, 20vw, 16rem);
   object-fit: cover;
-  object-position: center bottom;
+  object-position: center 52%;
 }
 
+/* One wide photograph across the top, six square-ish ones in two rows under
+   it — a fixed three columns, so the rows always come out even. */
 .gallery {
   display: grid;
   gap: clamp(0.75rem, 1.5vw, 1.25rem);
-  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 46rem) {
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 .shot {
@@ -1759,14 +2024,13 @@ p:last-child {
 }
 
 .shot--wide {
-  grid-column: span 2;
-  aspect-ratio: 16 / 9;
+  grid-column: 1 / -1;
+  aspect-ratio: 21 / 9;
 }
 
 @media (max-width: 46rem) {
   .shot--wide {
-    grid-column: span 1;
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 16 / 10;
   }
 }
 

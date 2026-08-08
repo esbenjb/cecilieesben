@@ -75,7 +75,8 @@
     </header>
 
     <main id="main">
-      <!-- Hero -->
+      <!-- Hero: the lakes watercolour washes the whole top of the page, so it
+           is a CSS background here rather than an image in the flow. -->
       <section class="hero">
         <div class="hero__inner">
           <p class="hero__dateline" data-i18n="hero.dateline">— 12. juni 2027 —</p>
@@ -89,15 +90,30 @@
           <p class="hero__cta">
             <a class="btn" href="#svar" data-i18n="hero.cta">Svar på invitationen</a>
           </p>
-        </div>
-        <div class="hero__scene">
-          <img
-            src="assets/img/illustrations/silkeborg-panorama.svg"
-            alt="Akvarel af Silkeborgsøerne med skov, sø og hjuldamperen Hjejlen"
-            data-i18n-attr="alt:hero.scene.alt"
-            width="1600"
-            height="560"
-          />
+
+          <!-- Quietly under the call to action, not a section of its own. -->
+          <div class="countdown" data-countdown aria-live="off">
+            <p class="countdown__title" data-i18n="countdown.title">Der er ikke længe til</p>
+            <div class="countdown__grid" data-countdown-grid>
+              <div class="countdown__unit">
+                <span class="countdown__value" data-countdown-value="days">—</span>
+                <span class="countdown__label" data-i18n="countdown.days">dage</span>
+              </div>
+              <div class="countdown__unit">
+                <span class="countdown__value" data-countdown-value="hours">—</span>
+                <span class="countdown__label" data-i18n="countdown.hours">timer</span>
+              </div>
+              <div class="countdown__unit">
+                <span class="countdown__value" data-countdown-value="minutes">—</span>
+                <span class="countdown__label" data-i18n="countdown.minutes">minutter</span>
+              </div>
+              <div class="countdown__unit">
+                <span class="countdown__value" data-countdown-value="seconds">—</span>
+                <span class="countdown__label" data-i18n="countdown.seconds">sekunder</span>
+              </div>
+            </div>
+            <p class="countdown__message" data-countdown-message hidden></p>
+          </div>
         </div>
       </section>
 
@@ -105,17 +121,13 @@
       <section class="section section--paper">
         <div class="wrap wrap--narrow statement" data-reveal>
           <span class="eyebrow" data-i18n="welcome.eyebrow">Velkommen</span>
-          <p class="statement__lead" data-i18n="statement.lead">
-            Vi bliver gift på Gl. Skovridergaard ved Silkeborg — en gammel
-            skovridergård fra 1798 midt i Søhøjlandet.
-          </p>
           <p class="statement__body" data-i18n="welcome.body"></p>
           <p class="statement__signature" data-i18n="welcome.signature"></p>
         </div>
       </section>
 
       <!-- The two of us -->
-      <section class="section">
+      <section class="section" id="rejsen">
         <div class="wrap">
           <div class="section-head" data-reveal>
             <span class="eyebrow" data-i18n="us.eyebrow">Os to</span>
@@ -123,53 +135,161 @@
             <p class="section-intro" data-i18n="us.intro"></p>
           </div>
 
-          <div class="us" data-reveal>
-            <figure class="us__item us__item--wide">
-              <img class="photo" src="assets/img/par/par-07.jpg" alt=""
-                   data-i18n-attr="alt:us.1.alt" loading="lazy" />
-            </figure>
-            <figure class="us__item">
-              <img class="photo" src="assets/img/par/par-12.jpg" alt=""
-                   data-i18n-attr="alt:us.2.alt" loading="lazy" />
-            </figure>
-            <figure class="us__item">
-              <img class="photo" src="assets/img/par/par-01.jpg" alt=""
-                   data-i18n-attr="alt:us.3.alt" loading="lazy" />
-            </figure>
-            <figure class="us__item">
-              <img class="photo" src="assets/img/par/par-02.jpg" alt=""
-                   data-i18n-attr="alt:us.4.alt" loading="lazy" />
-            </figure>
-            <figure class="us__item">
-              <img class="photo" src="assets/img/par/par-09.jpg" alt=""
-                   data-i18n-attr="alt:us.5.alt" loading="lazy" />
-            </figure>
-          </div>
-        </div>
-      </section>
+          <!--
+            Twelve photographs, twelve places. Each button carries the
+            coordinates the globe turns to — edit data-lat / data-lon here and
+            the globe follows; the names themselves live in translations.js.
+          -->
+          <div class="travel" data-travel data-reveal>
+            <ul class="travel__grid" data-gallery>
+              <li>
+                <button class="trip" type="button" data-trip="island"
+                        data-lat="64.05" data-lon="-16.18">
+                  <img class="photo" src="assets/img/par/par-13.jpg" alt=""
+                       data-i18n-attr="alt:travel.island.alt" loading="lazy" />
+                  <span class="trip__label">
+                    <span class="trip__place" data-i18n="travel.island.place">Jökulsárlón</span>
+                    <span class="trip__country" data-i18n="travel.island.country">Island</span>
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button class="trip" type="button" data-trip="budapest"
+                        data-lat="47.49" data-lon="19.04">
+                  <img class="photo" src="assets/img/par/par-07.jpg" alt=""
+                       data-i18n-attr="alt:travel.budapest.alt" loading="lazy" />
+                  <span class="trip__label">
+                    <span class="trip__place" data-i18n="travel.budapest.place">Budapest</span>
+                    <span class="trip__country" data-i18n="travel.budapest.country">Ungarn</span>
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button class="trip" type="button" data-trip="kitzbuhel"
+                        data-lat="47.45" data-lon="12.39">
+                  <img class="photo" src="assets/img/par/par-02.jpg" alt=""
+                       data-i18n-attr="alt:travel.kitzbuhel.alt" loading="lazy" />
+                  <span class="trip__label">
+                    <span class="trip__place" data-i18n="travel.kitzbuhel.place">Kitzbühel</span>
+                    <span class="trip__country" data-i18n="travel.kitzbuhel.country">Østrig</span>
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button class="trip" type="button" data-trip="monza"
+                        data-lat="45.62" data-lon="9.28">
+                  <img class="photo" src="assets/img/par/par-05.jpg" alt=""
+                       data-i18n-attr="alt:travel.monza.alt" loading="lazy" />
+                  <span class="trip__label">
+                    <span class="trip__place" data-i18n="travel.monza.place">Monza</span>
+                    <span class="trip__country" data-i18n="travel.monza.country">Italien</span>
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button class="trip" type="button" data-trip="zanzibar"
+                        data-lat="-5.73" data-lon="39.3">
+                  <img class="photo" src="assets/img/par/par-01.jpg" alt=""
+                       data-i18n-attr="alt:travel.zanzibar.alt" loading="lazy" />
+                  <span class="trip__label">
+                    <span class="trip__place" data-i18n="travel.zanzibar.place">Nungwi</span>
+                    <span class="trip__country" data-i18n="travel.zanzibar.country">Zanzibar</span>
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button class="trip" type="button" data-trip="uganda"
+                        data-lat="2.25" data-lon="31.8">
+                  <img class="photo" src="assets/img/par/par-11.jpg" alt=""
+                       data-i18n-attr="alt:travel.uganda.alt" loading="lazy" />
+                  <span class="trip__label">
+                    <span class="trip__place" data-i18n="travel.uganda.place">Murchison Falls</span>
+                    <span class="trip__country" data-i18n="travel.uganda.country">Uganda</span>
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button class="trip" type="button" data-trip="thailand"
+                        data-lat="18.79" data-lon="98.98">
+                  <img class="photo" src="assets/img/par/par-04.jpg" alt=""
+                       data-i18n-attr="alt:travel.thailand.alt" loading="lazy" />
+                  <span class="trip__label">
+                    <span class="trip__place" data-i18n="travel.thailand.place">Chiang Mai</span>
+                    <span class="trip__country" data-i18n="travel.thailand.country">Thailand</span>
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button class="trip" type="button" data-trip="teotihuacan"
+                        data-lat="19.69" data-lon="-98.83">
+                  <img class="photo" src="assets/img/par/par-03.jpg" alt=""
+                       data-i18n-attr="alt:travel.teotihuacan.alt" loading="lazy" />
+                  <span class="trip__label">
+                    <span class="trip__place" data-i18n="travel.teotihuacan.place">Teotihuacán</span>
+                    <span class="trip__country" data-i18n="travel.teotihuacan.country">Mexico</span>
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button class="trip" type="button" data-trip="galapagos"
+                        data-lat="-0.74" data-lon="-90.31">
+                  <img class="photo" src="assets/img/par/par-12.jpg" alt=""
+                       data-i18n-attr="alt:travel.galapagos.alt" loading="lazy" />
+                  <span class="trip__label">
+                    <span class="trip__place" data-i18n="travel.galapagos.place">Galápagos</span>
+                    <span class="trip__country" data-i18n="travel.galapagos.country">Ecuador</span>
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button class="trip" type="button" data-trip="brasilien"
+                        data-lat="-22.91" data-lon="-43.17">
+                  <img class="photo" src="assets/img/par/par-10.jpg" alt=""
+                       data-i18n-attr="alt:travel.brasilien.alt" loading="lazy" />
+                  <span class="trip__label">
+                    <span class="trip__place" data-i18n="travel.brasilien.place">Rio de Janeiro</span>
+                    <span class="trip__country" data-i18n="travel.brasilien.country">Brasilien</span>
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button class="trip" type="button" data-trip="patagonien"
+                        data-lat="-49.33" data-lon="-72.89">
+                  <img class="photo" src="assets/img/par/par-06.jpg" alt=""
+                       data-i18n-attr="alt:travel.patagonien.alt" loading="lazy" />
+                  <span class="trip__label">
+                    <span class="trip__place" data-i18n="travel.patagonien.place">El Chaltén</span>
+                    <span class="trip__country" data-i18n="travel.patagonien.country">Argentina</span>
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button class="trip" type="button" data-trip="torres"
+                        data-lat="-50.94" data-lon="-72.99">
+                  <img class="photo" src="assets/img/par/par-09.jpg" alt=""
+                       data-i18n-attr="alt:travel.torres.alt" loading="lazy" />
+                  <span class="trip__label">
+                    <span class="trip__place" data-i18n="travel.torres.place">Torres del Paine</span>
+                    <span class="trip__country" data-i18n="travel.torres.country">Chile</span>
+                  </span>
+                </button>
+              </li>
+            </ul>
 
-      <!-- Countdown -->
-      <section class="countdown" data-countdown aria-live="off">
-        <p class="countdown__title" data-i18n="countdown.title">Der er ikke længe til</p>
-        <div class="countdown__grid" data-countdown-grid>
-          <div class="countdown__unit">
-            <span class="countdown__value" data-countdown-value="days">—</span>
-            <span class="countdown__label" data-i18n="countdown.days">dage</span>
-          </div>
-          <div class="countdown__unit">
-            <span class="countdown__value" data-countdown-value="hours">—</span>
-            <span class="countdown__label" data-i18n="countdown.hours">timer</span>
-          </div>
-          <div class="countdown__unit">
-            <span class="countdown__value" data-countdown-value="minutes">—</span>
-            <span class="countdown__label" data-i18n="countdown.minutes">minutter</span>
-          </div>
-          <div class="countdown__unit">
-            <span class="countdown__value" data-countdown-value="seconds">—</span>
-            <span class="countdown__label" data-i18n="countdown.seconds">sekunder</span>
+            <aside class="globe" data-globe>
+              <div class="globe__sticky">
+                <div class="globe__stage">
+                  <canvas class="globe__canvas" data-globe-canvas aria-hidden="true"></canvas>
+                </div>
+                <p class="globe__label" aria-live="polite">
+                  <strong class="globe__place" data-globe-place></strong>
+                  <span class="globe__country" data-globe-country></span>
+                </p>
+                <p class="globe__hint" data-i18n="travel.hint"></p>
+              </div>
+            </aside>
           </div>
         </div>
-        <p class="countdown__message" data-countdown-message hidden></p>
       </section>
 
       <!-- Programme -->
@@ -192,9 +312,13 @@
       <!-- Venue teaser -->
       <section class="section section--paper">
         <div class="wrap teaser" data-reveal>
-          <!-- Set --photo to a real picture. Paths in a custom property are
-               resolved against assets/css/style.css, so use ../img/… -->
-          <div class="teaser__media" role="presentation"></div>
+          <!-- Paths in a custom property are resolved against
+               assets/css/style.css, so use ../img/… -->
+          <div
+            class="teaser__media"
+            role="presentation"
+            style="--photo: url('../img/venue/gaarden.jpg')"
+          ></div>
           <div class="teaser__text">
             <span class="eyebrow" data-i18n="venue.eyebrow">Stedet</span>
             <h2 class="teaser__title" data-i18n="venue.title">Gl. Skovridergaard</h2>
@@ -206,8 +330,9 @@
         </div>
       </section>
 
-      <!-- The illustrated set: Hjejlen, the rings, the heather hills -->
-      <section class="section">
+      <!-- The illustrated set: Hjejlen, the rings, the heather hills, over a
+           wash of Himmelbjerget looking out across the lakes. -->
+      <section class="section section--himmelbjerget">
         <div class="wrap">
           <div class="section-head" data-reveal>
             <span class="eyebrow" data-i18n="around.eyebrow">Søhøjlandet</span>
@@ -215,16 +340,45 @@
             <p class="section-intro" data-i18n="around.intro"></p>
           </div>
 
-          <div class="figures">
+          <div class="figures" data-gallery>
             <figure class="figure" data-reveal>
-              <img
-                src="assets/img/illustrations/hjejlen.svg"
-                alt=""
-                data-i18n-attr="alt:fig.hjejlen.alt"
-                width="720"
-                height="400"
-                loading="lazy"
-              />
+              <button
+                class="figure__zoom"
+                type="button"
+                data-full="assets/img/illustrations/soerne.jpg"
+                data-i18n-attr="data-caption:fig.soerne.title"
+              >
+                <img
+                  src="assets/img/illustrations/soerne.jpg"
+                  alt=""
+                  data-i18n-attr="alt:fig.soerne.alt"
+                  width="1401"
+                  height="686"
+                  loading="lazy"
+                />
+              </button>
+              <figcaption>
+                <h3 class="figure__title" data-i18n="fig.soerne.title">Silkeborgsøerne</h3>
+                <p data-i18n="fig.soerne.text"></p>
+              </figcaption>
+            </figure>
+
+            <figure class="figure" data-reveal>
+              <button
+                class="figure__zoom"
+                type="button"
+                data-full="assets/img/illustrations/hjejlen.jpg"
+                data-i18n-attr="data-caption:fig.hjejlen.title"
+              >
+                <img
+                  src="assets/img/illustrations/hjejlen.jpg"
+                  alt=""
+                  data-i18n-attr="alt:fig.hjejlen.alt"
+                  width="1401"
+                  height="686"
+                  loading="lazy"
+                />
+              </button>
               <figcaption>
                 <h3 class="figure__title" data-i18n="fig.hjejlen.title">Hjejlen</h3>
                 <p data-i18n="fig.hjejlen.text"></p>
@@ -232,29 +386,65 @@
             </figure>
 
             <figure class="figure" data-reveal>
-              <img
-                src="assets/img/illustrations/ringene.svg"
-                alt=""
-                data-i18n-attr="alt:fig.ringene.alt"
-                width="720"
-                height="480"
-                loading="lazy"
-              />
+              <button
+                class="figure__zoom"
+                type="button"
+                data-full="assets/img/illustrations/himmelbjerget.jpg"
+                data-i18n-attr="data-caption:fig.himmelbjerget.title"
+              >
+                <img
+                  src="assets/img/illustrations/himmelbjerget.jpg"
+                  alt=""
+                  data-i18n-attr="alt:fig.himmelbjerget.alt"
+                  width="1401"
+                  height="686"
+                  loading="lazy"
+                />
+              </button>
+              <figcaption>
+                <h3 class="figure__title" data-i18n="fig.himmelbjerget.title">Himmelbjerget</h3>
+                <p data-i18n="fig.himmelbjerget.text"></p>
+              </figcaption>
+            </figure>
+
+            <figure class="figure" data-reveal>
+              <button
+                class="figure__zoom"
+                type="button"
+                data-full="assets/img/illustrations/badebroen.jpg"
+                data-i18n-attr="data-caption:fig.ringene.title"
+              >
+                <img
+                  src="assets/img/illustrations/badebroen.jpg"
+                  alt=""
+                  data-i18n-attr="alt:fig.ringene.alt"
+                  width="1401"
+                  height="686"
+                  loading="lazy"
+                />
+              </button>
               <figcaption>
                 <h3 class="figure__title" data-i18n="fig.ringene.title">Ringene i Almindsø</h3>
                 <p data-i18n="fig.ringene.text"></p>
               </figcaption>
             </figure>
 
-            <figure class="figure" data-reveal>
-              <img
-                src="assets/img/illustrations/sindbjerg-stoubjerg.svg"
-                alt=""
-                data-i18n-attr="alt:fig.bakkerne.alt"
-                width="1600"
-                height="620"
-                loading="lazy"
-              />
+            <figure class="figure figure--wide" data-reveal>
+              <button
+                class="figure__zoom"
+                type="button"
+                data-full="assets/img/illustrations/sindbjerg-stoubjerg.jpg"
+                data-i18n-attr="data-caption:fig.bakkerne.title"
+              >
+                <img
+                  src="assets/img/illustrations/sindbjerg-stoubjerg.jpg"
+                  alt=""
+                  data-i18n-attr="alt:fig.bakkerne.alt"
+                  width="1401"
+                  height="686"
+                  loading="lazy"
+                />
+              </button>
               <figcaption>
                 <h3 class="figure__title" data-i18n="fig.bakkerne.title">Sindbjerg &amp; Stoubjerg</h3>
                 <p data-i18n="fig.bakkerne.text"></p>
@@ -264,8 +454,9 @@
         </div>
       </section>
 
-      <!-- Practical -->
-      <section class="section" id="praktisk">
+      <!-- Practical: the Hjejlen washed across the section, as the heather
+           is across the gifts and the lakes across the hero. -->
+      <section class="section section--hjejlen" id="praktisk">
         <div class="wrap">
           <div class="section-head" data-reveal>
             <span class="eyebrow" data-i18n="practical.eyebrow">Praktisk</span>
@@ -303,33 +494,25 @@
         </div>
       </section>
 
-      <!-- Illustrated break -->
-      <div class="band" aria-hidden="true">
-        <img
-          src="assets/img/illustrations/sindbjerg-stoubjerg.svg"
-          alt=""
-          width="1600"
-          height="620"
-          loading="lazy"
-        />
-      </div>
-
-      <!-- Gifts -->
-      <section class="section section--forest" id="gaver">
+      <!-- Gifts: the heather hills wash the whole section, as the lakes do
+           at the top of the page. -->
+      <section class="section section--forest section--heather" id="gaver">
         <div class="wrap wrap--narrow gifts" data-reveal>
           <span class="eyebrow" data-i18n="gifts.eyebrow">Gaver</span>
           <h2 class="section-title" data-i18n="gifts.title">Ønskeseddel</h2>
           <p class="gifts__body" data-i18n="gifts.body"></p>
-          <div class="gifts__details">
-            <div>
-              <span class="gifts__label" data-i18n="gifts.account.label"></span>
-              <strong class="gifts__value" data-i18n="gifts.account.value"></strong>
-            </div>
-            <div>
-              <span class="gifts__label" data-i18n="gifts.mobilepay.label"></span>
-              <strong class="gifts__value" data-i18n="gifts.mobilepay.value"></strong>
-            </div>
-          </div>
+          <!-- TODO: sæt href til ønskesedlen, og fjern data-gifts-pending. -->
+          <p class="gifts__cta">
+            <a
+              class="btn btn--light"
+              href="#gaver"
+              data-gifts-pending
+              aria-disabled="true"
+              tabindex="-1"
+              data-i18n="gifts.link"
+            ></a>
+          </p>
+          <p class="gifts__note" data-i18n="gifts.note"></p>
         </div>
       </section>
 
@@ -482,8 +665,19 @@
       <p class="footer__date" data-i18n="footer.date"></p>
     </footer>
 
+    <div class="lightbox" data-lightbox hidden>
+      <button class="lightbox__close" type="button" data-lightbox-close aria-label="Luk"
+              data-i18n-attr="aria-label:lightbox.close">✕</button>
+      <figure class="lightbox__figure">
+        <img data-lightbox-image alt="" />
+        <figcaption data-lightbox-caption></figcaption>
+      </figure>
+    </div>
+
     <script src="assets/js/translations.js"></script>
     <script src="assets/js/i18n.js"></script>
     <script src="assets/js/main.js"></script>
+    <script src="assets/js/world.js"></script>
+    <script src="assets/js/globe.js"></script>
   </body>
 </html>

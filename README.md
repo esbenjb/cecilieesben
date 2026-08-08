@@ -118,7 +118,7 @@ the repo to hold the originals too.
 Search for `TODO` in `assets/js/translations.js` and `assets/js/main.js`:
 
 - [ ] Contact e-mail (replaces `bryllup@example.dk`, in `main.js` and `index.html`)
-- [ ] Bank details and MobilePay number for the gift section
+- [ ] Link to the wish list (`gifts.link` in translations.js, and the href in index.html)
 - [ ] Toastmaster name and phone
 - [ ] Confirm the RSVP deadline (currently 1. marts 2027)
 - [ ] Rewrite the welcome text in your own words

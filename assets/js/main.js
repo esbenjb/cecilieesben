@@ -20,9 +20,9 @@
   // One source of truth for the weekend, rendered in two shapes: the day cards
   // on the front page and the flyer list on the plan page.
   var SCHEDULE = [
-    { key: 'fri', items: 1 },
+    { key: 'fri', items: 2 },
     { key: 'sat', items: 8, feature: true },
-    { key: 'sun', items: 1 },
+    { key: 'sun', items: 2 },
   ];
 
   // Each shape names its own classes; 'notes' and 'texts' say how much of the
@@ -358,9 +358,9 @@
   /* --- Gallery lightbox ------------------------------------------------ */
 
   function initGallery() {
-    var gallery = document.querySelector('[data-gallery]');
+    var galleries = document.querySelectorAll('[data-gallery]');
     var lightbox = document.querySelector('[data-lightbox]');
-    if (!gallery || !lightbox) return;
+    if (!galleries.length || !lightbox) return;
 
     var image = lightbox.querySelector('[data-lightbox-image]');
     var caption = lightbox.querySelector('[data-lightbox-caption]');
@@ -386,9 +386,11 @@
       if (lastFocused) lastFocused.focus();
     }
 
-    gallery.addEventListener('click', function (event) {
-      var trigger = event.target.closest('[data-full]');
-      if (trigger) open(trigger);
+    galleries.forEach(function (gallery) {
+      gallery.addEventListener('click', function (event) {
+        var trigger = event.target.closest('[data-full]');
+        if (trigger) open(trigger);
+      });
     });
 
     closeBtn.addEventListener('click', close);
