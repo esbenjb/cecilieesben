@@ -11,7 +11,7 @@ export const FORWARD_TO = (process.env.RSVP_TO || 'bageresben@gmail.com,cecilieg
   .map((address) => address.trim())
   .filter(Boolean);
 
-export const FROM = process.env.RSVP_FROM || 'Bryllupspost <svar@cecilieesben.com>';
+export const FROM = process.env.RSVP_FROM || 'Cecilie & Esben <info@cecilieesben.com>';
 
 export function json(body, status) {
   return new Response(JSON.stringify(body), {

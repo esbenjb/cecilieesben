@@ -464,8 +464,6 @@ window.TRANSLATIONS = {
     'rsvp.submit': 'Send svar',
     'rsvp.sending': 'Sender …',
     'rsvp.success': 'Tak! Vi har modtaget jeres svar og glæder os til at se jer.',
-    'rsvp.success.mail':
-      'Jeres mailprogram åbner nu med svaret. Tryk send, så er I tilmeldt.',
     'rsvp.error': 'Noget gik galt. Prøv igen, eller skriv til os direkte.',
     'rsvp.error.name': 'Skriv jeres navn(e).',
     'rsvp.error.email': 'Skriv en gyldig e-mailadresse.',
@@ -937,8 +935,6 @@ window.TRANSLATIONS = {
     'rsvp.submit': 'Send reply',
     'rsvp.sending': 'Sending …',
     'rsvp.success': 'Thank you! We have received your reply and look forward to seeing you.',
-    'rsvp.success.mail':
-      'Your mail app is opening with the reply. Press send and you are signed up.',
     'rsvp.error': 'Something went wrong. Please try again, or write to us directly.',
     'rsvp.error.name': 'Please enter your name(s).',
     'rsvp.error.email': 'Please enter a valid email address.',
