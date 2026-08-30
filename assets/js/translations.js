@@ -12,12 +12,9 @@ window.TRANSLATIONS = {
     'meta.title.venue': 'Stedet · Gl. Skovridergaard · Cecilie & Esben',
     'meta.description.venue':
       'Gl. Skovridergaard ved Silkeborg, rammen om vores bryllupsweekend den 11.–13. juni 2027.',
-    'meta.title.plan': 'Planen · Cecilie & Esben',
-    'meta.description.plan':
-      'Hele programmet for bryllupsweekenden den 11.–13. juni 2027 på Gl. Skovridergaard.',
     'meta.title.invitation': 'Invitation · Cecilie & Esben',
     'meta.description.invitation':
-      'Invitationen til Cecilie og Esbens bryllup den 12. juni 2027, til print på A4.',
+      'Invitationen til Cecilie og Esbens bryllup den 12. juni 2027, til print på A5.',
 
     'lang.label': 'Skift sprog',
     'lang.da': 'Dansk',
@@ -57,7 +54,7 @@ window.TRANSLATIONS = {
     'program.title': 'Weekendens plan',
     'program.intro':
       'I er velkomne fra fredag den 11. juni. Kom, når det passer jer, og bliv så længe I kan.',
-    'program.link': 'Se planen som flyer',
+    'program.link': 'Print invitationen & programmet',
 
     'program.fri.day': 'Fredag',
     'program.fri.date': '11. juni 2027',
@@ -117,32 +114,32 @@ window.TRANSLATIONS = {
 
     'inv.eyebrow': 'Invitationen',
     'inv.intro':
-      'A4 på tværs, foldet som en portlåge: de to flapper åbnes ud til siden. Print dobbeltsidet, vend om den lange kant, og fold flapperne ind mod midten.',
+      'Én A5-flyer, printet på begge sider. Forsiden er selve invitationen, bagsiden har weekendens program, det praktiske og en QR-kode til siden her. Print dobbeltsidet — ingen folder.',
     'inv.print': 'Print invitationen',
-    'inv.link': 'Se invitationen',
-    'inv.side.a': 'Side 1 · inderside',
-    'inv.side.b': 'Side 2 · yderside',
-    'inv.fold.note':
-      'Foldemærkerne printes som små, lyse streger i top og bund. Fold efter dem, så forsvinder de i ombukket.',
+    'inv.side.a': 'Forside',
+    'inv.side.b': 'Bagside',
+    'inv.print.note':
+      'Vælg A5 og dobbeltsidet print i printerdialogen. De to sider herover er de to sider af det samme ark.',
 
-    'inv.main.eyebrow': 'I anledning af vores bryllup',
+    'inv.front.eyebrow': 'I anledning af vores bryllupsweekend',
+    'inv.front.range': '11.–13. juni 2027',
     'inv.main.invite': 'Det vil glæde os at se jer, når vi siger ja til hinanden',
-    'inv.main.date': 'Lørdag den 12. juni 2027 · kl. 13.00',
+    'inv.main.date': '12. juni 2027 · kl. 13.00',
     'inv.main.venue': 'Gl. Skovridergaard',
     'inv.main.address': 'Marienlundsvej 36 · 8600 Silkeborg',
-    'inv.main.weekend':
-      'Vi fejrer hele weekenden, fra fredag den 11. til søndag den 13. juni.',
-    'inv.main.closing': 'Vi glæder os til at se jer',
+
+    'inv.back.title': 'Weekenden',
+    'inv.back.sub': '11.–13. juni 2027 · Silkeborg',
+    'inv.qr.alt': 'QR-kode til cecilieesben.com',
 
     'inv.practical.title': 'Praktisk',
     'inv.practical.1.label': 'Sted',
-    'inv.practical.1.value': 'Gl. Skovridergaard · Marienlundsvej 36 · 8600 Silkeborg',
+    'inv.practical.1.value': 'Gl. Skovridergaard, Marienlundsvej 36, 8600 Silkeborg',
     'inv.practical.2.label': 'Overnatning',
     'inv.practical.2.value':
-      'Værelserne på gården er booket og betalt af os. Skriv blot i jeres svar, hvilke nætter I bliver.',
+      'Booket og betalt af os. Skriv i jeres svar, hvilke nætter I bliver.',
     'inv.practical.3.label': 'Dresscode',
-    'inv.practical.3.value':
-      'Festligt tøj. Vielsen og receptionen er udendørs på græs, så vælg skoene derefter.',
+    'inv.practical.3.value': 'Festligt tøj. Vielsen er udendørs på græs.',
     'inv.practical.4.label': 'S.U.',
     'inv.practical.4.value': 'Senest den 1. marts 2027', // TODO: bekræft frist
     'inv.practical.web.label': 'Svar og al info',
@@ -150,20 +147,9 @@ window.TRANSLATIONS = {
     'inv.program.title': 'Programmet',
     'inv.program.note': 'Alle tidspunkter er vejledende.',
 
-    'inv.back.text':
-      'Hele programmet, praktisk info og svar på invitationen finder I på',
-    'inv.cover.date': '12. juni 2027',
-    'inv.cover.weekend': 'Bryllupsweekend · 11.–13. juni',
     'inv.web': 'cecilieesben.com',
 
-    'plan.eyebrow': 'Planen',
-    'plan.title': 'Bryllupsweekend',
-    'plan.dates': '11.–13. juni 2027',
-    'plan.intro':
-      'Hele weekendens plan på én side. Print den, eller gem den på telefonen. Den er lavet til at fylde en A6-flyer.',
-    'plan.print': 'Print planen',
-    'plan.back': 'Tilbage til forsiden',
-    'plan.footer': 'Gl. Skovridergaard · Marienlundsvej 36 · 8600 Silkeborg',
+    'inv.home': 'Tilbage til forsiden',
 
     'venue.eyebrow': 'Stedet',
     'venue.title': 'Gl. Skovridergaard',
@@ -210,11 +196,7 @@ window.TRANSLATIONS = {
     'us.intro':
       'Vi har i vores forhold brugt en masse tid på at udforske verden. Tag et kig nedenunder og send os gerne dit forslag til destinationen på vores næste eventyr.',
 
-    // De enkelte billeder på invitationen (us.1) og flyeren (us.2).
-    'us.1.alt': 'Cecilie og Esben på en mur med udsigt over Donau og Budapest',
-    'us.2.alt': 'Cecilie og Esben spiser aftensmad ved vandet i solnedgangen',
-
-    'travel.hint': 'Hold musen over et billede for at se hvor det er taget, og klik for at se det stort.',
+    'travel.hint': 'Bladr gennem billederne for at se hvor de er taget, og klik på det midterste for at se det stort.',
     'travel.explore': 'Udforsk med os',
     'travel.island.place': 'Jökulsárlón',
     'travel.island.alt':
@@ -433,7 +415,7 @@ window.TRANSLATIONS = {
       'Har I allergier, eller er der noget I ikke spiser, så skriv det i formularen. Køkkenet laver gerne alternativer, bare vi ved det i god tid.',
     'practical.5.title': 'Taler & indslag',
     'practical.5.body':
-      'Vil I holde tale eller lave et indslag, så kontakt vores toastmastere William Gyldenvang Møller og Robert Skov i god tid.',
+      'Vil I holde tale eller lave et indslag, så kontakt vores toastmastere William og Robert i god tid.',
     'practical.5.phone': '+45 26 84 82 10',
     'practical.5.email': 'williammoller@live.dk',
     'practical.6.title': 'Spørgsmål',
@@ -494,12 +476,9 @@ window.TRANSLATIONS = {
     'meta.title.venue': 'The venue · Gl. Skovridergaard · Cecilie & Esben',
     'meta.description.venue':
       'Gl. Skovridergaard near Silkeborg, the setting for our wedding weekend, 11–13 June 2027.',
-    'meta.title.plan': 'The plan · Cecilie & Esben',
-    'meta.description.plan':
-      'The full programme for the wedding weekend, 11–13 June 2027 at Gl. Skovridergaard.',
     'meta.title.invitation': 'Invitation · Cecilie & Esben',
     'meta.description.invitation':
-      'The invitation to Cecilie and Esben’s wedding on 12 June 2027, for printing on A4.',
+      'The invitation to Cecilie and Esben’s wedding on 12 June 2027, for printing on A5.',
 
     'lang.label': 'Change language',
     'lang.da': 'Danish',
@@ -539,7 +518,7 @@ window.TRANSLATIONS = {
     'program.title': 'The plan for the weekend',
     'program.intro':
       'You are welcome from Friday 11 June. Come when it suits you, and stay as long as you can.',
-    'program.link': 'See the plan as a flyer',
+    'program.link': 'Print the invitation & program',
 
     'program.fri.day': 'Friday',
     'program.fri.date': '11 June 2027',
@@ -599,32 +578,32 @@ window.TRANSLATIONS = {
 
     'inv.eyebrow': 'The invitation',
     'inv.intro':
-      'A4 landscape, folded as a gatefold: the two flaps open outwards. Print double-sided, flip on the long edge, and fold the flaps in towards the middle.',
+      'One A5 flyer, printed on both sides. The front is the invitation itself, the back carries the weekend programme, the practical details and a QR code to this site. Print double-sided — there are no folds.',
     'inv.print': 'Print the invitation',
-    'inv.link': 'See the invitation',
-    'inv.side.a': 'Sheet side 1 · inside',
-    'inv.side.b': 'Sheet side 2 · outside',
-    'inv.fold.note':
-      'The fold marks print as small pale ticks at the top and bottom edges. Fold along them and they vanish into the crease.',
+    'inv.side.a': 'Front',
+    'inv.side.b': 'Back',
+    'inv.print.note':
+      'Choose A5 and double-sided in the print dialog. The two sides above are the two sides of one sheet.',
 
-    'inv.main.eyebrow': 'On the occasion of our wedding',
+    'inv.front.eyebrow': 'On the occasion of our wedding weekend',
+    'inv.front.range': '11–13 June 2027',
     'inv.main.invite': 'We would be delighted to see you when we say yes to each other',
-    'inv.main.date': 'Saturday 12 June 2027 · 13.00',
+    'inv.main.date': '12 June 2027 · 13.00',
     'inv.main.venue': 'Gl. Skovridergaard',
     'inv.main.address': 'Marienlundsvej 36 · 8600 Silkeborg, Denmark',
-    'inv.main.weekend':
-      'We are celebrating all weekend, from Friday 11 to Sunday 13 June.',
-    'inv.main.closing': 'We look forward to seeing you',
+
+    'inv.back.title': 'The weekend',
+    'inv.back.sub': '11–13 June 2027 · Silkeborg',
+    'inv.qr.alt': 'QR code to cecilieesben.com',
 
     'inv.practical.title': 'Practical',
     'inv.practical.1.label': 'Where',
-    'inv.practical.1.value': 'Gl. Skovridergaard · Marienlundsvej 36 · 8600 Silkeborg',
+    'inv.practical.1.value': 'Gl. Skovridergaard, Marienlundsvej 36, 8600 Silkeborg',
     'inv.practical.2.label': 'Accommodation',
     'inv.practical.2.value':
-      'The rooms at the estate are booked and paid for by us. Just tell us in your reply which nights you are staying.',
+      'Booked and paid for by us. Just tell us in your reply which nights you are staying.',
     'inv.practical.3.label': 'Dress code',
-    'inv.practical.3.value':
-      'Festive. The ceremony and reception are outdoors on grass, so choose your shoes accordingly.',
+    'inv.practical.3.value': 'Festive. The ceremony is outdoors on grass.',
     'inv.practical.4.label': 'RSVP',
     'inv.practical.4.value': 'By 1 March 2027 at the latest',
     'inv.practical.web.label': 'Reply and full details',
@@ -632,20 +611,9 @@ window.TRANSLATIONS = {
     'inv.program.title': 'The programme',
     'inv.program.note': 'All times are approximate.',
 
-    'inv.back.text':
-      'The full programme, practical details and the reply form are all at',
-    'inv.cover.date': '12 June 2027',
-    'inv.cover.weekend': 'Wedding weekend · 11–13 June',
     'inv.web': 'cecilieesben.com',
 
-    'plan.eyebrow': 'The plan',
-    'plan.title': 'Wedding weekend',
-    'plan.dates': '11–13 June 2027',
-    'plan.intro':
-      'The whole weekend on one page. Print it, or keep it on your phone. It is made to fill an A6 flyer.',
-    'plan.print': 'Print the plan',
-    'plan.back': 'Back to the front page',
-    'plan.footer': 'Gl. Skovridergaard · Marienlundsvej 36 · 8600 Silkeborg, Denmark',
+    'inv.home': 'Back to the front page',
 
     'venue.eyebrow': 'The venue',
     'venue.title': 'Gl. Skovridergaard',
@@ -687,7 +655,7 @@ window.TRANSLATIONS = {
       'The weekend is long enough for more than a party. Walk in the forest, swim in Lake Almindsø, rent a bike through Søhøjlandet, or visit Museum Jorn and Silkeborg Bad Art Centre, both a few minutes away.',
     'venuepage.back': 'Back to the front page',
 
-    'travel.hint': 'Hover a photograph to see where it was taken, and click to open it.',
+    'travel.hint': 'Scroll through the photographs to see where they were taken, and click the middle one to open it.',
     'travel.explore': 'Explore with us',
     'travel.island.place': 'Jökulsárlón',
     'travel.island.alt':
@@ -867,10 +835,6 @@ window.TRANSLATIONS = {
     'us.intro':
       'We have spent a great deal of our time together exploring the world. Have a look below, and do send us your suggestion for where our next adventure should take us.',
 
-    // The single photograph on the invitation (us.1) and on the flyer (us.2).
-    'us.1.alt': 'Cecilie and Esben on a wall overlooking the Danube and Budapest',
-    'us.2.alt': 'Cecilie and Esben having dinner by the water at sunset',
-
     'around.eyebrow': 'Area around Silkeborg',
     'around.title': 'Søhøjlandet',
     'around.intro':
@@ -916,7 +880,7 @@ window.TRANSLATIONS = {
       'If you have allergies, or there is something you do not eat, put it in the form. The kitchen is happy to make alternatives. We just need to know in good time.',
     'practical.5.title': 'Speeches & performances',
     'practical.5.body':
-      'If you would like to give a speech or perform something, please contact our toastmasters William Gyldenvang Møller and Robert Skov in good time.',
+      'If you would like to give a speech or perform something, please contact our toastmasters William and Robert in good time.',
     'practical.5.phone': '+45 26 84 82 10',
     'practical.5.email': 'williammoller@live.dk',
     'practical.6.title': 'Questions',

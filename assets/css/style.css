@@ -666,121 +666,166 @@ p:last-child {
 /* --- Programme ------------------------------------------------------------ */
 
 /*
- * The three days stack rather than sit side by side. Saturday has four times
- * as much in it as the other two, so as columns it always left one card
- * towering over its neighbours; as full-width blocks each day simply takes
- * the room it needs, and the entries inside flow into as many columns as fit.
+ * Three cards, one per day, drawn the way the A5 flyer draws them: the day
+ * itself down the left with its date under it in brass, then a hairline, then
+ * the hours as a condensed two-column list. Only the times and the titles —
+ * the descriptions belong on the flyer's own terms, which is to say not at all;
+ * what is left is the sentence under each day.
  */
 .days {
   display: grid;
-  gap: clamp(1.5rem, 3vw, 2rem);
+  gap: clamp(1rem, 2vw, 1.5rem);
 }
 
 .day {
-  padding: clamp(1.75rem, 3vw, 2.5rem);
+  display: grid;
+  grid-template-columns: minmax(0, 13rem) minmax(0, 1fr);
+  padding: clamp(1.5rem, 3vw, 2.25rem);
   border: 1px solid var(--sand);
   border-radius: var(--radius);
   background: var(--paper-2);
   box-shadow: var(--shadow-sm);
 }
 
+/* Saturday is the day the weekend is built around; a green hairline says so
+   without turning the card into a black block among two pale ones. */
 .day--feature {
-  border-color: var(--forest);
-  background: var(--forest);
-  color: var(--sand);
-  box-shadow: var(--shadow-lg);
+  border-color: var(--sage-deep);
+}
+
+.day__head {
+  grid-column: 1;
+  grid-row: 1 / span 2;
 }
 
 .day__day {
-  font-size: 0.6875rem;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: var(--taupe);
-}
-
-.day--feature .day__day {
-  color: var(--sage);
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 1.2rem + 1vw, 2rem);
+  line-height: 1.1;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--hunter);
 }
 
 .day__date {
   display: block;
-  margin-top: 0.625rem;
-  font-family: var(--font-display);
-  font-size: 1.875rem;
-  color: var(--hunter);
-}
-
-.day--feature .day__date {
-  color: var(--paper-2);
+  margin-top: 0.45rem;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 0.625rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--brass);
 }
 
 .day__title {
-  margin-top: 0.375rem;
-  font-size: 0.75rem;
+  margin: 0.85rem 0 0;
+  font-size: 0.6875rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--muted);
+  color: var(--taupe);
 }
 
-.day--feature .day__title {
-  color: var(--sage);
-}
-
+/*
+ * The list is the grid, and every entry is `display: contents` — so the times
+ * line up down the whole day instead of each row setting its own column.
+ */
 .day__list {
+  grid-column: 2;
+  grid-row: 1;
   display: grid;
-  gap: 1.5rem clamp(1.5rem, 3vw, 2.5rem);
-  grid-template-columns: repeat(auto-fill, minmax(19rem, 1fr));
-  margin: 2rem 0 0;
-  padding: 0;
+  grid-template-columns: max-content minmax(0, 1fr);
+  gap: 0.5rem clamp(1rem, 2.5vw, 1.75rem);
+  align-content: start;
+  /* Fraunces and Jost sit on different metrics, so each row is lined up on
+     the baseline rather than on the top of its box. */
+  align-items: baseline;
+  margin: 0;
+  padding-left: clamp(1.25rem, 3vw, 2.25rem);
+  border-left: 1px solid var(--sand);
   list-style: none;
 }
 
-/* Every entry carries its own rule, since in a multi-column list there is no
-   single "first" one to leave bare. */
-.day__item {
-  display: grid;
-  grid-template-columns: 5rem 1fr;
-  gap: 1rem;
-  padding-top: 1.25rem;
-  border-top: 1px solid var(--sand);
+.day--feature .day__list {
+  border-left-color: var(--sage);
 }
 
-.day--feature .day__item {
-  border-top-color: rgba(156, 171, 146, 0.3);
+.day__item {
+  display: contents;
 }
 
 .day__time {
   font-family: var(--font-display);
-  font-size: 1.0625rem;
-  color: var(--brass);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: var(--taupe);
   font-variant-numeric: tabular-nums;
 }
 
-.day--feature .day__time {
-  color: var(--sage);
-}
-
 .day__item h4 {
-  margin: 0 0 0.25rem;
+  margin: 0;
   font-family: var(--font-body);
   font-size: 0.9375rem;
-  font-weight: 500;
-  letter-spacing: 0.02em;
+  font-weight: 300;
+  line-height: 1.5;
+  letter-spacing: 0.01em;
   color: var(--ink);
 }
 
-.day--feature .day__item h4 {
-  color: var(--paper-2);
+/* The one hour everything else is arranged around. */
+.day__item--key .day__time,
+.day__item--key h4 {
+  font-weight: 500;
+  color: var(--hunter);
 }
 
-.day__item p {
-  margin: 0;
+.day__note {
+  grid-column: 2;
+  grid-row: 2;
+  margin: 1.25rem 0 0;
+  padding: 1.25rem 0 0 clamp(1.25rem, 3vw, 2.25rem);
+  border-top: 1px solid var(--sand);
+  font-family: var(--font-display);
+  font-style: italic;
   font-size: 0.9375rem;
-  color: var(--muted);
+  line-height: 1.4;
+  color: var(--taupe);
 }
 
-.day--feature .day__item p {
-  color: rgba(239, 230, 214, 0.72);
+.day--feature .day__note {
+  border-top-color: var(--sage);
+}
+
+/* Stacked, the hairline has nothing to divide, so the day simply sits on top
+   of its own hours. */
+@media (max-width: 44rem) {
+  .day {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .day__head,
+  .day__list,
+  .day__note {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .day__list {
+    margin-top: 1.25rem;
+    padding-left: 0;
+    border-left: 0;
+    border-top: 1px solid var(--sand);
+    padding-top: 1.25rem;
+  }
+
+  .day--feature .day__list {
+    border-top-color: var(--sage);
+  }
+
+  .day__note {
+    padding-left: 0;
+  }
 }
 
 /* --- Venue teaser --------------------------------------------------------- */
@@ -841,87 +886,130 @@ p:last-child {
   background-position: center;
 }
 
-/* --- Vejen hertil: ten places, one globe ---------------------------------- */
+/* --- Vejen hertil: forty-five places, one globe --------------------------- */
 
-/* No align-items here: the globe column has to stretch the full height of the
-   row, or its sticky child would have nothing to travel along. */
+/*
+ * One layout at every width: the globe rides at the top as a slim bar, and the
+ * photographs run underneath it as a snap carousel. There is no hover version
+ * any more — whichever card is nearest the middle is the selected one, on a
+ * trackpad exactly as on a thumb, and globe.js turns the globe to it.
+ */
 .travel {
   display: grid;
-  gap: clamp(2rem, 4vw, 3.5rem);
+  gap: clamp(1.25rem, 3vw, 2rem);
 }
 
-@media (min-width: 62rem) {
-  .travel {
-    grid-template-columns: minmax(0, 1fr) 22rem;
+/*
+ * The peek is paid for with padding rather than a narrower card, which is what
+ * lets the first and last photograph reach the middle: the content box is
+ * exactly one card wide, so `flex: 0 0 100%` is one card, and the padding
+ * either side is the sliver of the neighbours you can see. On a wide screen
+ * the padding grows instead of the card, so the card never becomes a square
+ * the height of the window.
+ */
+.travel__grid {
+  --peek: 17%;
+  --card: 26rem;
+
+  display: flex;
+  gap: 0.75rem;
+  margin: 0;
+  /* Out to the screen edges, so the neighbours run off the sides. */
+  margin-inline: calc(var(--gutter) * -1);
+  padding: 0;
+  /*
+   * A percentage padding resolves against the containing block, not against
+   * this element — which is what makes the peek work while the list hangs out
+   * past its own container: the overhang cancels on both sides, so the middle
+   * of a card is still the middle of the page.
+   */
+  padding-inline: var(--peek);
+  list-style: none;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+}
+
+.travel__grid::-webkit-scrollbar {
+  display: none;
+}
+
+.travel__grid li {
+  flex: 0 0 100%;
+  scroll-snap-align: center;
+}
+
+/*
+ * Wide enough that a card the width of the column would be a square the height
+ * of the window. The list stops hanging past its container here, so the peek
+ * can be stated as "whatever is left beside a card of --card" and both sides
+ * still measure from the same box.
+ */
+@media (min-width: 48rem) {
+  .travel__grid {
+    margin-inline: 0;
+    padding-inline: max(12%, (100% - var(--card)) / 2);
   }
 }
 
 /*
- * Columns rather than a grid: the photographs keep their own proportions, so
- * nobody gets cropped out of the frame. Tall and wide shots simply stack.
+ * Side by side the cards need one shape between them, or the carousel lurches
+ * with every swipe. They get a square, and the photograph sits inside it on a
+ * wash of its own colours rather than being cropped to fit — a centre crop
+ * this tight leaves half the couple outside the frame on the wide shots.
  */
-.travel__grid {
-  columns: 2;
-  column-gap: clamp(0.75rem, 1.6vw, 1.25rem);
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.travel__grid li {
-  break-inside: avoid;
-  margin-bottom: clamp(0.75rem, 1.6vw, 1.25rem);
-}
-
-/* One photograph. Pointing at it turns the globe, clicking it opens it up. */
 .trip {
   position: relative;
   display: block;
   width: 100%;
+  aspect-ratio: 1 / 1;
   padding: 0;
   overflow: hidden;
   border: 0;
   border-radius: var(--radius);
   background: var(--sand);
   cursor: zoom-in;
-  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  opacity: 0.4;
+  transition: opacity 0.35s ease;
+}
+
+/*
+ * The mount is a blurred wash of the photograph itself, set from globe.js.
+ * Without it the sliver of a neighbour showing past the card edge is often
+ * bare mount — a tall photograph touches neither side — and a blank edge
+ * invites nobody to swipe. This way the colours of the next place always
+ * show, however the photograph is shaped.
+ */
+.trip::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--shot, none) center / cover no-repeat;
+  transform: scale(1.2);
+  filter: blur(1.25rem) saturate(0.7);
+  opacity: 0.55;
 }
 
 .trip img {
+  position: relative;
   width: 100%;
-  height: auto;
-  transition: transform 0.6s ease, filter 0.4s ease;
+  height: 100%;
+  object-fit: contain;
 }
 
+.trip[aria-current] {
+  opacity: 1;
+}
+
+/* The name of the place is already up in the globe bar. */
 .trip__label {
-  position: absolute;
-  inset: auto 0 0;
-  display: grid;
-  gap: 0.15rem;
-  padding: 3rem 0.9rem 0.85rem;
-  background: linear-gradient(to top, rgba(30, 36, 31, 0.8), transparent);
-  color: var(--paper-2);
-  text-align: left;
-  opacity: 0;
-  transform: translateY(0.35rem);
-  transition: opacity 0.35s ease, transform 0.35s ease;
+  display: none;
 }
 
-.trip__place {
-  font-family: var(--font-display);
-  font-size: 1.0625rem;
-  line-height: 1.15;
-}
-
-.trip__country {
-  font-size: 0.625rem;
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
-  color: rgba(239, 230, 214, 0.8);
-}
-
-/* A quiet hint that there is a bigger version behind the picture. */
-.trip::after,
+/* A quiet hint that there is a bigger version behind the picture. It belongs
+   to the selected card only: the neighbours are not open to be opened. */
+.trip[aria-current]::after,
 .figure__zoom::after {
   content: '';
   position: absolute;
@@ -939,53 +1027,50 @@ p:last-child {
   transition: opacity 0.3s ease;
 }
 
-.trip:hover,
-.trip:focus-visible {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-lg);
-}
-
-.trip:hover::after,
+.trip[aria-current]:hover::after,
 .trip:focus-visible::after,
 .figure__zoom:hover::after,
 .figure__zoom:focus-visible::after {
   opacity: 1;
 }
 
-.trip:hover img,
-.trip:focus-visible img {
-  transform: scale(1.04);
-  filter: saturate(0.95) sepia(0.03);
-}
-
-.trip:hover .trip__label,
-.trip:focus-visible .trip__label,
-.trip[aria-current] .trip__label {
-  opacity: 1;
-  transform: none;
-}
-
-/* The selected tile keeps a hunter-green hairline once the pointer moves on. */
-.trip[aria-current]::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border: 2px solid var(--hunter);
-  border-radius: var(--radius);
-  pointer-events: none;
-}
-
 /* --- The globe ------------------------------------------------------------ */
 
+/* The bar leads and the photographs run under it, whichever order the two sit
+   in the markup. */
+.globe {
+  order: -1;
+}
+
+/*
+ * The globe on the left, and beside it the name of the place with the shuffle
+ * underneath — all of it slim enough to stay pinned while the photographs
+ * scroll past under it.
+ */
 .globe__sticky {
   position: sticky;
-  top: calc(var(--header-h) + 1.5rem);
-  text-align: center;
+  top: var(--header-h);
+  z-index: 5;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  grid-template-areas:
+    'stage label'
+    'stage action';
+  align-items: center;
+  column-gap: clamp(1.25rem, 2.5vw, 2rem);
+  row-gap: 0.5rem;
+  padding: 0.75rem 0 1rem;
+  background: var(--paper);
+  text-align: left;
+}
+
+.section--paper .globe__sticky {
+  background: var(--paper-2);
 }
 
 .globe__stage {
-  width: min(20rem, 100%);
-  margin-inline: auto;
+  grid-area: stage;
+  width: clamp(6.5rem, 11vw, 9.5rem);
   filter: drop-shadow(0 18px 34px rgba(44, 51, 45, 0.22));
 }
 
@@ -995,10 +1080,11 @@ p:last-child {
 }
 
 .globe__label {
+  grid-area: label;
+  align-self: end;
   display: grid;
-  gap: 0.5rem;
-  margin: 1.75rem 0 0;
-  min-height: 3.5rem;
+  gap: 0.35rem;
+  margin: 0;
 }
 
 .globe__place {
@@ -1016,170 +1102,46 @@ p:last-child {
   color: var(--taupe);
 }
 
+/* The hint tells you how the carousel works, so it sits under the bar rather
+   than inside it, where there is no room for a sentence. */
 .globe__hint {
-  margin: 1.25rem 0 0;
+  grid-area: hint;
+  margin: 0;
   font-size: 0.8125rem;
   color: var(--taupe);
 }
 
 .globe__shuffle {
-  margin-top: 1.25rem;
-  padding-inline: 1.5rem;
+  grid-area: action;
+  align-self: start;
+  justify-self: start;
+  padding: 0.5rem 1.1rem;
+  font-size: 0.625rem;
 }
 
-/*
- * On a phone the globe leads, and stays put as a slim bar while the
- * photographs scroll underneath it: globe on the left, place name alongside.
- */
-@media (max-width: 61.99rem) {
-  .globe {
-    order: -1;
-  }
-
-  /* The globe on the left, and beside it the name of the place with the
-     shuffle underneath — all of it slim enough to stay pinned. */
+@media (min-width: 48rem) {
   .globe__sticky {
-    top: var(--header-h);
-    z-index: 5;
-    display: grid;
-    grid-template-columns: auto minmax(0, 1fr);
     grid-template-areas:
-      'stage label'
-      'stage action';
+      'stage label  action'
+      'stage hint   action';
+    grid-template-columns: auto minmax(0, 1fr) auto;
     align-items: center;
-    column-gap: 1.25rem;
-    row-gap: 0.5rem;
-    padding: 0.75rem 0 1rem;
-    background: var(--paper);
-    text-align: left;
-  }
-
-  .section--paper .globe__sticky {
-    background: var(--paper-2);
-  }
-
-  .globe__stage {
-    grid-area: stage;
-    width: 6.5rem;
-    margin-inline: 0;
   }
 
   .globe__label {
-    grid-area: label;
     align-self: end;
-    margin: 0;
-    min-height: 0;
-    gap: 0.35rem;
   }
 
   .globe__shuffle {
     grid-area: action;
-    align-self: start;
-    justify-self: start;
-    margin-top: 0;
-    padding: 0.5rem 1.1rem;
-    font-size: 0.625rem;
+    align-self: center;
+    justify-self: end;
   }
+}
 
+@media (max-width: 47.99rem) {
   .globe__hint {
     display: none;
-  }
-
-  /*
-   * There is no pointer to hover with, so the photographs become a carousel
-   * and swiping takes over the job: whichever card sits nearest the middle is
-   * the selected one, and the globe turns to it. globe.js reads the scroll
-   * position; everything below is only the look of it.
-   *
-   * The peek is paid for with padding rather than a narrower card, which is
-   * what lets the first and last photograph reach the middle: the content box
-   * is exactly one card wide, so `flex: 0 0 100%` is one card, and the padding
-   * either side is the sliver of the neighbours you can see.
-   */
-  .travel__grid {
-    --peek: 17%;
-
-    display: flex;
-    columns: initial;
-    gap: 0.75rem;
-    /* Out to the screen edges, so the neighbours run off the sides. */
-    margin-inline: calc(var(--gutter) * -1);
-    padding-inline: var(--peek);
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    overscroll-behavior-x: contain;
-    scrollbar-width: none;
-  }
-
-  .travel__grid::-webkit-scrollbar {
-    display: none;
-  }
-
-  .travel__grid li {
-    flex: 0 0 100%;
-    margin-bottom: 0;
-    scroll-snap-align: center;
-  }
-
-  /*
-   * Side by side the cards need one shape between them, or the carousel
-   * lurches with every swipe. They get a square, and the photograph sits
-   * inside it on the sand rather than being cropped to fit — a centre crop
-   * this tight leaves half the couple outside the frame on the wide shots.
-   * The mount is the same colour as the card, so it reads as a print laid on
-   * paper rather than as a photograph that has come up short.
-   */
-  .trip {
-    aspect-ratio: 1 / 1;
-    opacity: 0.4;
-    transition: opacity 0.35s ease;
-  }
-
-  /*
-   * The mount is a blurred wash of the photograph itself, set from globe.js.
-   * Without it the sliver of a neighbour showing past the card edge is often
-   * bare mount — a tall photograph touches neither side — and a blank edge
-   * invites nobody to swipe. This way the colours of the next place always
-   * show, however the photograph is shaped.
-   */
-  .trip::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: var(--shot, none) center / cover no-repeat;
-    transform: scale(1.2);
-    filter: blur(1.25rem) saturate(0.7);
-    opacity: 0.55;
-  }
-
-  .trip img {
-    position: relative;
-    height: 100%;
-    object-fit: contain;
-  }
-
-  .trip[aria-current] {
-    opacity: 1;
-  }
-
-  /* The name is already up in the globe bar, and a dark gradient over the
-     mount would only muddy it. */
-  .trip__label {
-    display: none;
-  }
-
-  /* Lifting and zooming belong to a pointer; on a touch screen the styles
-     only stick to whatever was tapped last. */
-  .trip:hover,
-  .trip:focus-visible {
-    transform: none;
-    box-shadow: none;
-  }
-
-  .trip:hover img,
-  .trip:focus-visible img {
-    transform: none;
-    filter: none;
   }
 }
 
@@ -1489,42 +1451,22 @@ p:last-child {
   color: var(--muted);
 }
 
-/* --- Day cards: note under each day --------------------------------------- */
+/* --- Invitation: the page around the sheets ------------------------------- */
 
-.day__note {
-  margin: 1.75rem 0 0;
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--sand);
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 1.0625rem;
-  line-height: 1.4;
-  color: var(--taupe);
-}
-
-.day--feature .day__note {
-  border-top-color: rgba(156, 171, 146, 0.3);
-  color: var(--sage);
-}
-
-/* --- Plan page ------------------------------------------------------------ */
-
-.plan-page {
-  background: var(--paper);
-}
-
-.plan-intro {
+/* Screen furniture: what the invitation is and how to print it. None of this
+   survives into the print, which is only the two sheets. */
+.inv-intro {
   padding: calc(var(--header-h) + clamp(2.5rem, 7vw, 4.5rem)) 0 clamp(2rem, 4vw, 3rem);
   text-align: center;
 }
 
-.plan-intro__text {
+.inv-intro__text {
   max-width: 34rem;
   margin-inline: auto;
   color: var(--muted);
 }
 
-.plan-intro__actions {
+.inv-intro__actions {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
@@ -1532,227 +1474,18 @@ p:last-child {
   margin-top: 2rem;
 }
 
-/*
- * On a laptop the flyer is a card lying on a photograph, so the page never
- * reads as a small card floating in empty space. On a phone the photo steps
- * aside and the card takes the full width instead.
- */
-/*
- * On a laptop the card is laid next to a photograph of the same size, like two
- * things on a table — which fills the width without the card floating alone in
- * empty space. On a phone the photo steps aside and the card takes over.
- */
-.flyer-stage {
-  display: grid;
-  justify-items: center;
-  gap: clamp(1.5rem, 4vw, 3.5rem);
-  padding: clamp(2.5rem, 6vw, 4.5rem) var(--gutter) clamp(3rem, 7vw, 5rem);
-  background: var(--sand);
-}
-
-.flyer-photo {
-  display: none;
-}
-
-@media (min-width: 60rem) {
-  .flyer-stage {
-    grid-auto-flow: column;
-    align-items: center;
-    padding-block: clamp(3.5rem, 7vw, 6rem);
-  }
-
-  .flyer-photo {
-    display: block;
-    width: 105mm;
-    height: 148mm;
-    margin: 0;
-    overflow: hidden;
-    border-radius: var(--radius);
-    box-shadow: var(--shadow-lg);
-  }
-
-  .flyer-photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-}
+/* --- Invitation: a double-sided A5 flyer ---------------------------------- */
 
 /*
- * A6 is 105 x 148 mm. Every measurement inside the flyer is a multiple of
- * --u, which is a millimetre by default and shrinks to fit narrow viewports —
- * so the card keeps its exact proportions instead of wrapping or cramming.
- */
-.flyer {
-  --u: 1mm;
-  width: calc(105 * var(--u));
-  min-height: calc(148 * var(--u));
-  background: var(--paper-2);
-  border: 1px solid var(--sand);
-  box-shadow: var(--shadow-lg);
-}
-
-@media (max-width: 30rem) {
-  .flyer {
-    --u: calc((100vw - 2 * var(--gutter)) / 105);
-  }
-}
-
-.flyer__inner {
-  display: flex;
-  flex-direction: column;
-  min-height: calc(148 * var(--u));
-  padding: calc(7 * var(--u)) calc(6.5 * var(--u)) calc(5 * var(--u));
-}
-
-.flyer__head {
-  text-align: center;
-  padding-bottom: calc(2 * var(--u));
-  border-bottom: 1px solid var(--sand);
-}
-
-.flyer__mark {
-  width: calc(17 * var(--u));
-  margin: 0 auto calc(1.5 * var(--u));
-  color: var(--hunter);
-}
-
-.flyer__names {
-  font-size: calc(5.6 * var(--u));
-  line-height: 1;
-  color: var(--hunter);
-}
-
-.flyer__amp {
-  font-style: italic;
-  font-variation-settings: 'SOFT' 20, 'WONK' 1, 'opsz' 144;
-}
-
-.flyer__title {
-  margin: calc(1.6 * var(--u)) 0 0;
-  font-size: calc(2.4 * var(--u));
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: var(--taupe);
-}
-
-.flyer__dates {
-  margin: calc(1.5 * var(--u)) 0 0;
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: calc(3.5 * var(--u));
-  color: var(--hunter);
-}
-
-.plan-days {
-  flex: 1;
-  padding-top: calc(2 * var(--u));
-}
-
-.plan-day + .plan-day {
-  margin-top: calc(2 * var(--u));
-  padding-top: calc(2 * var(--u));
-  border-top: 1px solid var(--sand);
-}
-
-.plan-day__head {
-  display: flex;
-  align-items: baseline;
-  flex-wrap: wrap;
-  gap: 0 calc(2 * var(--u));
-}
-
-.plan-day__day {
-  font-family: var(--font-display);
-  font-size: calc(3.8 * var(--u));
-  color: var(--hunter);
-}
-
-.plan-day__date {
-  font-weight: 400;
-  font-size: calc(2.6 * var(--u));
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--taupe);
-}
-
-.plan-day__title {
-  margin: 0;
-  font-size: calc(2.5 * var(--u));
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--sage-deep);
-}
-
-.plan-day__list {
-  margin: calc(1.2 * var(--u)) 0 0;
-  padding: 0;
-  list-style: none;
-}
-
-.plan-item {
-  display: grid;
-  grid-template-columns: calc(19 * var(--u)) 1fr;
-  gap: 0 calc(3 * var(--u));
-  padding-block: calc(0.45 * var(--u));
-}
-
-.plan-item__time {
-  font-family: var(--font-display);
-  font-size: calc(2.9 * var(--u));
-  line-height: 1.35;
-  color: var(--brass);
-  font-variant-numeric: tabular-nums;
-}
-
-.plan-item h4 {
-  margin: 0;
-  font-family: var(--font-body);
-  font-size: calc(2.9 * var(--u));
-  font-weight: 500;
-  line-height: 1.35;
-  letter-spacing: 0.01em;
-  color: var(--ink);
-}
-
-/*
- * Times and titles only — the descriptions live on the front page. Keeping the
- * flyer to that on screen too means what you see is exactly what prints.
- */
-.plan-item p {
-  display: none;
-}
-
-.plan-day__note {
-  margin: calc(1.2 * var(--u)) 0 0;
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: calc(2.6 * var(--u));
-  line-height: 1.3;
-  color: var(--taupe);
-}
-
-.flyer__foot {
-  margin-top: calc(3 * var(--u));
-  padding-top: calc(2 * var(--u));
-  border-top: 1px solid var(--sand);
-  text-align: center;
-}
-
-.flyer__foot p {
-  margin: 0;
-  font-size: calc(2.4 * var(--u));
-  letter-spacing: 0.1em;
-  color: var(--taupe);
-}
-
-/* --- Invitation: A4 landscape gatefold ------------------------------------ */
-
-/*
- * 297 x 210 mm, printed double-sided and folded into three panels of
- * 74.25 | 148.5 | 74.25 mm. As with the flyer, everything is a multiple of
- * --u so the whole sheet scales down for on-screen preview without reflowing.
- * The invitation is pure white — no cream — as asked.
+ * The 2a artboard from `Bryllupsflyer A5.dc.html`, redrawn in the site's own
+ * Fraunces and hunter green. The source file is set in Cormorant Garamond over
+ * a sage `#4E5D4F`; here the sage is replaced by hunter green let down towards
+ * the paper, which keeps the muted weight of the design without introducing a
+ * second green to the site.
+ *
+ * That canvas is 559 x 794 px — A5 at 96dpi — so `--u` is one of its pixels and
+ * every measurement below is the number the design was drawn with. On paper
+ * `--u` resolves to 210mm/794; on a narrow screen it shrinks with the viewport.
  */
 .inv-page {
   background: var(--paper);
@@ -1787,74 +1520,45 @@ p:last-child {
   text-align: center;
 }
 
-.sheet {
-  --u: 1mm;
+/*
+ * The flyer's own palette: one hunter green mixed towards the paper in five
+ * steps, so the whole piece is a single colour at different strengths rather
+ * than the near-neutral greens of the source artboard.
+ */
+.sheet--a5 {
+  --u: calc(210mm / 794);
+
+  --f-ink: #2d452c; /* the names */
+  --f-strong: #384f36; /* headings, dates, the venue */
+  --f-solid: #495d47; /* the practical panel and the rule under the head */
+  --f-soft: #6e7d69; /* the eyebrow */
+  --f-softer: #8e9987; /* the line under it */
+  --f-address: #7d8a77;
+  --f-time: #8a8f84;
+  --f-rule: #e2dac9;
+  --f-gold-light: #dcc39b;
+
   position: relative;
-  display: grid;
-  grid-template-columns:
-    calc(74.25 * var(--u)) calc(148.5 * var(--u)) calc(74.25 * var(--u));
-  width: calc(297 * var(--u));
-  height: calc(210 * var(--u));
-  background: #fff;
+  width: calc(559 * var(--u));
+  height: calc(794 * var(--u));
+  background: var(--paper);
   box-shadow: var(--shadow-lg);
 }
 
-@media (max-width: 78rem) {
-  .sheet {
-    --u: calc((100vw - 2 * var(--gutter)) / 297);
+/* Screen only: on paper --u must stay true, and A5 is narrower than this
+   breakpoint, so an unqualified media query would fire in print. */
+@media screen and (max-width: 38rem) {
+  .sheet--a5 {
+    --u: calc((100vw - 2 * var(--gutter)) / 559);
   }
 }
 
-/* Fold guides — on screen only, plus faint marks in the paper margin. */
-.fold {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 0;
-  border-left: 1px dashed rgba(169, 154, 138, 0.55);
-  pointer-events: none;
-}
-
 .panel {
+  position: relative;
   display: flex;
   flex-direction: column;
-  padding: calc(11 * var(--u)) calc(8 * var(--u));
+  height: 100%;
   overflow: hidden;
-}
-
-.panel--centre {
-  padding-inline: calc(16 * var(--u));
-  text-align: center;
-}
-
-/* --- Invitation: centre panel --- */
-
-.inv-main {
-  position: relative;
-  align-items: center;
-  /* Centred in the space left above the panorama along the foot. */
-  justify-content: center;
-  padding-bottom: calc(38 * var(--u));
-}
-
-.inv-main__mark {
-  width: calc(34 * var(--u));
-  color: var(--hunter);
-}
-
-.inv-main__eyebrow {
-  margin: calc(6 * var(--u)) 0 0;
-  font-size: calc(2.4 * var(--u));
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-  color: var(--taupe);
-}
-
-.inv-main__names {
-  margin: calc(4 * var(--u)) 0 0;
-  font-size: calc(14 * var(--u));
-  line-height: 1;
-  color: var(--hunter);
 }
 
 .inv-amp {
@@ -1862,291 +1566,343 @@ p:last-child {
   font-variation-settings: 'SOFT' 20, 'WONK' 1, 'opsz' 144;
 }
 
-.inv-main__invite {
-  margin: calc(5 * var(--u)) 0 0;
-  max-width: calc(96 * var(--u));
-  font-size: calc(3.1 * var(--u));
-  line-height: 1.5;
-  color: var(--muted);
-}
+/* --- Invitation: the front --- */
 
-.inv-main__date {
-  margin: calc(5 * var(--u)) 0 0;
-  font-family: var(--font-display);
-  font-size: calc(5 * var(--u));
-  color: var(--hunter);
-}
-
-.inv-main__venue {
-  margin: calc(3.5 * var(--u)) 0 0;
-  font-family: var(--font-display);
-  font-size: calc(4 * var(--u));
-  color: var(--ink);
-}
-
-.inv-main__address {
-  margin: calc(1.5 * var(--u)) 0 0;
-  font-size: calc(2.4 * var(--u));
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--taupe);
-}
-
-.inv-main__weekend {
-  margin: calc(5 * var(--u)) 0 0;
-  max-width: calc(92 * var(--u));
-  font-size: calc(2.9 * var(--u));
-  line-height: 1.5;
-  color: var(--muted);
-}
-
-.inv-main__closing {
-  margin: calc(4 * var(--u)) 0 0;
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: calc(4 * var(--u));
-  color: var(--taupe);
-}
-
-/* The panorama runs full width along the foot of the centre panel. */
-.inv-main__scene {
+/*
+ * The lakes run the full sheet, then all but disappear under a cream veil that
+ * is at its thinnest across the middle — so the water reads behind the names
+ * and the type at the top and foot still has plain paper to sit on.
+ */
+/*
+ * The watercolour was scanned with its paper, so the file carries a deckled
+ * white edge — about 23px of the 644 along the foot. Covering the sheet lands
+ * that edge exactly on the trim, as a white bar under the address. Hanging the
+ * image past the top and bottom by 5% pushes both edges outside the sheet.
+ */
+.inv-front__wash {
   position: absolute;
-  inset: auto 0 0;
+  inset: -5% 0;
   width: 100%;
-  height: calc(30 * var(--u));
+  height: 110%;
   object-fit: cover;
-  object-position: center 55%;
+  opacity: 0.95;
 }
 
-/* --- Invitation: flaps --- */
+.inv-front__veil {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(251, 247, 239, 0.44) 0%,
+    rgba(251, 247, 239, 0.31) 22%,
+    rgba(251, 247, 239, 0.4) 34%,
+    rgba(251, 247, 239, 0.41) 52%,
+    rgba(251, 247, 239, 0.3) 68%,
+    rgba(251, 247, 239, 0.48) 100%
+  );
+}
 
-.inv-panel-title {
-  font-size: calc(6.5 * var(--u));
-  color: var(--hunter);
+.inv-front__body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  padding: calc(52 * var(--u)) calc(46 * var(--u)) calc(32 * var(--u));
   text-align: center;
 }
 
-.inv-facts {
-  margin-top: calc(7 * var(--u));
+.inv-front__top {
+  display: grid;
+  gap: calc(7 * var(--u));
 }
 
-.inv-fact + .inv-fact {
-  margin-top: calc(6 * var(--u));
+.inv-front__eyebrow {
+  margin: 0;
+  font-size: calc(11 * var(--u));
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: var(--f-strong);
 }
 
-.inv-fact h3 {
-  margin-bottom: calc(1.6 * var(--u));
-  font-family: var(--font-body);
-  font-size: calc(2.3 * var(--u));
+.inv-front__range {
+  margin: 0;
+  font-size: calc(10 * var(--u));
+  font-weight: 300;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--f-strong);
+}
+
+/* Centred in whatever is left between the two fixed groups. */
+.inv-front__mid {
+  display: grid;
+  justify-items: center;
+  gap: calc(22 * var(--u));
+  margin-block: auto;
+}
+
+/*
+ * The glow is the design's: the names sit over the one place the veil is thin,
+ * and without it the water shows through the counters of the letters.
+ */
+.inv-front__names {
+  margin: 0;
+  font-size: calc(53 * var(--u));
   font-weight: 500;
-  letter-spacing: 0.24em;
+  line-height: 0.98;
+  color: var(--f-ink);
+  text-shadow:
+    0 0 calc(26 * var(--u)) rgba(251, 247, 239, 0.95),
+    0 0 calc(60 * var(--u)) rgba(251, 247, 239, 0.8);
+}
+
+/* Fraunces sets the ampersand tighter than Cormorant did; the design has air
+   on both sides of it. */
+.inv-front__names .inv-amp {
+  margin-inline: calc(4 * var(--u));
+  font-weight: 400;
+  font-size: calc(46 * var(--u));
+}
+
+.inv-front__rule {
+  display: block;
+  width: calc(54 * var(--u));
+  height: calc(1 * var(--u));
+  background: var(--brass);
+}
+
+.inv-front__foot {
+  display: grid;
+  gap: calc(9 * var(--u));
+}
+
+.inv-front__invite {
+  margin: 0 auto calc(16 * var(--u));
+  max-width: calc(330 * var(--u));
+  font-family: var(--font-display);
+  font-size: calc(19 * var(--u));
+  line-height: 1.55;
+  color: var(--f-strong);
+  text-wrap: pretty;
+}
+
+.inv-front__date {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: calc(24 * var(--u));
+  font-weight: 500;
+  color: var(--f-strong);
+}
+
+.inv-front__venue {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: calc(19 * var(--u));
+  color: var(--f-solid);
+}
+
+.inv-front__address {
+  margin: 0;
+  font-size: calc(10.5 * var(--u));
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--f-address);
+}
+
+/* --- Invitation: the back --- */
+
+.inv-reverse {
+  padding: calc(42 * var(--u)) calc(44 * var(--u)) calc(32 * var(--u));
+  color: var(--ink);
+}
+
+.inv-reverse__head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding-bottom: calc(14 * var(--u));
+  border-bottom: calc(2 * var(--u)) solid var(--f-solid);
+}
+
+.inv-reverse__title {
+  margin: 0;
+  font-size: calc(30 * var(--u));
+  font-weight: 400;
+  line-height: 1;
+  color: var(--f-strong);
+}
+
+.inv-reverse__sub {
+  margin: calc(6 * var(--u)) 0 0;
+  font-size: calc(10 * var(--u));
+  letter-spacing: 0.3em;
   text-transform: uppercase;
   color: var(--brass);
 }
 
-.inv-fact p {
+.inv-reverse__names {
+  flex: none;
   margin: 0;
-  font-size: calc(2.9 * var(--u));
-  line-height: 1.45;
-  color: var(--ink);
-}
-
-.inv-web {
-  margin: auto 0 0;
-  padding-top: calc(6 * var(--u));
-  border-top: 1px solid var(--sand);
-  text-align: center;
-}
-
-.inv-web__label {
-  display: block;
-  margin-bottom: calc(1.4 * var(--u));
-  font-size: calc(2.2 * var(--u));
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--taupe);
-}
-
-.inv-web strong {
   font-family: var(--font-display);
-  font-weight: 400;
-  font-size: calc(4 * var(--u));
-  color: var(--hunter);
+  font-size: calc(17 * var(--u));
+  white-space: nowrap;
+  color: var(--f-strong);
 }
 
-/* --- Invitation: the programme flap --- */
+/* --- Invitation: the programme --- */
 
 .inv-days {
-  margin-top: calc(6 * var(--u));
+  display: grid;
+  gap: calc(16 * var(--u));
+  padding-top: calc(20 * var(--u));
 }
 
-.inv-day + .inv-day {
-  margin-top: calc(4.5 * var(--u));
+/*
+ * Two columns: the day on the left, its hours on the right against a hairline.
+ * The list is a grid of its own and each entry is `display: contents`, so the
+ * times and the titles line up down the whole day rather than per row.
+ */
+.inv-day {
+  display: grid;
+  grid-template-columns: calc(130 * var(--u)) minmax(0, 1fr);
+  gap: calc(14 * var(--u));
 }
 
 .inv-day__head {
-  padding-bottom: calc(1.6 * var(--u));
-  border-bottom: 1px solid var(--sand);
+  padding-top: calc(2 * var(--u));
 }
 
 .inv-day__day {
+  display: block;
   font-family: var(--font-display);
-  font-size: calc(4.2 * var(--u));
-  color: var(--hunter);
+  font-size: calc(18 * var(--u));
+  line-height: 1.1;
+  color: var(--f-strong);
 }
 
 .inv-day__date {
   display: block;
+  margin-top: calc(3 * var(--u));
   font-weight: 400;
-  font-size: calc(2.1 * var(--u));
+  font-size: calc(9.5 * var(--u));
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--taupe);
+  color: var(--brass);
 }
 
-/* The day's subtitle is redundant next to the date at this size. */
+/* The subtitle is redundant next to the date at this size. */
 .inv-day__title {
   display: none;
 }
 
 .inv-day__list {
-  margin: calc(2.4 * var(--u)) 0 0;
-  padding: 0;
+  display: grid;
+  grid-template-columns: calc(96 * var(--u)) minmax(0, 1fr);
+  gap: calc(5 * var(--u)) calc(12 * var(--u));
+  align-items: baseline;
+  margin: 0;
+  padding-left: calc(16 * var(--u));
+  border-left: calc(1 * var(--u)) solid var(--f-rule);
   list-style: none;
+  font-size: calc(12 * var(--u));
+  font-weight: 300;
 }
 
 .inv-item {
-  display: grid;
-  grid-template-columns: calc(15 * var(--u)) 1fr;
-  gap: 0 calc(2.5 * var(--u));
-  padding-block: calc(1.1 * var(--u));
+  display: contents;
 }
 
 .inv-item__time {
-  font-family: var(--font-display);
-  font-size: calc(2.7 * var(--u));
-  line-height: 1.3;
-  color: var(--brass);
-  font-variant-numeric: tabular-nums;
+  color: var(--f-time);
 }
 
 .inv-item h4 {
   margin: 0;
   font-family: var(--font-body);
-  font-size: calc(2.7 * var(--u));
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+}
+
+/* The ceremony is the hour the whole weekend is built around. */
+.inv-item--key .inv-item__time,
+.inv-item--key h4 {
   font-weight: 400;
-  line-height: 1.3;
-  color: var(--ink);
+  color: var(--f-solid);
 }
 
-.inv-program__note {
-  margin: auto 0 0;
-  padding-top: calc(4 * var(--u));
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: calc(2.6 * var(--u));
-  color: var(--taupe);
-  text-align: center;
+/* --- Invitation: the practical panel --- */
+
+.inv-practical {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: calc(12 * var(--u)) calc(22 * var(--u));
+  margin-top: calc(22 * var(--u));
+  padding: calc(20 * var(--u)) calc(22 * var(--u));
+  background: var(--f-solid);
+  color: var(--paper);
 }
 
-/* --- Invitation: outside --- */
-
-.inv-cover {
-  position: relative;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-
-/*
- * The mark and the sub-line are taken out of flow so that the two names sit at
- * exactly the same height on both flaps — otherwise "Cecilie" and "Esben" would
- * not line up once the card is folded shut.
- */
-.inv-cover__mark {
-  position: absolute;
-  top: calc(42 * var(--u));
-  left: 50%;
-  width: calc(44 * var(--u));
-  transform: translateX(-50%);
-  color: var(--hunter);
-}
-
-.inv-cover__name {
-  margin: 0;
-  font-family: var(--font-display);
-  font-size: calc(11 * var(--u));
-  line-height: 1;
-  color: var(--hunter);
-}
-
-.inv-cover__weekend,
-.inv-cover__date {
-  position: absolute;
-  inset: auto 0 calc(48 * var(--u));
-  margin: 0;
-  font-size: calc(2.2 * var(--u));
+.inv-fact h3 {
+  margin: 0 0 calc(3 * var(--u));
+  font-family: var(--font-body);
+  font-size: calc(9.5 * var(--u));
+  font-weight: 400;
   letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--f-gold-light);
+}
+
+.inv-fact p {
+  margin: 0;
+  font-size: calc(11.5 * var(--u));
+  font-weight: 300;
+  line-height: 1.45;
+  color: rgba(251, 247, 239, 0.92);
+}
+
+/* --- Invitation: the foot --- */
+
+/* Sailing off the right edge, behind the reply line. */
+.inv-reverse__boat {
+  position: absolute;
+  right: calc(-10 * var(--u));
+  bottom: calc(32 * var(--u));
+  width: calc(248 * var(--u));
+  height: auto;
+  opacity: 0.92;
+  pointer-events: none;
+}
+
+.inv-reverse__foot {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: calc(18 * var(--u));
+  margin-top: auto;
+  padding-top: calc(16 * var(--u));
+}
+
+.inv-qr {
+  flex: none;
+  width: calc(38 * var(--u));
+  height: calc(38 * var(--u));
+}
+
+.inv-web__label {
+  margin: 0 0 calc(4 * var(--u));
+  font-size: calc(9.5 * var(--u));
+  letter-spacing: 0.28em;
   text-transform: uppercase;
   color: var(--taupe);
 }
 
-/*
- * Each flap carries half of the panorama, sized to the width of the two flaps
- * together — so once the card is closed the illustration runs across the seam.
- * The height is stated explicitly: 1401x686 scaled to 148.5mm wide is 72.7mm.
- */
-.inv-cover__scene {
-  position: absolute;
-  inset: auto 0 0;
-  height: calc(34 * var(--u));
-  background-image: url('../img/illustrations/soerne.jpg');
-  background-size: calc(148.5 * var(--u)) calc(72.7 * var(--u));
-  background-repeat: no-repeat;
-}
-
-.inv-cover__scene--left {
-  background-position: left 62%;
-}
-
-.inv-cover__scene--right {
-  background-position: right 62%;
-}
-
-/* --- Invitation: back panel --- */
-
-.inv-back {
-  align-items: center;
-  justify-content: center;
-}
-
-.inv-back__photo {
-  width: calc(84 * var(--u));
-  height: calc(105 * var(--u));
+.inv-web {
   margin: 0;
-  overflow: hidden;
-  background: var(--sand);
-}
-
-.inv-back__photo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.inv-back__text {
-  margin: calc(8 * var(--u)) 0 0;
-  max-width: calc(80 * var(--u));
-  font-size: calc(2.8 * var(--u));
-  line-height: 1.5;
-  color: var(--muted);
-}
-
-.inv-back__web {
-  margin: calc(2.5 * var(--u)) 0 0;
   font-family: var(--font-display);
-  font-size: calc(5 * var(--u));
-  color: var(--hunter);
+  font-size: calc(21 * var(--u));
+  color: var(--f-strong);
 }
 
 /* --- Venue page ----------------------------------------------------------- */
@@ -2400,7 +2156,7 @@ p:last-child {
   }
 }
 
-/* --- Print: the plan page comes out as a 1:1 A6 flyer --------------------- */
+/* --- Print: the invitation comes out as a 1:1 A5 flyer -------------------- */
 
 @media print {
   html,
@@ -2408,34 +2164,14 @@ p:last-child {
     background: #fff;
   }
 
-  /* Everything except the flyer itself is screen furniture. */
+  /* Everything except the two sheets is screen furniture. */
   .header,
   .skip-link,
-  .plan-intro,
+  .inv-intro,
   .footer,
   .lightbox {
     display: none !important;
   }
-
-  .plan-page,
-  .flyer-stage {
-    min-height: 0;
-    padding: 0;
-    background: #fff;
-  }
-
-  .flyer-photo {
-    display: none;
-  }
-
-  .flyer {
-    --u: 1mm; /* back to true millimetres on paper, whatever the screen did */
-    border: 0;
-    box-shadow: none;
-    background: #fff;
-  }
-
-  /* --- Invitation --- */
 
   .inv-page,
   .sheets {
@@ -2454,8 +2190,10 @@ p:last-child {
     break-inside: avoid;
   }
 
-  .sheet {
-    --u: 1mm;
+  /* --u is already the design's pixel in millimetres; only the screen-width
+     override has to be undone. */
+  .sheet--a5 {
+    --u: calc(210mm / 794);
     box-shadow: none;
     break-after: page;
   }
@@ -2464,19 +2202,7 @@ p:last-child {
     break-after: auto;
   }
 
-  /* Fold guides shrink to short pale ticks at the top and bottom edges. */
-  .fold {
-    border-left: 0;
-    width: 0.2mm;
-    background: linear-gradient(
-      to bottom,
-      var(--sand) 0 5mm,
-      transparent 5mm calc(100% - 5mm),
-      var(--sand) calc(100% - 5mm) 100%
-    );
-  }
-
-  /* Illustrations and the photograph must survive the printer's defaults. */
+  /* Illustrations must survive the printer's defaults. */
   .sheet,
   .sheet * {
     -webkit-print-color-adjust: exact;
