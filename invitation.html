@@ -15,7 +15,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="assets/css/style.css" />
-    <link rel="stylesheet" href="assets/css/print-a4.css" media="print" />
+    <link rel="stylesheet" href="assets/css/print-a5.css" media="print" />
   </head>
 
   <body data-title-key="meta.title.invitation" data-description-key="meta.description.invitation">
@@ -37,7 +37,7 @@
           </button>
           <ul class="nav__list" id="nav-menu" data-nav-menu>
             <li><a href="index.html#rejsen" data-i18n="nav.us">Vejen hertil</a></li>
-            <li><a href="plan.html" data-i18n="nav.program">Program</a></li>
+            <li><a href="index.html#program" data-i18n="nav.program">Program</a></li>
             <li><a href="index.html#stedet" data-i18n="nav.venue">Stedet</a></li>
             <li><a href="index.html#omkring" data-i18n="nav.around">Søhøjlandet</a></li>
             <li><a href="index.html#praktisk" data-i18n="nav.practical">Praktisk</a></li>
@@ -62,44 +62,79 @@
     </header>
 
     <main id="main" class="inv-page">
-      <div class="plan-intro">
+      <div class="inv-intro">
         <div class="wrap wrap--narrow">
           <span class="eyebrow" data-i18n="inv.eyebrow">Invitationen</span>
-          <p class="plan-intro__text" data-i18n="inv.intro"></p>
-          <p class="plan-intro__actions">
+          <p class="inv-intro__text" data-i18n="inv.intro"></p>
+          <p class="inv-intro__actions">
             <button class="btn" type="button" data-print data-i18n="inv.print">
               Print invitationen
             </button>
-            <a class="btn btn--ghost" href="plan.html" data-i18n="program.link">Se planen som flyer</a>
-            <a class="btn btn--ghost" href="index.html" data-i18n="plan.back">Tilbage til forsiden</a>
+            <a class="btn btn--ghost" href="index.html" data-i18n="inv.home">Tilbage til forsiden</a>
           </p>
         </div>
       </div>
 
       <!--
-        A4 landscape gatefold, 297 x 210 mm, printed double-sided and flipped on
-        the long edge. Panels are 74.25 | 148.5 | 74.25 mm.
+        One A5 sheet, 148 x 210 mm, printed on both sides. No folds: the two
+        .sheet--a5 blocks are the two sides of the same piece of paper, and each
+        breaks to its own page, so the print job is exactly two pages.
 
-        Sheet 1 (inside), left to right:  practical | the invitation | programme
-        Sheet 2 (outside), left to right: right flap front | back | left flap front
-
-        The outside is deliberately mirrored: after the long-edge flip the right
-        flap lands on the left of the sheet, so folding both flaps inwards puts
-        "Cecilie" and "Esben" side by side on the closed card.
+        The layout is the 2a artboard from `Bryllupsflyer A5.dc.html`, drawn in
+        the site's own Fraunces and a faded hunter green rather than the sage of
+        the source file. The canvas there is 559 x 794 px, which is A5 at 96dpi,
+        so --u is one of those px and every number below is the design's own.
       -->
       <div class="sheets">
-        <!-- ---------------------------------------------------- inside -->
+        <!-- ------------------------------------------------------- front -->
         <figure class="sheet-wrap">
-          <figcaption class="sheet-label" data-i18n="inv.side.a">Side 1 · inderside</figcaption>
+          <figcaption class="sheet-label" data-i18n="inv.side.a">Forside</figcaption>
 
-          <div class="sheet">
-            <div class="fold" style="left: calc(74.25 * var(--u))"></div>
-            <div class="fold" style="left: calc(222.75 * var(--u))"></div>
+          <div class="sheet sheet--a5">
+            <section class="panel inv-front">
+              <img class="inv-front__wash" src="assets/img/lakes-wash.jpg" alt=""
+                   width="1406" height="644" />
+              <div class="inv-front__veil" aria-hidden="true"></div>
 
-            <!-- Left flap: practical -->
-            <section class="panel panel--flap inv-practical">
-              <h2 class="inv-panel-title" data-i18n="inv.practical.title">Praktisk</h2>
-              <div class="inv-facts">
+              <div class="inv-front__body">
+                <div class="inv-front__top">
+                  <p class="inv-front__eyebrow" data-i18n="inv.front.eyebrow"></p>
+                  <p class="inv-front__range" data-i18n="inv.front.range">11.–13. juni 2027</p>
+                </div>
+
+                <div class="inv-front__mid">
+                  <h1 class="inv-front__names">Cecilie <span class="inv-amp">&amp;</span> Esben</h1>
+                  <span class="inv-front__rule" aria-hidden="true"></span>
+                </div>
+
+                <div class="inv-front__foot">
+                  <p class="inv-front__invite" data-i18n="inv.main.invite"></p>
+                  <p class="inv-front__date" data-i18n="inv.main.date"></p>
+                  <p class="inv-front__venue" data-i18n="inv.main.venue"></p>
+                  <p class="inv-front__address" data-i18n="inv.main.address"></p>
+                </div>
+              </div>
+            </section>
+          </div>
+        </figure>
+
+        <!-- -------------------------------------------------------- back -->
+        <figure class="sheet-wrap">
+          <figcaption class="sheet-label" data-i18n="inv.side.b">Bagside</figcaption>
+
+          <div class="sheet sheet--a5">
+            <section class="panel inv-reverse">
+              <header class="inv-reverse__head">
+                <div>
+                  <h2 class="inv-reverse__title" data-i18n="inv.back.title">Weekenden</h2>
+                  <p class="inv-reverse__sub" data-i18n="inv.back.sub"></p>
+                </div>
+                <p class="inv-reverse__names">Cecilie <span class="inv-amp">&amp;</span> Esben</p>
+              </header>
+
+              <div class="inv-days" data-schedule="card"></div>
+
+              <div class="inv-practical">
                 <div class="inv-fact">
                   <h3 data-i18n="inv.practical.1.label"></h3>
                   <p data-i18n="inv.practical.1.value"></p>
@@ -117,78 +152,24 @@
                   <p data-i18n="inv.practical.4.value"></p>
                 </div>
               </div>
-              <p class="inv-web">
-                <span class="inv-web__label" data-i18n="inv.practical.web.label"></span>
-                <strong data-i18n="inv.web">cecilieesben.com</strong>
-              </p>
-            </section>
 
-            <!-- Centre: the invitation itself -->
-            <section class="panel panel--centre inv-main">
-              <span class="mark inv-main__mark" aria-hidden="true"></span>
-              <p class="inv-main__eyebrow" data-i18n="inv.main.eyebrow"></p>
-              <h1 class="inv-main__names">Cecilie <span class="inv-amp">&amp;</span> Esben</h1>
-              <p class="inv-main__invite" data-i18n="inv.main.invite"></p>
-              <p class="inv-main__date" data-i18n="inv.main.date"></p>
-              <p class="inv-main__venue" data-i18n="inv.main.venue"></p>
-              <p class="inv-main__address" data-i18n="inv.main.address"></p>
-              <p class="inv-main__weekend" data-i18n="inv.main.weekend"></p>
-              <p class="inv-main__closing" data-i18n="inv.main.closing"></p>
-              <img
-                class="inv-main__scene"
-                src="assets/img/illustrations/soerne.jpg"
-                alt=""
-                width="1401"
-                height="686"
-              />
-            </section>
+              <img class="inv-reverse__boat" src="assets/img/hjejlen-brudepar.png" alt=""
+                   width="780" height="368" />
 
-            <!-- Right flap: the plan -->
-            <section class="panel panel--flap inv-program">
-              <h2 class="inv-panel-title" data-i18n="inv.program.title">Programmet</h2>
-              <div class="inv-days" data-schedule="card"></div>
-              <p class="inv-program__note" data-i18n="inv.program.note"></p>
-            </section>
-          </div>
-        </figure>
-
-        <!-- --------------------------------------------------- outside -->
-        <figure class="sheet-wrap">
-          <figcaption class="sheet-label" data-i18n="inv.side.b">Side 2 · yderside</figcaption>
-
-          <div class="sheet">
-            <div class="fold" style="left: calc(74.25 * var(--u))"></div>
-            <div class="fold" style="left: calc(222.75 * var(--u))"></div>
-
-            <!-- Right flap, front — lands on the right of the closed card -->
-            <section class="panel panel--flap inv-cover inv-cover--right">
-              <p class="inv-cover__name">Esben</p>
-              <p class="inv-cover__date" data-i18n="inv.cover.date">12. juni 2027</p>
-              <div class="inv-cover__scene inv-cover__scene--right" aria-hidden="true"></div>
-            </section>
-
-            <!-- Centre: the back of the folded card, and the one photograph -->
-            <section class="panel panel--centre inv-back">
-              <figure class="inv-back__photo">
-                <img class="photo" src="assets/img/par/par-07.jpg" alt=""
-                     data-i18n-attr="alt:us.1.alt" />
-              </figure>
-              <p class="inv-back__text" data-i18n="inv.back.text"></p>
-              <p class="inv-back__web" data-i18n="inv.web">cecilieesben.com</p>
-            </section>
-
-            <!-- Left flap, front — lands on the left of the closed card -->
-            <section class="panel panel--flap inv-cover inv-cover--left">
-              <span class="mark inv-cover__mark" aria-hidden="true"></span>
-              <p class="inv-cover__name">Cecilie</p>
-              <p class="inv-cover__weekend" data-i18n="inv.cover.weekend"></p>
-              <div class="inv-cover__scene inv-cover__scene--left" aria-hidden="true"></div>
+              <div class="inv-reverse__foot">
+                <img class="inv-qr" src="assets/img/qr-cecilieesben.png"
+                     alt="" data-i18n-attr="alt:inv.qr.alt" width="300" height="300" />
+                <div>
+                  <p class="inv-web__label" data-i18n="inv.practical.web.label"></p>
+                  <p class="inv-web" data-i18n="inv.web">cecilieesben.com</p>
+                </div>
+              </div>
             </section>
           </div>
         </figure>
       </div>
 
-      <p class="sheet-note" data-i18n="inv.fold.note"></p>
+      <p class="sheet-note" data-i18n="inv.print.note"></p>
     </main>
 
     <footer class="footer inv-page__footer">

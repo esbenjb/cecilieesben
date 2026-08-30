@@ -140,43 +140,59 @@ Rules for choosing and placing photographs:
 
 ## 4. The printed pieces
 
-`plan.html` shows the weekend plan as a card that is exactly A6 — 105 × 148 mm
-— on screen and on paper. `@page { size: A6 portrait; margin: 0 }` prints it
-1:1, and the browser furniture is hidden in print.
+There is one printed piece, and it is `invitation.html`.
 
-Two things make it work:
+### The invitation — a double-sided A5 flyer
 
-- **Every measurement inside the card is a multiple of `--u`**, which is `1mm`
-  by default. Below 30rem `--u` shrinks to `(100vw - 2 × gutter) / 105`, so the
-  whole card scales as a unit on a phone instead of wrapping or cramming. Print
-  resets it to `1mm`.
-- **Times and titles only.** The descriptions live on the front page. If you add
-  a programme item, check the card still fits: on a laptop it sits beside a
-  photo panel that is exactly 148 mm tall — if the card is taller than the
-  photo, it no longer fits on one A6 page.
+`invitation.html` is one A5 sheet, 148 × 210 mm, printed on both sides. No
+folds: the two `.sheet--a5` blocks on the page are the two sides of the same
+piece of paper, and each breaks to its own page, so the print job is exactly two
+pages. `@page { size: A5 portrait; margin: 0 }` prints it 1:1.
 
-### The invitation — A4 gatefold
+The layout is the **2a** artboard from `Bryllupsflyer A5.dc.html` — the one
+headed *"Tur 2 · den valgte retning"*. Two things were changed on the way in:
 
-`invitation.html` is 297 × 210 mm, folded into panels of 74.25 | 148.5 | 74.25 mm
-so the two flaps meet in the middle, following the gatefold in
-`Design inspiration/Wedding invitation.jpg`.
+- **Type.** The artboard is set in Cormorant Garamond; here it is the site's own
+  Fraunces, so the printed piece and the website are one voice. Fraunces is the
+  wider face, so the display sizes are all a few points down from the design's
+  (the names go from 74 to 53).
+- **Colour.** The artboard's sage `#4E5D4F` is replaced by hunter green let down
+  towards the paper in five steps — `--f-ink` through `--f-softer` on
+  `.sheet--a5`. Applied at full strength hunter green is too dominant for a
+  piece this quiet; mixed with the paper it keeps the muted weight of the design
+  without bringing a second green onto the site.
 
-- **Inside**, left to right: practical details | the invitation | the programme.
-- **Outside**: the two flap fronts carry "Cecilie" and "Esben", with half of the
-  Silkeborg panorama each, sized to the width of both flaps together so the
-  illustration runs across the seam once the card is closed. The centre is the
-  back of the folded card.
-- The names are vertically centred and their ornaments absolutely positioned, so
-  the two words line up exactly across the fold.
-- **White, not cream** — the invitation is the one place the paper is pure
-  `#fff`, and it carries exactly **one photograph**, on the back.
+The canvas is 559 × 794 px, which is A5 at 96dpi, so `--u` is one of those
+pixels and every measurement in the invitation CSS is the number the design was
+drawn with. On paper `--u` resolves to `210mm / 794`; below 38rem it shrinks
+with the viewport. The screen override is written `@media screen and (…)` on
+purpose: A5 is narrower than the breakpoint, so an unqualified query would fire
+in print and break the millimetres.
 
-### One schedule, three shapes
+- **Front**: the lakes watercolour full-bleed under a cream veil that is at its
+  thinnest across the middle, so the water reads behind the names while the type
+  at the top and foot still has plain paper. Eyebrow, the weekend range, the
+  names over a brass rule, then the invitation line, the ceremony, the venue.
+- **Back**: "Weekenden" over a 2 px rule, the three days as day-plus-hours rows,
+  a solid green panel with the four practical facts, and at the foot the QR code
+  beside the address with the Hjejlen sailing off the right edge.
+- **Assets**: `img/lakes-wash.jpg`, `img/hjejlen-brudepar.png` (the Hjejlen with
+  the two of them on the foredeck) and `img/qr-cecilieesben.png` all come from
+  the design file itself, not from the website's illustration set.
+
+### One schedule, two shapes
 
 The programme is rendered from one source (`SCHEDULE` in `assets/js/main.js`
-plus the `program.*` keys) into three shapes — the front-page day cards, the A6
-flyer, and the invitation's flap — so they can never drift apart. Each shape
-declares in `SHAPES` how much of the wording survives at that size.
+plus the `program.*` keys) into two shapes — the front-page day cards and the
+invitation's programme — so they can never drift apart. Each shape declares in
+`SHAPES` how much of the wording survives at that size, and
+`keyItem` on a day marks the one hour the weekend is built around, which every
+shape draws a shade stronger than the rest of the list.
+
+Since the flyer, the front-page day cards follow it: the day down the left with
+its date under it in brass, a hairline, then times and titles only. The
+descriptions that used to sit under each entry are gone from the front page —
+the sentence under each day is what is left of them.
 
 ---
 

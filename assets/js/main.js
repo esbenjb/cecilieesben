@@ -19,18 +19,19 @@
   /* --- Schedule -------------------------------------------------------- */
 
   // One source of truth for the weekend, rendered in two shapes: the day cards
-  // on the front page and the flyer list on the plan page.
+  // on the front page and the programme on the back of the invitation.
+  // `key` marks the one hour the weekend is built around: the flyer and the
+  // day cards both draw it a shade stronger than the rest of the list.
   var SCHEDULE = [
     { key: 'fri', items: 2 },
-    { key: 'sat', items: 8, feature: true },
+    { key: 'sat', items: 8, feature: true, keyItem: 3 },
     { key: 'sun', items: 2 },
   ];
 
   // Each shape names its own classes; 'notes' and 'texts' say how much of the
   // wording survives at that size.
   var SHAPES = {
-    cards: { block: 'day', item: 'day__item', feature: true, texts: true, notes: true },
-    flyer: { block: 'plan-day', item: 'plan-item', texts: false, notes: true },
+    cards: { block: 'day', item: 'day__item', feature: true, texts: false, notes: true },
     card: { block: 'inv-day', item: 'inv-item', texts: false, notes: false },
   };
 
@@ -66,6 +67,7 @@
           var prefix = 'program.' + day.key + '.' + i + '.';
           var li = document.createElement('li');
           li.className = shape.item;
+          if (day.keyItem === i) li.classList.add(shape.item + '--key');
 
           var time = document.createElement('span');
           time.className = shape.item + '__time';

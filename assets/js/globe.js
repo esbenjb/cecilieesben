@@ -482,47 +482,124 @@
     /* --- Swiping --------------------------------------------------------- */
 
     /*
-     * Below the breakpoint in style.css the grid becomes a snap carousel.
-     * There is nothing to hover with there, so the swipe itself does the
-     * choosing: whichever photograph is nearest the middle is the selected
-     * one. The breakpoint is repeated here because that is the only way for
-     * the script to know which of the two layouts it is looking at.
+     * The grid is a snap carousel at every width, so the scroll position does
+     * the choosing: whichever photograph is nearest the middle is the selected
+     * one, and the globe turns to it.
      */
     var grid = root.querySelector('[data-gallery]');
-    var narrow = window.matchMedia('(max-width: 61.99rem)');
 
     function isCarousel() {
-      return !!grid && narrow.matches;
+      return !!grid;
     }
 
-    // The card whose middle sits closest to the middle of the viewport.
-    function nearestToCentre() {
+    /*
+     * The carousel has no ends. Two photographs either side is all the peek
+     * ever shows, so rather than a second set of forty-five the strip carries
+     * four copies: the last two in front of the first, the first two after the
+     * last. Scroll onto one and the strip jumps to the real card in the same
+     * position — the card under the middle does not move, so the jump cannot be
+     * seen, and there is always something to the left of the first place.
+     */
+    var EDGE = 2;
+
+    // Every card in the strip, clones included, in the order they sit in:
+    // `index` is which of `spots` the card is showing.
+    var cards = [];
+
+    function buildLoop() {
+      if (!grid || cards.length || spots.length <= EDGE) return;
+
+      var items = spots.map(function (spot) {
+        return spot.el.parentNode;
+      });
+
+      // A copy is scenery: no place data, out of the tab order, and without
+      // the `data-full` the lightbox opens from, so it cannot be opened.
+      function copyOf(index) {
+        var copy = items[index].cloneNode(true);
+        var btn = copy.querySelector('[data-trip]');
+        copy.setAttribute('data-clone', index);
+        if (btn) {
+          btn.removeAttribute('data-trip');
+          btn.removeAttribute('data-full');
+          btn.removeAttribute('data-caption');
+          btn.setAttribute('tabindex', '-1');
+          btn.setAttribute('aria-hidden', 'true');
+        }
+        return copy;
+      }
+
+      var head = document.createDocumentFragment();
+      var tail = document.createDocumentFragment();
+      var i;
+      for (i = spots.length - EDGE; i < spots.length; i++) head.appendChild(copyOf(i));
+      for (i = 0; i < EDGE; i++) tail.appendChild(copyOf(i));
+
+      grid.insertBefore(head, items[0]);
+      grid.appendChild(tail);
+
+      cards = Array.prototype.slice.call(grid.children).map(function (el) {
+        var clone = el.getAttribute('data-clone');
+        return {
+          el: el,
+          clone: clone !== null,
+          index: clone === null ? items.indexOf(el) : parseInt(clone, 10),
+        };
+      });
+    }
+
+    // The card whose middle sits closest to the middle of the strip.
+    function nearestCard() {
       var box = grid.getBoundingClientRect();
       var mid = box.left + box.width / 2;
-      var best = active;
+      var best = null;
       var bestGap = Infinity;
 
-      spots.forEach(function (spot, index) {
-        var r = spot.el.getBoundingClientRect();
+      cards.forEach(function (card) {
+        var r = card.el.getBoundingClientRect();
         var gap = Math.abs(r.left + r.width / 2 - mid);
         if (gap < bestGap) {
           bestGap = gap;
-          best = index;
+          best = card;
         }
       });
 
       return best;
     }
 
+    // The real card for a place: the head copies come first, so the originals
+    // start EDGE along.
+    function cardFor(index) {
+      return cards[EDGE + index];
+    }
+
+    // A smooth scroll of our own can pass over a copy on its way somewhere
+    // else; stepping across mid-flight would stop it dead, so the swap waits
+    // until the strip is coasting on its own again.
+    var smoothUntil = 0;
+
+    // Standing on a copy, step across to the original without moving what is
+    // under the middle.
+    function rewrap(card) {
+      if (!card || !card.clone) return;
+      var real = cardFor(card.index);
+      if (!real) return;
+      grid.scrollLeft += real.el.offsetLeft - card.el.offsetLeft;
+    }
+
     function centre(index, smooth) {
       if (!isCarousel()) return;
-      var r = spots[index].el.getBoundingClientRect();
+      var card = cardFor(index);
+      var el = card ? card.el : spots[index].el;
+      var r = el.getBoundingClientRect();
       var box = grid.getBoundingClientRect();
       var delta = r.left + r.width / 2 - (box.left + box.width / 2);
       if (Math.abs(delta) < 1) return;
 
       if (grid.scrollBy) {
-        grid.scrollBy({ left: delta, behavior: reduced || !smooth ? 'auto' : 'smooth' });
+        var animated = smooth && !reduced;
+        if (animated) smoothUntil = Date.now() + 900;
+        grid.scrollBy({ left: delta, behavior: animated ? 'smooth' : 'auto' });
       } else {
         grid.scrollLeft += delta;
       }
@@ -534,32 +611,34 @@
       grid.addEventListener(
         'scroll',
         function () {
-          if (!isCarousel()) return;
+          if (!cards.length) return;
           if (pending) window.cancelAnimationFrame(pending);
           pending = window.requestAnimationFrame(function () {
             pending = null;
-            select(nearestToCentre());
+            var card = nearestCard();
+            if (!card) return;
+            if (Date.now() > smoothUntil) rewrap(card);
+            select(card.index);
           });
         },
         { passive: true }
       );
 
-      // Coming back from a wide window, the selected card is wherever it was
-      // left; bring it back to the middle so the two layouts agree.
-      var onBreakpoint = function () {
-        if (isCarousel()) centre(active, false);
-      };
-      if (narrow.addEventListener) narrow.addEventListener('change', onBreakpoint);
-      else if (narrow.addListener) narrow.addListener(onBreakpoint);
+      // The card widths are tied to the viewport, so a resize leaves the
+      // selected one off centre; put it back without animating.
+      window.addEventListener(
+        'resize',
+        function () {
+          centre(active, false);
+        },
+        { passive: true }
+      );
     }
 
     spots.forEach(function (spot, index) {
-      spot.el.addEventListener('mouseenter', function () {
-        // In the carousel the scroll position decides, not the pointer — a tap
-        // would otherwise pick a card before it has come round to the middle.
-        if (isCarousel()) return;
-        select(index);
-      });
+      // No mouseenter handler: the scroll position decides, not the pointer.
+      // Hovering a neighbour would otherwise pick a card before it has come
+      // round to the middle.
       spot.el.addEventListener('focus', function () {
         select(index);
         centre(index, true);
@@ -594,14 +673,7 @@
         select(next);
 
         // Show the photograph as well as the globe, wherever it happens to be.
-        if (isCarousel()) {
-          centre(next, true);
-        } else {
-          spots[next].el.scrollIntoView({
-            block: 'center',
-            behavior: reduced ? 'auto' : 'smooth',
-          });
-        }
+        centre(next, true);
       });
     }
 
@@ -631,6 +703,13 @@
     spots[active].el.setAttribute('aria-current', 'true');
     label(active);
     describe();
+
+    // After describe(), so the copies are made with the blurred mount already
+    // on them — and centred straight away, since the strip now opens on two
+    // copies rather than on the first photograph.
+    buildLoop();
+    centre(active, false);
+
     resize();
 
     // Place names are translated, so the label has to be rebuilt on a switch.

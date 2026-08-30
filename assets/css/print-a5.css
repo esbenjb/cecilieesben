@@ -1,0 +1,8 @@
+/* Paper size for invitation.html. @page is document-level, so the printable
+   page links its own tiny stylesheet rather than sharing one in style.css.
+   The invitation is a single A5 sheet printed on both sides, so the two sides
+   in the preview become the two pages of one double-sided print job. */
+@page {
+  size: A5 portrait;
+  margin: 0;
+}

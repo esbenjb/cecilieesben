@@ -19,21 +19,23 @@ Deploy by dropping the folder on Netlify, Vercel or GitHub Pages.
 
 | File | What it is |
 | --- | --- |
-| `index.html` | Front page — hero, welcome, photos of the two of us, countdown, programme, venue teaser, the three illustrations, practical info, gifts, RSVP |
-| `plan.html` | The weekend plan as an A6 flyer. Prints 1:1 on A6; on a laptop the card sits beside a photo, on a phone it scales down to fit |
-| `invitation.html` | The printed invitation: A4 landscape gatefold, double-sided. The weekend plan sits on the inside of the right flap |
+| `index.html` | Front page — hero, welcome, the travel carousel, countdown, programme, venue teaser, the three illustrations, practical info, gifts, RSVP |
+| `invitation.html` | The printed invitation: one A5 flyer, printed on both sides. The invitation on the front, the programme, the practical details and a QR code on the back. Drawn from the 2a artboard in `Bryllupsflyer A5.dc.html` |
 | `Gl-Skovridergaard.html` | Gl. Skovridergaard — gallery, facts, map links |
-| `DESIGN.md` | The design system: illustration style, palette, photography rules, flyer spec, and Silkeborg reference material for new assets |
+| `DESIGN.md` | The design system: illustration style, palette, photography rules, the A5 flyer spec, and Silkeborg reference material for new assets |
 
 ```
 assets/
   css/style.css              All styling; design tokens at the top
-  css/print-a6.css           Paper size for plan.html
-  css/print-a4.css           Paper size for invitation.html
+  css/print-a5.css           Paper size for invitation.html
   js/translations.js         Every visitor-facing string, da + en
   js/i18n.js                 Language switching
   js/main.js                 Schedule, countdown, nav, RSVP, gallery lightbox
   img/monogram.svg           Line-sketch monogram
+  img/hjejlen-mark.png       The Hjejlen, in the header and the footer
+  img/hjejlen-brudepar.png   The Hjejlen with us on it — invitation only
+  img/lakes-wash.jpg         The lakes, washed behind the invitation front
+  img/qr-cecilieesben.png    QR to this site, on the back of the invitation
   img/illustrations/         The watercolour asset set
   img/par/                   Photos of the two of us, web-ready
   img/venue/                 Photos of Gl. Skovridergaard (add your own)
@@ -60,24 +62,34 @@ A missing key renders as the key itself, so gaps are obvious rather than silent.
 ## The programme
 
 Defined once, in the `program.*` keys plus the `SCHEDULE` list at the top of
-`assets/js/main.js`. Both the day cards on the front page and the A6 flyer are
-rendered from it, so they cannot drift apart. To add an item, add
-`program.<day>.<n>.time|title|text` in both languages and bump the day's `items`
-count — then check the flyer still fits A6 and the invitation's right flap
-still fits (see `DESIGN.md` §4).
+`assets/js/main.js`. Both the day cards on the front page and the programme on
+the back of the invitation are rendered from it, so they cannot drift apart. To
+add an item, add `program.<day>.<n>.time|title|text` in both languages and bump
+the day's `items` count — then check the programme still fits on one A5 side
+(see `DESIGN.md` §4). `keyItem` on a day in `SCHEDULE` marks
+the hour everything else is arranged around; every shape draws it a shade
+stronger.
+
+Every shape now shows times and titles only, so the `.n.text` descriptions in
+`translations.js` are not rendered anywhere. They are kept deliberately: they are
+the copy of record for what each item actually is, and the day notes on the cards
+were written to sit alongside them. Set `texts: true` on a shape in `SHAPES` to
+bring them back.
 
 ## Printing
 
-`@page` is document-level, so each printable page links its own one-rule
-stylesheet: `print-a6.css` for the flyer, `print-a4.css` for the invitation.
-Check the paper size in the print dialog before running a batch.
+`@page` is document-level, so the one printable page links its own one-rule
+stylesheet, `print-a5.css`. Check the paper size in the print dialog before
+running a batch.
 
-The invitation is an **A4 landscape gatefold**, 297 × 210 mm, printed
-double-sided and flipped on the **long edge**, then folded along the two marks
-so the flaps meet in the middle. Panels are 74.25 | 148.5 | 74.25 mm. Sheet
-side 2 is deliberately mirrored — after the flip the right flap lands on the
-left of the sheet, which is what puts "Cecilie" and "Esben" side by side on the
-closed card.
+The invitation is **one A5 sheet**, 148 × 210 mm, printed **double-sided**.
+There are no folds and no mirroring: the two sides shown on the page print as
+page 1 and page 2, so any flip edge works. Set the dialog to A5 and
+double-sided, and leave the scale at 100%.
+
+The front is nearly full-bleed, so print it on a printer that can do that, or
+accept a white margin — nothing important sits within 10 mm of the edge except
+the Hjejlen on the back, which is meant to sail off it.
 
 ## Photos
 
