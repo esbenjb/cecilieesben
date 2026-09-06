@@ -53,21 +53,21 @@ window.TRANSLATIONS = {
     'program.eyebrow': 'Programmet',
     'program.title': 'Weekendens plan',
     'program.intro':
-      'I er velkomne fra fredag den 11. juni. Kom, når det passer jer, og bliv så længe I kan.',
+      'I er velkomne fra fredag den 11. juni. Vi håber I kan være med hele weekenden.',
     'program.link': 'Print invitationen & programmet',
 
     'program.fri.day': 'Fredag',
     'program.fri.date': '11. juni 2027',
     'program.fri.title': 'Ankomst & grill',
     'program.fri.1.time': '17.00',
-    'program.fri.1.title': 'Ankomst & fredagsdrink',
+    'program.fri.1.title': 'Ankomst',
     'program.fri.1.text':
       'Der er åbent fra kl. 17. Tjek ind på værelset, få en drink i hånden, og spil med i haven når I har lyst.',
     'program.fri.2.time': '19.00–21.00',
-    'program.fri.2.title': 'Grillen er tændt',
+    'program.fri.2.title': 'Grillbuffet',
     'program.fri.2.text':
-      'Aftensmad fra grillen, men ingen siddende middag. Ingen bordplan, ingen taler, ingen faste tidspunkter: grillen står klar i to timer, så kig forbi når det passer jer, og spis når I bliver sultne.',
-    'program.fri.note': 'I er velkomne fra fredag, så tag gerne hele weekenden med.',
+      'Aftensmad fra grillen, men ingen siddende middag. Ingen bordplan, ingen taler, ingen faste tidspunkter.',
+    'program.fri.note': 'Aftensmad fra grillen, hvor I kommer, når det passer jer. Ingen bordplan eller faste tidspunkter.',
 
     'program.sat.day': 'Lørdag',
     'program.sat.date': '12. juni 2027',
@@ -188,7 +188,7 @@ window.TRANSLATIONS = {
     'venuepage.website': 'Hotellets hjemmeside',
     'venuepage.around.title': 'Hvis I får tid til overs',
     'venuepage.around.body':
-      'Weekenden er lang nok til at nå lidt mere end fest. Gå en tur i skoven, tag en svømmetur i Almindsø, lej en cykel gennem Søhøjlandet, eller besøg Museum Jorn og KunstCentret Silkeborg Bad, som begge ligger få minutter væk.',
+      'Weekenden er lang nok til at nå lidt mere end fest. Gå en tur i skoven, tag en svømmetur i Almindsø, eller planlæg lidt ekstra tid efter udtjekning søndag.',
     'venuepage.back': 'Tilbage til forsiden',
 
     'us.eyebrow': 'Os to',
@@ -377,25 +377,25 @@ window.TRANSLATIONS = {
       'Vi er begge opvokset i Silkeborg, og vil håbe, at I kommer til at elske området lige så meget som os, når I kommer til brylluppet. Så vi har samlet 5 seværdigheder, der er værd at kende.',
     'fig.soerne.title': 'Silkeborgsøerne',
     'fig.soerne.text':
-      'Ni søer på stribe langs Gudenåen, fra byen og hele vejen ud til Himmelbjerget. Lej en kano, hop i fra en badebro, eller sæt jer på bredden og se på. Vandet er aldrig langt væk.',
+      'Utallige somre er blevet tilbragt ude på Silkeborgsøerne. I kommer til at se dem fra søsiden i løbet af weekenden.',
     'fig.soerne.alt':
       'Akvarel af Silkeborgsøerne med skovklædte odder, der spejler sig i det blanke vand',
     'fig.himmelbjerget.title': 'Himmelbjerget',
     'fig.himmelbjerget.text':
-      'Danmarks mest berømte bakke på 147 meter, med Julsø bredt ud nedenfor. Tårnet på toppen er fra 1875, og sidst på sommeren blomstrer lyngen hele vejen rundt om det.',
+      'Danmarks mest berømte bakke på 147 meter, med Julsø bredt ud nedenfor.',
     'fig.himmelbjerget.alt':
       'Akvarel af Himmelbjergtårnet med udsigt ud over skoven og Julsø',
     'fig.hjejlen.title': 'Hjejlen',
     'fig.hjejlen.text':
-      'Verdens ældste kulfyrede hjuldamper har sejlet fra Silkeborg til Himmelbjerget siden 1861. Turen tager halvanden time, og er stadig den smukkeste måde at se søerne på.',
+      'Verdens ældste kulfyrede hjuldamper har sejlet fra Silkeborg til Himmelbjerget siden 1861.',
     'fig.hjejlen.alt': 'Akvarel af hjuldamperen Hjejlen på Silkeborgsøerne',
     'fig.ringene.title': 'Ringene i Almindsø',
     'fig.ringene.text':
-      'Østre Søbad ligger få minutters gang fra gården: to cirkelformede træbroer ude i søen, den ene med lavt vand, den anden dyb nok til at springe i. Tag badetøj med.',
+      'Østre Søbad ligger få minutters gang fra gården med to cirkeformede badebroer ud i Almindsø.',
     'fig.ringene.alt': 'Akvarel af de to cirkelformede badebroer ved Almindsø set oppefra',
     'fig.bakkerne.title': 'Sindbjerg & Stoubjerg',
     'fig.bakkerne.text':
-      'Lyngbakkerne over Sejs-Svejbæk. Herfra kan man se ud over Julsø og Himmelbjerget, og sidst på sommeren står hele skrænten lilla af lyng.',
+      'Lyngbakkerne over Sejs-Svejbæk, Esbens hjemby.',
     'fig.bakkerne.alt':
       'Akvarel af lyngbakkerne Sindbjerg og Stoubjerg ved Sejs-Svejbæk',
 
@@ -406,13 +406,13 @@ window.TRANSLATIONS = {
       'Værelserne på Gl. Skovridergaard er booket og betalt af os. I skal hverken bestille eller betale for noget. Sæt blot kryds i formularen ved de nætter, I bliver, så fordeler vi værelserne.',
     'practical.2.title': 'Transport',
     'practical.2.body':
-      'I kan køre hele vejen til gården. Der er ca. 40 minutter i bil fra Aarhus. Nærmeste lufthavn er Billund, og derfra er der ca. 50 minutter i bil. Kommer I med toget, så stå af på Silkeborg Station og sig til, så henter vi jer.',
+      'I kan køre hele vejen til hotellet og parkere der. Sig til, hvis I skal bruge hjælp med transport.',
     'practical.3.title': 'Dresscode',
     'practical.3.body':
-      'Festligt tøj. Vielsen og receptionen foregår udendørs på græs, så tag hensyn i valget af sko, og husk et lag til aftenen i parken.',
+      'Festligt tøj. Vielsen og receptionen foregår udendørs et par minutters gang væk fra hotellet, så tag hensyn i valget af sko.',
     'practical.4.title': 'Kosthensyn',
     'practical.4.body':
-      'Har I allergier, eller er der noget I ikke spiser, så skriv det i formularen. Køkkenet laver gerne alternativer, bare vi ved det i god tid.',
+      'Har I allergier, eller er der noget I ikke spiser, så skriv det til os.',
     'practical.5.title': 'Taler & indslag',
     'practical.5.body':
       'Vil I holde tale eller lave et indslag, så kontakt vores toastmastere William og Robert i god tid.',
@@ -517,7 +517,7 @@ window.TRANSLATIONS = {
     'program.eyebrow': 'Programme',
     'program.title': 'The plan for the weekend',
     'program.intro':
-      'You are welcome from Friday 11 June. Come when it suits you, and stay as long as you can.',
+      'You are welcome from Friday 11 June. We hope you can join us for the full weekend.',
     'program.link': 'Print the invitation & program',
 
     'program.fri.day': 'Friday',
@@ -526,12 +526,12 @@ window.TRANSLATIONS = {
     'program.fri.1.time': '17.00',
     'program.fri.1.title': 'Arrival & a Friday drink',
     'program.fri.1.text':
-      'The doors are open from 5pm. Check in, get a drink in your hand, and join a game in the garden whenever you feel like it.',
+      'You can arrive any time after 5pm. Check in, get a drink in your hand, and join a game in the garden whenever you feel like it.',
     'program.fri.2.time': '19.00–21.00',
-    'program.fri.2.title': 'The grill is on',
+    'program.fri.2.title': 'Casual dinner at the grill',
     'program.fri.2.text':
-      'Dinner off the grill, but no sit-down dinner. No seating plan, no speeches, no fixed times: the grill runs for two hours, so drop in when it suits you and eat when you get hungry.',
-    'program.fri.note': 'We hope to see you already from Friday, so do take the whole weekend with us.',
+      'Dinner off the grill, but no sit-down dinner. No seating plan, no fixed times.',
+    'program.fri.note': 'Dinner off the grill, but no sit-down dinner. No seating plan, no fixed times.',
 
     'program.sat.day': 'Saturday',
     'program.sat.date': '12 June 2027',
@@ -603,7 +603,7 @@ window.TRANSLATIONS = {
     'inv.practical.2.value':
       'Booked and paid for by us. Just tell us in your reply which nights you are staying.',
     'inv.practical.3.label': 'Dress code',
-    'inv.practical.3.value': 'Festive. The ceremony is outdoors on grass.',
+    'inv.practical.3.value': 'Festive. The ceremony is outdoors.',
     'inv.practical.4.label': 'RSVP',
     'inv.practical.4.value': 'By 1 March 2027 at the latest',
     'inv.practical.web.label': 'Reply and full details',
@@ -841,26 +841,26 @@ window.TRANSLATIONS = {
       'We both grew up in Silkeborg, and we hope you will come to love the area as much as we do when you come for the wedding. So we have gathered five sights worth knowing about.',
     'fig.soerne.title': 'The Silkeborg lakes',
     'fig.soerne.text':
-      'Nine lakes strung along the Gudenå, from the town all the way out to Himmelbjerget. Rent a canoe, jump in off a jetty, or just sit on the bank and watch. The water is never far away.',
+      'The lakes of Silkeborg, which you will get to experience during the weekend.',
     'fig.soerne.alt':
       'Watercolour of the Silkeborg lakes, wooded headlands mirrored in still water',
     'fig.himmelbjerget.title': 'Himmelbjerget',
     'fig.himmelbjerget.text':
-      'Denmark’s most famous hill at 147 metres, with Julsø spread out below. The tower on top dates from 1875, and late in the summer the heather flowers all around it.',
+      'Denmark’s most famous hill at 147 metres, with Julsø spread out below. Direct translation is The Sky Mountain.',
     'fig.himmelbjerget.alt':
       'Watercolour of the Himmelbjerget tower looking out over the forest and Julsø',
     'fig.hjejlen.title': 'Hjejlen',
     'fig.hjejlen.text':
-      'The world’s oldest coal-fired paddle steamer has sailed from Silkeborg to Himmelbjerget since 1861. The trip takes an hour and a half, and is still the loveliest way to see the lakes.',
+      'The world’s oldest coal-fired paddle steamer has sailed from Silkeborg to Himmelbjerget since 1861.',
     'fig.hjejlen.alt': 'Watercolour of the paddle steamer Hjejlen on the Silkeborg lakes',
     'fig.ringene.title': 'The rings in Almindsø',
     'fig.ringene.text':
-      'Østre Søbad is a few minutes’ walk from the estate: two circular timber jetties out in the lake, one over shallow water, the other deep enough to dive into. Bring swimwear.',
+      'Take a stroll to Østre Søbad; only a few minutes’ walk from the hotel, and you will see the most popular spot in the summer in Silkeborg',
     'fig.ringene.alt':
       'Watercolour of the two circular bathing jetties at Almindsø seen from above',
     'fig.bakkerne.title': 'Sindbjerg & Stoubjerg',
     'fig.bakkerne.text':
-      'The heather hills above Sejs-Svejbæk. From the top you look out over Lake Julsø and Himmelbjerget, and by late summer the whole slope turns purple with heather.',
+      'The heather hills above Sejs-Svejbæk, the city where Esben grew up.',
     'fig.bakkerne.alt':
       'Watercolour of the heather hills Sindbjerg and Stoubjerg near Sejs-Svejbæk',
 
@@ -871,13 +871,13 @@ window.TRANSLATIONS = {
       'The rooms at Gl. Skovridergaard are booked and paid for by us. There is nothing for you to book or pay. Just tick the nights you are staying in the form, and we will allocate the rooms.',
     'practical.2.title': 'Getting there',
     'practical.2.body':
-      'You can drive all the way. It is about 40 minutes from Aarhus. The nearest airport is Billund, about a 50-minute drive. If you come by train, get off at Silkeborg Station and tell us, and we will come and collect you.',
+      'You can drive all the way and park here. If you need help with transport, let us know.',
     'practical.3.title': 'Dress code',
     'practical.3.body':
-      'Festive. The ceremony and reception are outdoors on grass, so choose your shoes accordingly, and bring a layer for the evening in the park.',
+      'Festive. The ceremony and reception are outdoors requiring a short walk, so choose your shoes accordingly.',
     'practical.4.title': 'Dietary needs',
     'practical.4.body':
-      'If you have allergies, or there is something you do not eat, put it in the form. The kitchen is happy to make alternatives. We just need to know in good time.',
+      'If you have allergies, or there is something you do not eat, do let us know.',
     'practical.5.title': 'Speeches & performances',
     'practical.5.body':
       'If you would like to give a speech or perform something, please contact our toastmasters William and Robert in good time.',
