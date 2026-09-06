@@ -73,9 +73,9 @@ window.TRANSLATIONS = {
     'program.sat.date': '12. juni 2027',
     'program.sat.title': 'Bryllupsdagen',
     'program.sat.1.time': '09.00',
-    'program.sat.1.title': 'Morgenbad & champagne',
+    'program.sat.1.title': 'Fælles morgendyp i søen',
     'program.sat.1.text':
-      'Vi springer i søen og skåler i champagne bagefter. Håndklæde og godt humør er alt, hvad der skal til.',
+      'De morgenfriske hopper i søen.',
     'program.sat.2.time': '09.30–11.00',
     'program.sat.2.title': 'Morgenmad',
     'program.sat.2.text': 'Langt morgenbord. Tag god tid. Dagen er lang.',
@@ -104,13 +104,13 @@ window.TRANSLATIONS = {
     'program.sun.title': 'Afsked',
     'program.sun.1.time': '09.00–11.00',
     'program.sun.1.title': 'Morgenmad',
-    'program.sun.1.text': 'Sidste fælles bord, før vi siger farvel.',
+    'program.sun.1.text': 'Fælles morgenmad inden vi siger på gensyn.',
     'program.sun.2.time': 'Senest 13.00',
     'program.sun.2.title': 'Udtjekning',
     'program.sun.2.text':
-      'Værelserne skal være tømt senest kl. 13. Gå ikke uden at give os et kram.',
+      'Husk jeres ting og tjek ud af værelserne inden kl. 13.00.',
     'program.sun.note':
-      'Ingen faste programpunkter. Sov længe, spis godt, og tag afsked i jeres eget tempo.',
+      'Tak for at skabe en uforglemmelig weekend sammen med os!',
 
     'inv.eyebrow': 'Invitationen',
     'inv.intro':
@@ -531,15 +531,15 @@ window.TRANSLATIONS = {
     'program.fri.2.title': 'The grill is on',
     'program.fri.2.text':
       'Dinner off the grill, but no sit-down dinner. No seating plan, no speeches, no fixed times: the grill runs for two hours, so drop in when it suits you and eat when you get hungry.',
-    'program.fri.note': 'You are welcome from Friday, so do take the whole weekend with us.',
+    'program.fri.note': 'We hope to see you already from Friday, so do take the whole weekend with us.',
 
     'program.sat.day': 'Saturday',
     'program.sat.date': '12 June 2027',
     'program.sat.title': 'The wedding day',
     'program.sat.1.time': '09.00',
-    'program.sat.1.title': 'Morning swim & champagne',
+    'program.sat.1.title': 'Morning swim in the lake',
     'program.sat.1.text':
-      'We jump in the lake and toast with champagne afterwards. A towel and good spirits are all you need.',
+      'We jump in the lake to kickstart the day. Remember swimwear and a towel.',
     'program.sat.2.time': '09.30–11.00',
     'program.sat.2.title': 'Breakfast',
     'program.sat.2.text': 'A long breakfast table. Take your time. It is a long day.',
@@ -574,7 +574,7 @@ window.TRANSLATIONS = {
     'program.sun.2.text':
       'Rooms need to be empty by 1pm. Do not leave without giving us a hug.',
     'program.sun.note':
-      'Nothing scheduled. Sleep in, eat well, and say your goodbyes at your own pace.',
+      'Thanks for creating an unforgettable weekend!',
 
     'inv.eyebrow': 'The invitation',
     'inv.intro':
