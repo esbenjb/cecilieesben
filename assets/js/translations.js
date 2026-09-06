@@ -66,8 +66,8 @@ window.TRANSLATIONS = {
     'program.fri.2.time': '19.00–21.00',
     'program.fri.2.title': 'Grillbuffet',
     'program.fri.2.text':
-      'Aftensmad fra grillen, men ingen siddende middag. Ingen bordplan, ingen taler, ingen faste tidspunkter.',
-    'program.fri.note': 'Aftensmad fra grillen, hvor I kommer, når det passer jer. Ingen bordplan eller faste tidspunkter.',
+      'Aftensmad fra grillen. I kommer, når det passer jer. ',
+    'program.fri.note': 'Vær med til at starte en festlig weekend.',
 
     'program.sat.day': 'Lørdag',
     'program.sat.date': '12. juni 2027',
@@ -524,14 +524,14 @@ window.TRANSLATIONS = {
     'program.fri.date': '11 June 2027',
     'program.fri.title': 'Arrival & barbecue',
     'program.fri.1.time': '17.00',
-    'program.fri.1.title': 'Arrival & a Friday drink',
+    'program.fri.1.title': 'Arrival',
     'program.fri.1.text':
       'You can arrive any time after 5pm. Check in, get a drink in your hand, and join a game in the garden whenever you feel like it.',
     'program.fri.2.time': '19.00–21.00',
     'program.fri.2.title': 'Casual dinner at the grill',
     'program.fri.2.text':
-      'Dinner off the grill, but no sit-down dinner. No seating plan, no fixed times.',
-    'program.fri.note': 'Dinner off the grill, but no sit-down dinner. No seating plan, no fixed times.',
+      'Dinner off the grill, not a sit-down dinner. No seating plan, no fixed times.',
+    'program.fri.note': 'Kick off a fun and wonderful weekend in a casual setting.',
 
     'program.sat.day': 'Saturday',
     'program.sat.date': '12 June 2027',
