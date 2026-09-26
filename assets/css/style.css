@@ -1713,7 +1713,14 @@ p:last-child {
 /* --- Invitation: the back --- */
 
 .inv-reverse {
-  padding: calc(42 * var(--u)) calc(44 * var(--u)) calc(32 * var(--u));
+  /* One size for every line of running text on the back: the programme, the
+     practical panel and the reply line share it, so the page reads as one
+     piece and the type can be as large as the sheet allows. */
+  --f-body: calc(14 * var(--u));
+  --f-heading: calc(12 * var(--u)); /* the small caps headings in the panel and the foot */
+  --f-label: calc(10 * var(--u));
+
+  padding: calc(22 * var(--u)) calc(44 * var(--u)) calc(24 * var(--u));
   color: var(--ink);
 }
 
@@ -1721,7 +1728,7 @@ p:last-child {
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  padding-bottom: calc(14 * var(--u));
+  padding-bottom: calc(10 * var(--u));
   border-bottom: calc(2 * var(--u)) solid var(--f-solid);
 }
 
@@ -1754,8 +1761,8 @@ p:last-child {
 
 .inv-days {
   display: grid;
-  gap: calc(16 * var(--u));
-  padding-top: calc(20 * var(--u));
+  gap: calc(12 * var(--u));
+  padding-top: calc(10 * var(--u));
 }
 
 /*
@@ -1765,8 +1772,8 @@ p:last-child {
  */
 .inv-day {
   display: grid;
-  grid-template-columns: calc(130 * var(--u)) minmax(0, 1fr);
-  gap: calc(14 * var(--u));
+  grid-template-columns: calc(108 * var(--u)) minmax(0, 1fr);
+  gap: 0 calc(14 * var(--u));
 }
 
 .inv-day__head {
@@ -1781,12 +1788,13 @@ p:last-child {
   color: var(--f-strong);
 }
 
+/* Same voice as the date line in the head. */
 .inv-day__date {
   display: block;
   margin-top: calc(3 * var(--u));
-  font-weight: 400;
-  font-size: calc(9.5 * var(--u));
-  letter-spacing: 0.2em;
+  font-weight: 300;
+  font-size: var(--f-label);
+  letter-spacing: 0.3em;
   text-transform: uppercase;
   color: var(--brass);
 }
@@ -1798,15 +1806,16 @@ p:last-child {
 
 .inv-day__list {
   display: grid;
-  grid-template-columns: calc(96 * var(--u)) minmax(0, 1fr);
+  grid-template-columns: calc(108 * var(--u)) minmax(0, 1fr);
   gap: calc(5 * var(--u)) calc(12 * var(--u));
   align-items: baseline;
   margin: 0;
   padding-left: calc(16 * var(--u));
   border-left: calc(1 * var(--u)) solid var(--f-rule);
   list-style: none;
-  font-size: calc(12 * var(--u));
+  font-size: var(--f-body);
   font-weight: 300;
+  line-height: 1.25;
 }
 
 .inv-item {
@@ -1832,33 +1841,53 @@ p:last-child {
   color: var(--f-solid);
 }
 
+/* The one line after the last hour of the wedding day, set in the hours'
+   column so the hairline runs on past it. */
+.inv-day__note {
+  grid-column: 2;
+  margin: 0;
+  padding: calc(3 * var(--u)) 0 0 calc(16 * var(--u));
+  border-left: calc(1 * var(--u)) solid var(--f-rule);
+  font-family: var(--font-body);
+  font-style: italic;
+  font-weight: 300;
+  font-size: var(--f-body);
+  line-height: 1.25;
+  color: var(--f-time);
+}
+
 /* --- Invitation: the practical panel --- */
 
 .inv-practical {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: calc(12 * var(--u)) calc(22 * var(--u));
-  margin-top: calc(22 * var(--u));
-  padding: calc(20 * var(--u)) calc(22 * var(--u));
+  /* Widths set so every text but the address holds to two lines at the
+     agenda's size: the dress code needs the wider left column, the
+     accommodation note the rest. */
+  grid-template-columns: calc(234 * var(--u)) minmax(0, 1fr);
+  gap: calc(12 * var(--u)) calc(16 * var(--u));
+  /* Centred between the last agenda line and the reply line below. */
+  margin-top: calc(78 * var(--u));
+  padding: calc(14 * var(--u)) calc(14 * var(--u));
   background: var(--f-solid);
   color: var(--paper);
 }
 
 .inv-fact h3 {
-  margin: 0 0 calc(3 * var(--u));
+  margin: 0 0 calc(2 * var(--u));
   font-family: var(--font-body);
-  font-size: calc(9.5 * var(--u));
+  font-size: var(--f-heading);
   font-weight: 400;
-  letter-spacing: 0.24em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--f-gold-light);
 }
 
 .inv-fact p {
   margin: 0;
-  font-size: calc(11.5 * var(--u));
+  font-size: var(--f-body);
   font-weight: 300;
-  line-height: 1.45;
+  line-height: 1.35;
+  white-space: pre-line; /* the address breaks where the string says */
   color: rgba(251, 247, 239, 0.92);
 }
 
@@ -1867,9 +1896,10 @@ p:last-child {
 /* Sailing off the right edge, behind the reply line. */
 .inv-reverse__boat {
   position: absolute;
-  right: calc(-10 * var(--u));
-  bottom: calc(32 * var(--u));
-  width: calc(248 * var(--u));
+  right: calc(-18 * var(--u));
+  bottom: calc(3 * var(--u));
+  /* Wide enough that the bow reaches well past the reply line. */
+  width: calc(300 * var(--u));
   height: auto;
   opacity: 0.92;
   pointer-events: none;
@@ -1878,30 +1908,45 @@ p:last-child {
 .inv-reverse__foot {
   position: relative;
   display: flex;
-  align-items: center;
+  align-items: stretch;
   gap: calc(18 * var(--u));
   margin-top: auto;
-  padding-top: calc(16 * var(--u));
+  padding-top: calc(10 * var(--u));
 }
 
 .inv-qr {
   flex: none;
-  width: calc(38 * var(--u));
-  height: calc(38 * var(--u));
+  width: calc(44 * var(--u));
+  height: calc(44 * var(--u));
+}
+
+/*
+ * The two lines span exactly the height of the QR code: the label's cap line
+ * sits on its top edge and the address's baseline on its bottom edge. Both
+ * lines are set solid and the fonts' own leading is trimmed away with the
+ * small negative margins, tuned by eye against the rendered sheet.
+ */
+.inv-reverse__foot > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .inv-web__label {
-  margin: 0 0 calc(4 * var(--u));
-  font-size: calc(9.5 * var(--u));
-  letter-spacing: 0.28em;
+  margin: calc(-1.3 * var(--u)) 0 0;
+  font-size: var(--f-heading);
+  line-height: 1;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--taupe);
 }
 
-.inv-web {
-  margin: 0;
+/* Scoped so it outranks the global `p:last-child { margin-bottom: 0 }`. */
+.inv-reverse__foot .inv-web {
+  margin: 0 0 calc(-1.7 * var(--u));
   font-family: var(--font-display);
-  font-size: calc(21 * var(--u));
+  font-size: var(--f-body);
+  line-height: 1;
   color: var(--f-strong);
 }
 
