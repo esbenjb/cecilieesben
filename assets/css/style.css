@@ -1663,8 +1663,7 @@ p:last-child {
   pointer-events: none;
 }
 
-.inv-front__names,
-.inv-front__rule {
+.inv-front__names {
   position: relative;
 }
 
@@ -1682,13 +1681,6 @@ p:last-child {
   margin-inline: calc(4 * var(--u));
   font-weight: 400;
   font-size: calc(46 * var(--u));
-}
-
-.inv-front__rule {
-  display: block;
-  width: calc(54 * var(--u));
-  height: calc(1 * var(--u));
-  background: var(--brass);
 }
 
 .inv-front__foot {

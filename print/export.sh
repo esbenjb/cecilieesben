@@ -6,7 +6,7 @@
 # Run from anywhere: the paths below are resolved from this file's location.
 #
 # Output, in this directory:
-#   invitation-a5-bleed.pdf   both sides, page 1 = front, page 2 = back
+#   bryllupsinvitation.pdf   both sides, page 1 = front, page 2 = back
 #   invitation-forside.svg    front, text as outlines, images embedded
 #   invitation-bagside.svg    back
 set -eu
@@ -28,11 +28,11 @@ sed \
 
 "$chrome" --headless=new --disable-gpu --no-pdf-header-footer \
   --virtual-time-budget=8000 \
-  --print-to-pdf="$here/invitation-a5-bleed.pdf" \
+  --print-to-pdf="$here/bryllupsinvitation.pdf" \
   "file://$tmp/invitation.html" 2>/dev/null
 
-pdftocairo -svg -f 1 -l 1 "$here/invitation-a5-bleed.pdf" "$here/invitation-forside.svg"
-pdftocairo -svg -f 2 -l 2 "$here/invitation-a5-bleed.pdf" "$here/invitation-bagside.svg"
+pdftocairo -svg -f 1 -l 1 "$here/bryllupsinvitation.pdf" "$here/invitation-forside.svg"
+pdftocairo -svg -f 2 -l 2 "$here/bryllupsinvitation.pdf" "$here/invitation-bagside.svg"
 
-pdfinfo "$here/invitation-a5-bleed.pdf" | grep -E "^(Pages|Page size)"
-ls -la "$here"/invitation-*.svg "$here"/invitation-a5-bleed.pdf
+pdfinfo "$here/bryllupsinvitation.pdf" | grep -E "^(Pages|Page size)"
+ls -la "$here"/invitation-*.svg "$here"/bryllupsinvitation.pdf

@@ -97,7 +97,7 @@ the Hjejlen on the back, which is meant to sail off it.
 
 | File | What |
 | --- | --- |
-| `invitation-a5-bleed.pdf` | Both sides, page 1 front and page 2 back |
+| `bryllupsinvitation.pdf` | Both sides, page 1 front and page 2 back |
 | `invitation-forside.svg` | The front on its own |
 | `invitation-bagside.svg` | The back on its own |
 
@@ -167,9 +167,11 @@ own mail client to finish the job, which is not answering an invitation.
 That also means the form only works where the function exists. Opened straight
 off disk over `file://`, or on a plain static server, sending will fail.
 
-`main.js` is linked as `main.js?v=2`. Bump that number whenever the file
-changes in a way a returning visitor must not miss, so nobody keeps running a
-cached copy of the old one.
+`main.js` is linked as `main.js?v=3` and `style.css` as `style.css?v=2`.
+Bump the number whenever the file changes in a way a returning visitor must
+not miss, so nobody keeps running a cached copy of the old one. The print
+dialog uses whatever stylesheet the page has loaded, so a stale `style.css`
+also means a stale printout.
 
 Also in `main.js`: `CEREMONY`, the moment the countdown counts towards
 (12 June 2027 at 13.00, Danish summer time).
