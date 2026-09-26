@@ -91,6 +91,25 @@ The front is nearly full-bleed, so print it on a printer that can do that, or
 accept a white margin — nothing important sits within 10 mm of the edge except
 the Hjejlen on the back, which is meant to sail off it.
 
+### Files for a print shop
+
+`print/export.sh` writes what a printer asks for, into `print/`:
+
+| File | What |
+| --- | --- |
+| `invitation-a5-bleed.pdf` | Both sides, page 1 front and page 2 back |
+| `invitation-forside.svg` | The front on its own |
+| `invitation-bagside.svg` | The back on its own |
+
+Every page is **A5 plus 3 mm bleed on each side, 154 × 216 mm**, to be
+trimmed to 148 × 210. The sheet keeps its exact trim geometry; only the paper
+colour, the front's watercolour and the Hjejlen on the back run on into the
+bleed (`print/bleed.css`). Text is outlined and the images are embedded, so
+the files need no fonts.
+
+The script drives Google Chrome headless and poppler's `pdftocairo`
+(`brew install poppler`). Run it again after any change to the invitation.
+
 ## Photos
 
 Originals live in `Parbilleder/` as HEIC, which browsers cannot display. The
