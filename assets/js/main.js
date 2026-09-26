@@ -29,10 +29,11 @@
   ];
 
   // Each shape names its own classes; 'notes' and 'texts' say how much of the
-  // wording survives at that size.
+  // wording survives at that size. 'notes' may be 'feature' to keep only the
+  // note under the wedding day itself.
   var SHAPES = {
     cards: { block: 'day', item: 'day__item', feature: true, texts: false, notes: true },
-    card: { block: 'inv-day', item: 'inv-item', texts: false, notes: false },
+    card: { block: 'inv-day', item: 'inv-item', texts: false, notes: 'feature' },
   };
 
   function renderSchedule() {
@@ -90,7 +91,7 @@
         }
         article.appendChild(list);
 
-        if (shape.notes) {
+        if (shape.notes === true || (shape.notes === 'feature' && day.feature)) {
           var note = document.createElement('p');
           note.className = shape.block + '__note';
           note.textContent = t('program.' + day.key + '.note');
