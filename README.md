@@ -91,6 +91,25 @@ The front is nearly full-bleed, so print it on a printer that can do that, or
 accept a white margin — nothing important sits within 10 mm of the edge except
 the Hjejlen on the back, which is meant to sail off it.
 
+### Files for a print shop
+
+`print/export.sh` writes what a printer asks for, into `print/`:
+
+| File | What |
+| --- | --- |
+| `bryllupsinvitation.pdf` | Both sides, page 1 front and page 2 back |
+| `invitation-forside.svg` | The front on its own |
+| `invitation-bagside.svg` | The back on its own |
+
+Every page is **A5 plus 3 mm bleed on each side, 154 × 216 mm**, to be
+trimmed to 148 × 210. The sheet keeps its exact trim geometry; only the paper
+colour, the front's watercolour and the Hjejlen on the back run on into the
+bleed (`print/bleed.css`). Text is outlined and the images are embedded, so
+the files need no fonts.
+
+The script drives Google Chrome headless and poppler's `pdftocairo`
+(`brew install poppler`). Run it again after any change to the invitation.
+
 ## Photos
 
 Originals live in `Parbilleder/` as HEIC, which browsers cannot display. The
@@ -148,9 +167,11 @@ own mail client to finish the job, which is not answering an invitation.
 That also means the form only works where the function exists. Opened straight
 off disk over `file://`, or on a plain static server, sending will fail.
 
-`main.js` is linked as `main.js?v=2`. Bump that number whenever the file
-changes in a way a returning visitor must not miss, so nobody keeps running a
-cached copy of the old one.
+`main.js` is linked as `main.js?v=3` and `style.css` as `style.css?v=2`.
+Bump the number whenever the file changes in a way a returning visitor must
+not miss, so nobody keeps running a cached copy of the old one. The print
+dialog uses whatever stylesheet the page has loaded, so a stale `style.css`
+also means a stale printout.
 
 Also in `main.js`: `CEREMONY`, the moment the countdown counts towards
 (12 June 2027 at 13.00, Danish summer time).

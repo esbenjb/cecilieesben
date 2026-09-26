@@ -1636,6 +1636,7 @@ p:last-child {
 
 /* Centred in whatever is left between the two fixed groups. */
 .inv-front__mid {
+  position: relative;
   display: grid;
   justify-items: center;
   gap: calc(22 * var(--u));
@@ -1644,17 +1645,34 @@ p:last-child {
 
 /*
  * The glow is the design's: the names sit over the one place the veil is thin,
- * and without it the water shows through the counters of the letters.
+ * and without it the water shows through the counters of the letters. It is a
+ * radial gradient rather than a text-shadow because Chrome prints blurred
+ * shadows as hard opaque boxes, which wrecked the PDF.
  */
+.inv-front__mid::before {
+  content: '';
+  position: absolute;
+  inset: -70% -24%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(251, 247, 239, 0.95) 0%,
+    rgba(251, 247, 239, 0.8) 30%,
+    rgba(251, 247, 239, 0.4) 55%,
+    rgba(251, 247, 239, 0) 72%
+  );
+  pointer-events: none;
+}
+
+.inv-front__names {
+  position: relative;
+}
+
 .inv-front__names {
   margin: 0;
   font-size: calc(53 * var(--u));
   font-weight: 500;
   line-height: 0.98;
   color: var(--f-ink);
-  text-shadow:
-    0 0 calc(26 * var(--u)) rgba(251, 247, 239, 0.95),
-    0 0 calc(60 * var(--u)) rgba(251, 247, 239, 0.8);
 }
 
 /* Fraunces sets the ampersand tighter than Cormorant did; the design has air
@@ -1663,13 +1681,6 @@ p:last-child {
   margin-inline: calc(4 * var(--u));
   font-weight: 400;
   font-size: calc(46 * var(--u));
-}
-
-.inv-front__rule {
-  display: block;
-  width: calc(54 * var(--u));
-  height: calc(1 * var(--u));
-  background: var(--brass);
 }
 
 .inv-front__foot {
