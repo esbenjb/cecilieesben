@@ -49,6 +49,7 @@
   .inv-front__wash {
     inset: calc(-5% - 3mm) -3mm;
     width: calc(100% + 6mm);
+    max-width: none; /* the site caps every img at 100%; the bleed needs more */
     height: calc(110% + 6mm);
   }
 
