@@ -164,8 +164,8 @@ window.TRANSLATIONS = {
     'venuepage.gallery.title': 'Billeder fra stedet',
     'venuepage.shot.1': 'Hovedbygningen',
     'venuepage.shot.2': 'Gården i parken',
-    'venuepage.shot.3': 'Havesalen',
-    'venuepage.shot.4': 'Restauranten',
+    'venuepage.shot.3': 'Orangeriet',
+    'venuepage.shot.4': 'Kursalen',
     'venuepage.shot.5': 'Værelserne',
     'venuepage.shot.6': 'Ringene i Almindsø',
     'venuepage.shot.7': 'Vindfløjen fra 1798',
@@ -409,7 +409,7 @@ window.TRANSLATIONS = {
       'I kan køre hele vejen til hotellet og parkere der. Sig til, hvis I skal bruge hjælp med transport.',
     'practical.3.title': 'Dresscode',
     'practical.3.body':
-      'Festligt tøj. Vielsen og receptionen foregår udendørs et par minutters gang væk fra hotellet, så tag hensyn i valget af sko.',
+      'Festligt tøj. Vielsen foregår udendørs et par minutters gang væk fra hotellet, så tag hensyn i valget af sko.',
     'practical.4.title': 'Kosthensyn',
     'practical.4.body':
       'Har I allergier, eller er der noget I ikke spiser, så skriv det til os.',
@@ -628,8 +628,8 @@ window.TRANSLATIONS = {
     'venuepage.gallery.title': 'Pictures from the venue',
     'venuepage.shot.1': 'The main house',
     'venuepage.shot.2': 'The house in the park',
-    'venuepage.shot.3': 'The garden room',
-    'venuepage.shot.4': 'The restaurant',
+    'venuepage.shot.3': 'The Orangery',
+    'venuepage.shot.4': 'Kursalen',
     'venuepage.shot.5': 'The rooms',
     'venuepage.shot.6': 'The rings in Almindsø',
     'venuepage.shot.7': 'The 1798 weather vane',
@@ -874,7 +874,7 @@ window.TRANSLATIONS = {
       'You can drive all the way and park here. If you need help with transport, let us know.',
     'practical.3.title': 'Dress code',
     'practical.3.body':
-      'Festive. The ceremony and reception are outdoors requiring a short walk, so choose your shoes accordingly.',
+      'Festive. The ceremony is outdoors requiring a short walk, so choose your shoes accordingly.',
     'practical.4.title': 'Dietary needs',
     'practical.4.body':
       'If you have allergies, or there is something you do not eat, do let us know.',
