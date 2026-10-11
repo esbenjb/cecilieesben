@@ -110,6 +110,20 @@ the files need no fonts.
 The script drives Google Chrome headless and poppler's `pdftocairo`
 (`brew install poppler`). Run it again after any change to the invitation.
 
+`print/export-vistaprint.sh` writes the same three files with a
+`-vVistaprint` suffix for Vistaprint's flat invitation, which is **139 × 216 mm
+trimmed and uploaded at 142 × 219 mm**, 1.5 mm of bleed on each side. The
+design is scaled to that width and stretched to that height
+(`print/vistaprint.css`); the extra goes into the air around the names on the
+front and around the practical panel on the back.
+
+Vistaprint's SVG importer shows the text but none of the pictures from a raw
+`pdftocairo` file, because it draws every picture with transparency through a
+mask and two filters. `print/flatten-svg.py` composites each picture into one
+plain `<image>` instead, with its transparency, opacity and crop baked in; the
+export script runs it, and it needs Pillow (`pip install pillow`, or point
+`PYTHON` at an interpreter that has it).
+
 ## Photos
 
 Originals live in `Parbilleder/` as HEIC, which browsers cannot display. The
