@@ -409,7 +409,7 @@ window.TRANSLATIONS = {
       'I kan køre hele vejen til hotellet og parkere der. Sig til, hvis I skal bruge hjælp med transport.',
     'practical.3.title': 'Dresscode',
     'practical.3.body':
-      'Festligt tøj. Vielsen foregår udendørs et par minutters gang væk fra hotellet, så tag hensyn i valget af sko.',
+      'Festligt, farverigt og sommerligt. Vielsen er udendørs og 5 min. gang fra hotellet.',
     'practical.4.title': 'Kosthensyn',
     'practical.4.body':
       'Har I allergier, eller er der noget I ikke spiser, så skriv det til os.',
@@ -874,7 +874,7 @@ window.TRANSLATIONS = {
       'You can drive all the way and park here. If you need help with transport, let us know.',
     'practical.3.title': 'Dress code',
     'practical.3.body':
-      'Festive. The ceremony is outdoors requiring a short walk, so choose your shoes accordingly.',
+      'Festive, colourful and summery. The ceremony is outdoors, a 5-minute walk from the hotel.',
     'practical.4.title': 'Dietary needs',
     'practical.4.body':
       'If you have allergies, or there is something you do not eat, do let us know.',
