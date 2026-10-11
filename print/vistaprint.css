@@ -1,0 +1,76 @@
+/*
+ * Vistaprint export of invitation.html. Their flat invitation is 139 x 216 mm
+ * trimmed, uploaded at 142 x 219 mm, i.e. with 1.5 mm of bleed on every side.
+ * Loaded after style.css by print/export-vistaprint.sh, which also turns the
+ * two pages into SVG files.
+ *
+ * The sheet is a little narrower and a good deal taller than A5, so the design
+ * is scaled to the trim width (--u is 139mm/559 rather than 210mm/794) and the
+ * sheet is then stretched to the trim height. Both sides are flex columns
+ * built around an `auto` margin, so the extra height goes into the air around
+ * the names on the front and between the panel and the reply line on the back.
+ * Only the things that touch an edge (the paper colour, the front's wash and
+ * veil, the boat on the back) are allowed to run on into the bleed.
+ */
+@page {
+  size: 142mm 219mm;
+  margin: 0;
+}
+
+@media print {
+  .sheets {
+    display: block;
+  }
+
+  .sheet-wrap {
+    position: relative;
+    width: 142mm;
+    height: 219mm;
+    margin: 0;
+    overflow: hidden;
+    background: var(--paper);
+    break-after: page;
+    break-inside: avoid;
+  }
+
+  .sheet-wrap:last-of-type {
+    break-after: auto;
+  }
+
+  .sheet--a5 {
+    position: absolute;
+    top: 1.5mm;
+    left: 1.5mm;
+    --u: calc(139mm / 559);
+    width: 139mm;
+    height: 216mm;
+    box-shadow: none;
+    break-after: auto;
+  }
+
+  /* Let edge-touching artwork spill into the bleed; the page clips it. */
+  .panel {
+    overflow: visible;
+  }
+
+  .inv-front__wash {
+    inset: calc(-5% - 1.5mm) -1.5mm;
+    width: calc(100% + 3mm);
+    max-width: none; /* the site caps every img at 100%; the bleed needs more */
+    height: calc(110% + 3mm);
+  }
+
+  .inv-front__veil {
+    inset: -1.5mm;
+  }
+
+  /* The back grew 19 mm taller than the A5 layout; share it out so the
+     practical panel still sits between the agenda and the reply line. */
+  .inv-days {
+    gap: calc(16 * var(--u));
+  }
+
+  .inv-practical {
+    margin-top: calc(110 * var(--u));
+  }
+}
